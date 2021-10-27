@@ -1,0 +1,133 @@
+@import './normalize.css';
+
+:root {
+  -webkit-overflow-scrolling: touch;
+  /* 主题色 */
+  --green: #6c0;
+  /* 白色 */
+  --white: white;
+  /* 黑色 */
+  --black: black;
+  /* 灰色 副标题 a标签用 */
+  --gray: #898b92;
+  /* 按钮背景颜色 */
+  --button: #ff8100;
+  /* footer 颜色之一 */
+  --footerBg: #292f47;
+  /* footer 颜色之一 */
+  --footerLw: #1a1c26;
+  /* 解决 web页面放在移动端，点击button 标签或者添加了cursor:pointer 样式的标签，会出现 蓝色背景色 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: #898b92;
+  transition: all 0.3s;
+}
+
+h2,
+p,
+span {
+  transition: all 0.3s;
+}
+
+/* 主标题 */
+.h2 {
+  font-size: 38px;
+}
+
+/* 描述字段 */
+.p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* 盒子中的大字体 */
+.box-p {
+  font-size: 30px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* 副标题 */
+.subtitle {
+  font-size: 22px;
+  color: #5f5f5f;
+  margin: 20px 0;
+}
+
+/* 按钮 */
+.button {
+  font-size: 18px;
+  padding: 0 50px;
+  height: 40px;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 1248px) {
+  .con-box {
+    padding: 0 20px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  /* 主标题 */
+  .h2 {
+    font-size: 28px;
+    margin: 0 0 20px 0;
+  }
+
+  /* 描述字段 */
+  .p {
+    font-size: 16px !important;
+  }
+
+  /* 副标题 */
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .box-p {
+    font-size: 19px;
+  }
+  .button {
+    font-size: 14px;
+    padding: 0 40px;
+    height: 35px;
+    line-height: 35px;
+  }
+}
+
+/* 动画 */
+.AN {
+  transition: all 0.3s;
+}
+
+/* 动画 鼠标经过动画 */
+.ANM {
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.ANM:hover {
+  opacity: 0.8;
+}
+
+/* 圆角 */
+.bor-rad {
+  border-radius: 99px;
+}
+
+/* 投影 大 */
+.box-sha1 {
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+/* 投影 小 */
+.box-sha2 {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.con-box {
+  max-width: 1200px;
+  margin: 0 auto;
+}
