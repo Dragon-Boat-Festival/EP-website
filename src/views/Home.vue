@@ -1,11 +1,12 @@
 <template>
   <div class="home">
     <home-swiper v-if="homeData.banner_news" :banner-news="homeData.banner_news" />
-    <h1>1</h1>
+    <home-project v-if="homeData.project_date" :project-date="homeData.project_date" />
   </div>
 </template>
 <script>
 import homeSwiper from "@/components/Home/homeSwiper"
+import homeProject from "@/components/Home/homeProject"
 
 import { getHomeData } from '@/tools/request'
 
@@ -22,7 +23,8 @@ export default {
     })
   },
   components: {
-    homeSwiper
+    homeSwiper,
+    homeProject
   },
   methods: {
     async getData () {
