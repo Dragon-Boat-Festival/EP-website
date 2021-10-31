@@ -243,7 +243,7 @@ export default {
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, // 修改swiper的父元素时，自动初始化swiper
         grabCursor: true,
-        // slidesPerView: "auto",
+        slidesPerView: "auto",
 
         navigation: {
           nextEl: ".swiper-button-next",
@@ -265,6 +265,7 @@ export default {
         // freeMode: true, // 默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
         slidesPerView: "auto",
         // preventClicksPropagation: false, //阻止click冒泡。拖动Swiper时阻止click事件。
+        // spaceBetween: 0,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -493,7 +494,8 @@ export default {
 
     // 每一个slide
     .swiper-slide {
-      width: 80vw;
+      //width: 80vw;
+      width: 299px !important;
       max-width: 300px;
       margin-right: 10vw;
       margin-bottom: 20px;

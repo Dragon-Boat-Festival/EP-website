@@ -1,38 +1,37 @@
 <template>
-  <div class="tip" style="transform: rotate(-3deg)">
+  <div :style="{transform: `rotate(${Math.floor(Math.random() * (0 - 2)) + 0})`}" class="tip">
     <div class="meta-box">
       <span>每天</span>
-      <span class="issue" :style="{color: `${this.tip.ep_type?.color}`}">{{ this.tip.ep_type?.name }}</span>
+      <span :style="{color: `${this.tip.ep_type?.color}`}" class="issue">{{ this.tip.ep_type?.name }}</span>
     </div>
-    <div class="tip-icon"><img loading="lazy"
-                               :src="this.tip.img_url">
+    <div class="tip-icon"><img :src="this.tip.img_url"
+                               loading="lazy">
     </div>
     <p class="title">{{ this.tip.tips_name }}</p>
     <div class="tip-actions">
-      <div class="tip-commitments" id="tip_commitments_post_738">
+      <div id="tip_commitments_post_738" class="tip-commitments">
         <span class="js-tip-commitments">{{ this.tip.count }} 人已做到！</span>
       </div>
       <div class="tip-action-buttons has-committed">
         <div class="social-box">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             target="_blank" rel="noopener noreferrer" class="tip-share-facebook">
+          <a class="tip-share-facebook"
+             href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+             rel="noopener noreferrer" target="_blank">
             <span class="icon-facebook"></span>
           </a>
-          <a href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             target="_blank" rel="noopener noreferrer" class="tip-share-whatsapp">
+          <a class="tip-share-whatsapp"
+             href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+             rel="noopener noreferrer" target="_blank">
             <span class="icon-whatsapp"></span>
           </a>
-          <a href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             target="_blank" rel="noopener noreferrer" class="tip-share-twitter">
+          <a class="tip-share-twitter"
+             href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+             rel="noopener noreferrer" target="_blank">
             <span class="icon-twitter"></span>
           </a>
         </div>
-        <form action="#" method="POST" class="tip-engage">
+        <form action="#" class="tip-engage" method="POST">
           <button class="button-orange button" type="submit">我做得到！</button>
-          <input type="hidden" value="738" name="pid">
-          <input type="hidden" id="_wpnonce" name="_wpnonce" value="4048c8a996"><input type="hidden"
-                                                                                       name="_wp_http_referer"
-                                                                                       value="/hongkong/%E5%AE%88%E8%AD%B7%E4%BA%9E%E9%A6%AC%E9%81%9C%E9%9B%A8%E6%9E%97/">
         </form>
       </div>
     </div>
@@ -49,13 +48,11 @@ export default {
       default: {}
     }
   },
-  mounted() {
-    console.log(this.tip)
-  }
+
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .tip {
   box-sizing: border-box;
   border-radius: 8px;
@@ -81,6 +78,7 @@ export default {
     font-size: 12px;
     line-height: 18px;
     display: flex;
+    justify-content: space-between;
   }
 
   // icon

@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="../../../../../../earth/src/assets/css/base.css">
+<link href="../../../../../../earth/src/assets/css/base.css" rel="stylesheet">
 <template>
   <section class="section-history">
-    <div class="ct-container slim">
+    <div class="ct-container con-box slim">
       <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自1971年开始的环保里程……</font></font>
       </h2>
 
@@ -10,7 +10,7 @@
       </div>
       <div class="swiper-container label-swiper">
         <div class="swiper-wrapper label-wrapper">
-          <div class="swiper-slide label-slide" v-for="(item,index) in this.slide1" :key="index">
+          <div v-for="(item,index) in this.slide1" :key="index" class="swiper-slide label-slide">
             {{ item }}
           </div>
         </div>
@@ -18,16 +18,16 @@
 
       <div class="swiper-container maxi-swiper maxi-swiper-centered cards-swiper controlled-swiper">
         <div class="swiper-wrapper maxi-wrapper">
-          <div class="swiper-slide card-explainer swiper-slide-active" v-for="(item,index) in this.slide2" :key="index"
-               :data-latitude="item.latitude"
-               :data-longitude="item.longitude">
+          <div v-for="(item,index) in this.slide2" :key="index" :data-latitude="item.latitude"
+               :data-longitude="item.longitude"
+               class="swiper-slide card-explainer swiper-slide-active">
             <div class="description">
               <h4>{{ item.title }}</h4>
               <p class="subtitle">{{ item.subtitle }}</p>
               <span>{{ item.span }}</span>
             </div>
-            <div class="thumbnail lazy swiper-lazy "
-                 :data-background="item.img_url"
+            <div :data-background="item.img_url"
+                 class="thumbnail lazy swiper-lazy "
                  data-was-processed="true"
             >
               <div class="swiper-lazy-preloader"></div>
@@ -349,7 +349,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 
 
 // 大盒子
@@ -368,7 +368,6 @@ export default {
     > h2 {
       text-align: left;
       font-size: 19px;
-      left: 20px;
     }
 
     //canvas
@@ -548,8 +547,8 @@ export default {
 // 大于 1280
 @media only screen and (min-width: 1280px) {
   .ct-container.slim {
-    padding-left: 120px;
-    padding-right: 120px;
+    //padding-left: 120px;
+    //padding-right: 120px;
 
     .swiper-container {
       /*  margin-left: -100px;
@@ -570,7 +569,7 @@ export default {
     text-align: left;
     font-size: 30px !important;
     position: absolute !important;
-    left: 22% !important;
+    //left: 22% !important;
     width: 20% !important;
   }
 
