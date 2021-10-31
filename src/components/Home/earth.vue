@@ -1,4 +1,3 @@
-<link href="../../../../../../earth/src/assets/css/base.css" rel="stylesheet">
 <template>
   <section class="section-history">
     <div class="ct-container con-box slim">

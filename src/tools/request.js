@@ -2,11 +2,11 @@ import axios from './ajax'
 
 axios.defaults.withCredentials = true
 
-let http = 'http://127.0.0.1:7001/'
+let http = 'http://b163-120-230-126-33.ngrok.io/'
 
 // 获取首页所有数据
 export function getHomeData() {
-    return axios.get(http + `v1/main/data`)
+  return axios.get(http + `v1/main/data`)
 }
 
 /**
@@ -18,9 +18,9 @@ export function getHomeData() {
  * @returns {AxiosPromise}
  */
 export const getProjectOrTypesData = (data) => {
-    return axios({
-        method: "post",
-        url: `${http}v1/projectOrTypes/data`,
-        data: data,
-    })
+  return axios({
+    method: 'post',
+    url: `${http}v1/projectOrTypes/data`,
+    data: data,
+  })
 }

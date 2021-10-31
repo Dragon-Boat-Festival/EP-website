@@ -1,17 +1,18 @@
 <template>
   <div class="home">
-
     <!-- 头部banner   -->
-    <GlobalSwiper v-if="homeData.banner_news"
-                  :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`" swiperBg="swiper-pg"
-                  spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......">
+    <GlobalSwiper
+      v-if="homeData.banner_news"
+      :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
+      swiperBg="swiper-pg"
+      spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
+    >
       <template v-slot:swiper-pagination>
         <!-- swiper翻页器 -->
         <div :class="`swiper-pagination swiper-pg` "></div>
-
       </template>
       <template v-slot:h2>
-        <h2 class="h2" style="color: #6c0">行动带来改变</h2>
+        <h2 class="h2" style="color: var(--green)">行动带来改变</h2>
       </template>
       <template v-slot:subtitle>
         <p class="subtitle">保护环境，人人有责</p>
@@ -44,43 +45,50 @@
     </GlobalSwiper>
 
     <!-- 项目部分   -->
-    <home-project v-if="homeData.project_date" :project-date="homeData.project_date" class-name="dark">
+    <home-project
+      v-if="homeData.project_date"
+      :project-date="homeData.project_date"
+      class-name="dark"
+    >
       <template v-slot:h2>
         <h2 class="h2">重点项目</h2>
       </template>
       <template v-slot:span>
         <span class="p">我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span>
-
       </template>
-
-
     </home-project>
+
     <!-- earth   -->
-    <Earth v-if="homeData" class="animate__animated animate__fadeIn wow"
-           data-wow-duration=".6s"
-           data-wow-delay=".6s"/>
+
+    <Earth
+      v-if="homeData.project_date"
+      class="animate__animated animate__fadeIn wow"
+      data-wow-duration=".5s"
+      data-wow-delay=".5s"
+    />
   </div>
 </template>
 <script>
-// import homeSwiper from "@/components/Home/homeSwiper"
 import homeProject from "@/components/Home/homeProject"
 import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
-import {getHomeData} from '@/tools/request'
+import { getHomeData } from '@/tools/request'
 import Swiper from "swiper";
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
       homeData: {},
     }
   },
-  mounted() {
+  created () {
     this.getData()
-
+    new this.$wow.WOW({
+      live: false
+    }).init()
   },
-  updated() {
+  updated () {
     this.$nextTick(() => {
       this.initSwiper()
 
@@ -92,13 +100,13 @@ export default {
     Earth
   },
   methods: {
-    async getData() {
+    async getData () {
       // console.log(result);
       let res = await getHomeData()
       this.homeData = res.result
       console.log(this.homeData);
     },
-    initSwiper() {
+    initSwiper () {
       new Swiper(".home-swiper", {
         // 循环模式选项
         loop: false,
@@ -126,8 +134,6 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-@import "~@/assets/css/homeSwiper.css";
-
-
+@import '~@/assets/css/homeSwiper.css';
 </style>
 
