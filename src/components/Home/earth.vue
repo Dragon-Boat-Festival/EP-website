@@ -161,6 +161,7 @@ export default {
     }
   },
 
+
   created () {
     this.$nextTick(() => {
       console.log(1);

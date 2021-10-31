@@ -59,6 +59,7 @@
     </home-project>
 
     <!-- earth   -->
+
     <Earth
       v-if="homeData.project_date"
       class="animate__animated animate__fadeIn wow"
