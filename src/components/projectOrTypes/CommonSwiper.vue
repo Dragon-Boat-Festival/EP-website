@@ -7,7 +7,7 @@
       <div class="with-images">
         <h2 v-if="type === 0"></h2>
         <p :style="{color: `${color}`}">{{ swiperData.text }}</p>
-      </div>
+         </div>
     </div>
     <!--  图片盒子  -->
     <div class="box fit">

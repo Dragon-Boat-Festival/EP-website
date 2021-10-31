@@ -154,7 +154,7 @@ export default {
     }
   },
 
-  mounted() {
+  created() {
     this.$nextTick(() => {
       this._initSwiper()
       this.loadEarth()

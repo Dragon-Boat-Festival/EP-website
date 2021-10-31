@@ -56,7 +56,9 @@
 
     </home-project>
     <!-- earth   -->
-    <Earth/>
+    <Earth v-if="homeData" class="animate__animated animate__fadeIn wow"
+           data-wow-duration=".6s"
+           data-wow-delay=".6s"/>
   </div>
 </template>
 <script>
