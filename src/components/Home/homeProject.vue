@@ -3,9 +3,9 @@
     <div class="project-view con-box">
       <!-- 左侧内容 -->
       <div
-          class="project-left animate__animated animate__fadeIn wow"
-          data-wow-duration="1s"
-          data-wow-delay=".5s"
+        class="project-left animate__animated animate__fadeIn wow"
+        data-wow-duration="1s"
+        data-wow-delay=".5s"
       >
         <!-- swiper翻页器 -->
         <div class="swiper-pagination1 swiper-pg-white"></div>
@@ -17,12 +17,12 @@
         <div class="swiper home-project-swiper">
           <div class="swiper-wrapper">
             <router-link
-                to="/"
-                class="swiper-slide"
-                v-for="(item,index) in projectDate"
-                :key="index"
+              to="/"
+              class="swiper-slide"
+              v-for="(item,index) in projectDate"
+              :key="index"
             >
-              <ProjectBox :projectData="item" :className="`${className}`"/>
+              <ProjectBox :projectData="item" :className="`${className}`" />
             </router-link>
           </div>
           <div class="swiper-button-next swiper-bt box-sha2"></div>
@@ -54,7 +54,7 @@ export default {
   components: {
     ProjectBox
   },
-  mounted() {
+  mounted () {
     new this.$wow.WOW({
       live: false
     }).init()
@@ -64,7 +64,7 @@ export default {
     })
   },
   methods: {
-    initSwiper() {
+    initSwiper () {
       new Swiper(".home-project-swiper", {
         // slidesPerView: 3,
         slidesPerView: 'auto',
@@ -114,7 +114,7 @@ export default {
     .project-left {
       position: absolute;
       top: 0;
-      left: 20px;
+      left: 10px;
       margin-left: 10px;
       //color: var(--white);
       width: 250px;
@@ -134,8 +134,6 @@ export default {
           flex-direction: column;
           align-items: center;
           margin-right: 60px;
-
-
         }
       }
     }
@@ -151,7 +149,7 @@ export default {
 
   .swiper-button-prev {
     // position: absolute;
-    left: 34%;
+    left: 355px;
   }
 
   .project-right {

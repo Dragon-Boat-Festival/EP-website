@@ -1,8 +1,11 @@
 <template>
   <div class="bg">
     <div class="home-swiper-view animate__animated animate__fadeIn AN" :style="{backgroundColor}">
-      <BackgroundMotion v-if="img_url" eClassName="section-featured-background"
-                        :style="{background: `url(${img_url}) left center/auto 100% no-repeat`}"/>
+      <BackgroundMotion
+        v-if="img_url"
+        eClassName="section-featured-background"
+        :style="{background: `url(${img_url}) left center/auto 100% no-repeat`}"
+      />
       <!-- 整体容器 -->
       <div class="swiper-con con-box">
         <div class="swiper-content">
@@ -66,8 +69,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-
 .bg {
   /*  background-image: linear-gradient(to bottom,
     rgba(238, 238, 238, 0) 0%,
@@ -101,16 +102,13 @@ export default {
     margin-top: 40px;
 
     .swiper-content {
-      margin-left: 10px;
+      margin-left: 20px;
       width: 250px;
 
       span {
         line-height: 1.5;
       }
-
     }
-
-
   }
 }
 
@@ -118,13 +116,10 @@ export default {
   .home-swiper-view {
     height: 550px;
     //background: url('~@/assets/images/world.webp') left center/auto 120% no-repeat;
-
-
   }
 }
 
 @media screen and (max-width: 1024px) {
-
   .home-swiper-view {
     height: 730px;
     overflow: hidden;
@@ -137,11 +132,8 @@ export default {
 
         span {
           display: none;
-
         }
       }
-
-
     }
   }
 }
