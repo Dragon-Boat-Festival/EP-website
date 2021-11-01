@@ -358,6 +358,7 @@ export default {
   position: relative;
   z-index: 2;
   background: var(--green);
+  overflow: hidden;
 
   .ct-container {
     width: 100%;
@@ -403,7 +404,7 @@ export default {
         font-size: 32px;
         font-weight: 700;
         position: relative;
-        top: -3px;
+        top: -10px;
       }
     }
   }

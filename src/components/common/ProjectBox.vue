@@ -74,4 +74,11 @@ export default {
     height: 200px;
   }
 }
+
+@media screen and (max-width: 512px) {
+  .slide-img {
+    width: 150px;
+    height: 150px;
+  }
+}
 </style>
