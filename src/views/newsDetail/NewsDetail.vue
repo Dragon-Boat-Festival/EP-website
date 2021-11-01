@@ -25,7 +25,22 @@
       </div>
     </div>
 
+
   </div>
+  <!--  底部相关新闻  -->
+  <!-- 相关新闻   -->
+  <SectionRow background-color="var(--grayBackground)" v-if="about_news" :lastYear_news="about_news"
+              h2-text="相关新闻">
+
+    <template v-slot:column-title>
+      <div class="last-more">
+        <h2 :style="{color: `${this.news_detail.ep_type?.color}`}"></h2>
+      </div>
+
+    </template>
+
+
+  </SectionRow>
 
 
 </template>
@@ -33,20 +48,23 @@
 <script>
 import {getNewsDetail} from "@/tools/request";
 import CommonBanner from "@/components/common/CommonBanner";
+import SectionRow from "@/components/common/SectionRow";
 
 export default {
   name: "NewsDetail",
   components: {
     CommonBanner,
+    SectionRow
   },
   data() {
     return {
-      news_id: "21280947392305", // 上一个页面需要传news_id
+      news_id: "", // 上一个页面需要传news_id
       news_detail: {}, // 新闻详情数据
       about_news: [], // 底部相关新闻
     }
   },
   mounted() {
+    this.news_id = this.$route.query.news_id
     this._initData(this.news_id)
   },
   methods: {
