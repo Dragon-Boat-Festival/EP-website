@@ -17,6 +17,8 @@
   --footer: #1a1c26;
   /* 解决 web页面放在移动端，点击button 标签或者添加了cursor:pointer 样式的标签，会出现 蓝色背景色 */
   -webkit-tap-highlight-color: transparent;
+  /* 灰色背景 */
+  --grayBackground: #f6f6f6;
 }
 
 a {
@@ -73,7 +75,7 @@ img {
   .con-box {
     padding: 0 20px;
   }
-  /* 
+  /*
     .swiper-button-next {
         right: -50px !important;
     } */
