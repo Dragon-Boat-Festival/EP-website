@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <div class="home-loading" v-if="!homeData.banner_news"></div>
     <!-- 头部banner   -->
     <GlobalSwiper
         v-if="homeData.banner_news"
@@ -137,13 +136,6 @@ export default {
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
 
-.home-loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 7;
-}
+
 </style>
 

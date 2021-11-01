@@ -1,8 +1,10 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import NewsDetail from "@/views/newsDetail/NewsDetail";
 
 const Home = () => import('@/views/Home');
 const EpDetail = () => import('@/views/projectOrTypes/ProjectOrTypes');
+const newsDetail = () => import("@/views/newsDetail/NewsDetail");
+const NoFound = () => import("@/views/noFound/NoFound")
+
 
 const routes = [
     {
@@ -16,7 +18,11 @@ const routes = [
     }, {
         path: '/newsDetail',
         name: 'newsDetail',
-        component: NewsDetail,
+        component: newsDetail,
+    },{
+        path: '/404',
+        name: 'NotFound',
+        component: NoFound,
     },
 ]
 
