@@ -3,30 +3,7 @@
   <div class="outer_block_container"
   >
     <!--  头部banner  -->
-    <section class="section-hero-top">
-      <!--   背景   -->
-      <BackgroundMotion eClassName="banner_background" :style="{backgroundImage: `url(${this.commonData?.banner_url})`}"/>
-      <!--   黑阴影   -->
-      <div class="section-hero-shade"></div>
-      <!--  文字内容部分    -->
-      <div class="ct-container">
-        <div class="content">
-          <div class="top-bar">
-            <a class="back-button">
-              <i class="iconfont icon-zuo" @click="this.$router.go(-1)"></i>
-            </a>
-            <a href="#" data-topic="68" class="js-issue-follow button button-orange light"
-               style="display: none;">立即关注</a>
-            <a href="#" data-topic="68" class="js-issue-unfollow button not-following button-orange light"
-               style="display: inline;">你正在关注</a>
-          </div>
-          <div class="hero-issue-title">
-            <h1>{{ this.commonData?.name }}</h1>
-            <p>{{ this.commonData?.e_name }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <CommonBanner :commonData="this.commonData"/>
     <!-- 下部分项目目标 部分 全球议题显示   -->
     <CommonBox v-if="this.commonData?.describe">
       <template v-slot:content>
@@ -210,6 +187,7 @@
 </template>
 
 <script>
+import CommonBanner from "@/components/common/CommonBanner";
 import BackgroundMotion from "@/components/common/BackgroundMotion";
 import CommonBox from "@/components/projectOrTypes/commonBox";
 import CommonSwiper from "@/components/projectOrTypes/CommonSwiper";
@@ -223,6 +201,7 @@ import Swiper from "swiper";
 export default {
   name: "ProjectOrTypes",
   components: {
+    CommonBanner,
     CommonBox,
     BackgroundMotion,
     CommonSwiper,
@@ -351,122 +330,6 @@ export default {
     //background-image: linear-gradient(to bottom, rgba(238, 238, 238, 0) 0%, #eee 100%);
   }
 
-  // 头部banner 部分
-  .section-hero-top {
-
-
-
-    // 黑阴影
-    .section-hero-shade {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      left: 0;
-    }
-
-    // 黑阴影-上
-    .section-hero-shade::before {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 101px;
-      background-image: linear-gradient(to top, rgba(0, 0, 0, 0), #000);
-      content: "";
-    }
-
-    // 黑阴影-下
-    .section-hero-shade::after {
-      display: block;
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 210px;
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
-      content: "";
-    }
-
-    // banner 文字部分
-    .ct-container:not {
-      position: relative;
-    }
-
-    //banner 文字部分
-    .ct-container {
-      height: 100%;
-      width: 100%;
-      margin: 0 auto;
-      z-index: 20;
-      // 内容
-      .content {
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        flex-direction: column;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        height: 100%;
-        // banner 顶部 导航栏
-        .top-bar {
-          display: flex;
-          -webkit-box-pack: justify;
-          justify-content: space-between;
-          padding: 10px 20px;
-          -webkit-box-align: center;
-          align-items: center;
-          z-index: 5;
-          // 返回按钮
-          .back-button {
-            text-decoration: none;
-            border-bottom: none !important;
-            color: #fff;
-            // 图标
-            .icon-zuo {
-              font-weight: bolder;
-              font-size: 18px;
-            }
-          }
-        }
-
-        // 全球议题文字部分
-        .hero-issue-title {
-          color: #fff;
-          display: flex;
-          -webkit-box-orient: vertical;
-          -webkit-box-direction: normal;
-          flex-direction: column;
-          -webkit-box-align: center;
-          align-items: center;
-          z-index: 5;
-          // 标题
-          h1 {
-            font-size: 90px;
-            line-height: 0;
-            letter-spacing: 10px;
-
-            text-align: center;
-          }
-
-          // p
-          p {
-            font-size: 16px;
-            line-height: 21px;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            font-family: Montserrat;
-            line-height: 21px;
-            margin-bottom: 50px;
-          }
-
-        }
-      }
-    }
-
-  }
-
 
   // 改变部分
   .change {
@@ -571,32 +434,7 @@ export default {
 }
 
 @media only screen and (min-width: 1024px) {
-  // banner 文字
-  .hero-issue-title {
-    h1 {
-      font-size: 80px !important;
-      line-height: 0 !important;
-      letter-spacing: 16.7px !important;
-      color: #fff;
-    }
 
-    p {
-      font-size: 22px;
-      letter-spacing: 11px;
-      margin-bottom: 90px;
-
-    }
-  }
-
-  // banner 下部分 文字
-  .ct-container {
-    //width: 58% !important;
-
-    h2 {
-      font-size: 30px !important;
-
-    }
-  }
 
   // 改变部分
   .change {
