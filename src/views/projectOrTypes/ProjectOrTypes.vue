@@ -308,6 +308,7 @@ export default {
 /*外层盒子*/
 .outer_block_container {
   //padding-top: 50px;
+  overflow: hidden;
 
   section {
     min-height: 400px;
