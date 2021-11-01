@@ -3,9 +3,9 @@
     <div class="project-view con-box">
       <!-- 左侧内容 -->
       <div
-        class="project-left animate__animated animate__fadeIn wow"
-        data-wow-duration="1s"
-        data-wow-delay=".5s"
+          class="project-left animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
       >
         <!-- swiper翻页器 -->
         <div class="swiper-pagination1 swiper-pg-white"></div>
@@ -17,12 +17,14 @@
         <div class="swiper home-project-swiper">
           <div class="swiper-wrapper">
             <router-link
-              to="/"
-              class="swiper-slide"
-              v-for="(item,index) in projectDate"
-              :key="index"
+
+                class="swiper-slide"
+                v-for="(item,index) in projectDate"
+                :to="{name: 'epDetail',query:{type:0,id: item.id,name: item.name,types_id: item.ep_type.id }}"
+
+                :key="index"
             >
-              <ProjectBox :projectData="item" :className="`${className}`" />
+              <ProjectBox :projectData="item" :className="`${className}`"/>
             </router-link>
           </div>
           <div class="swiper-button-next swiper-bt box-sha2"></div>
@@ -53,7 +55,7 @@ export default {
   components: {
     ProjectBox
   },
-  mounted () {
+  mounted() {
     new this.$wow.WOW({
       live: false
     }).init()
@@ -63,7 +65,7 @@ export default {
     })
   },
   methods: {
-    initSwiper () {
+    initSwiper() {
       new Swiper(".home-project-swiper", {
         // slidesPerView: 3,
         slidesPerView: 'auto',
@@ -107,6 +109,7 @@ export default {
   padding: 40px 0;
   .project-view {
     position: relative;
+
     .project-left {
       position: absolute;
       margin-left: 10px;
@@ -115,6 +118,7 @@ export default {
 
     .project-right {
       margin-left: 330px;
+
       .home-project-swiper {
         overflow: visible;
         -webkit-clip-path: inset(-100vw -100vw -100vw 0);
@@ -166,6 +170,7 @@ export default {
 
       .project-right {
         margin-left: 0;
+
         .home-project-swiper {
           overflow: visible;
           -webkit-clip-path: inset(-100vw -100vw -100vw -20px);
