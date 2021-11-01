@@ -5,7 +5,7 @@
     <!--  头部banner  -->
     <section class="section-hero-top">
       <!--   背景   -->
-      <BackgroundMotion eClassName="background" :style="{backgroundImage: `url(${this.commonData?.banner_url})`}"/>
+      <BackgroundMotion eClassName="banner_background" :style="{backgroundImage: `url(${this.commonData?.banner_url})`}"/>
       <!--   黑阴影   -->
       <div class="section-hero-shade"></div>
       <!--  文字内容部分    -->
@@ -353,24 +353,8 @@ export default {
 
   // 头部banner 部分
   .section-hero-top {
-    height: 70vh;
-    padding: 0 !important;
-    background-size: cover;
-    background-position: center;;
-    overflow: hidden;
-    // 图片样式
-    .background {
-      position: absolute;
-      //height: 533px;
-      left: 0;
-      right: 0;
-      background-size: cover;
-      background-position: center;
-      top: -34px;
-      bottom: -100px;
-      //background-image: var(--background-img);
-      transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
-    }
+
+
 
     // 黑阴影
     .section-hero-shade {
