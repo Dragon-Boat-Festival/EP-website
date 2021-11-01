@@ -3,11 +3,11 @@
   <div class="boxes">
     <!--  文字盒子  -->
     <div class="box"
-         :style="{background: `${type === 0 ? 'var(--white)': 'var(--twoBg)'}`}">
+         :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}">
       <div class="with-images">
-        <h2 v-if="type === 0"></h2>
+        <h2 :style="{color: `${color}`}" v-if="type == 0">{{ h2Text }}</h2>
         <p :style="{color: `${color}`}">{{ swiperData.text }}</p>
-         </div>
+      </div>
     </div>
     <!--  图片盒子  -->
     <div class="box fit">
@@ -48,6 +48,10 @@ export default {
     // 颜色
     color: {
       type: String,
+    },
+    h2Text: {
+      type: String,
+      default: "你知道吗？"
     }
   },
   data() {
@@ -56,6 +60,7 @@ export default {
     }
   },
   mounted() {
+    console.log(this.swiperData)
     this.$nextTick(() => {
       this._init()
     })

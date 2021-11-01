@@ -1,10 +1,11 @@
 <template>
   <!-- 项目或全球议题详情页 -->
-  <div class="outer_block_container">
+  <div class="outer_block_container"
+  >
     <!--  头部banner  -->
     <section class="section-hero-top">
       <!--   背景   -->
-      <BackgroundMotion eClassName="background" :style="{backgroundImage: `url(${this.types?.banner_url})`}"/>
+      <BackgroundMotion eClassName="background" :style="{backgroundImage: `url(${this.commonData?.banner_url})`}"/>
       <!--   黑阴影   -->
       <div class="section-hero-shade"></div>
       <!--  文字内容部分    -->
@@ -20,55 +21,71 @@
                style="display: inline;">你正在关注</a>
           </div>
           <div class="hero-issue-title">
-            <h1>{{ this.types.name }}</h1>
-            <p>{{ this.types.e_name }}</p>
+            <h1>{{ this.commonData?.name }}</h1>
+            <p>{{ this.commonData?.e_name }}</p>
           </div>
         </div>
       </div>
     </section>
-    <!-- 下部分项目目标 部分   -->
-    <CommonBox>
+    <!-- 下部分项目目标 部分 全球议题显示   -->
+    <CommonBox v-if="this.commonData?.describe">
       <template v-slot:content>
         <div class="ct-container slim"><h2>
-          {{ this.types.describe }}</h2>
+          {{ this.commonData?.describe }}</h2>
+        </div>
+      </template>
+    </CommonBox>
+    <!-- 下部分项目目标 部分 type == 0 显示   -->
+    <CommonBox v-if="this.commonData?.target_text">
+      <template v-slot:content>
+        <div class="ct-container slim"><h2>
+          目标</h2>
+          <template v-for="(text,index) in JSON.parse( this.commonData?.target_text)" :key="index">
+            <p>{{ text }}</p>
+          </template>
         </div>
       </template>
     </CommonBox>
     <!-- 轮播图部分   -->
-    <CommonBox theme="dark-theme">
+    <CommonBox theme="light-theme">
+
       <template v-slot:content>
-        <CommonSwiper :color="this.types.color" :swiperData="this.types.ep_detail_content_swiper"
-                      :type="this.params.type"/>
+        <CommonSwiper :color="this.commonData?.color ?this.commonData?.color : this.commonData?.ep_type?.color "
+                      :swiperData="this.commonData?.ep_detail_content_swiper"
+                      :type="this.$route?.query?.type">
+
+        </CommonSwiper>
 
       </template>
 
     </CommonBox>
-    <!--  关于环保议题相关的项目盒子 只有当 type === 1 的时候显示  -->
-    <section v-if="this.params.type === 1" class="section-projects is-loaded light ">
+    <!--  关于环保议题相关的项目盒子 只有当 type === 1 的时候显示 我们的提倡  -->
+    <section v-if="this.$route.query?.type == 1" class="section-projects is-loaded light ">
       <home-project :project-date="this.project" class-name="light">
         <template v-slot:h2>
           <h2 class="h2">我们提倡</h2>
         </template>
         <template v-slot:span>
-          <span class="p">{{ this.types.promote_desc }}</span>
+          <span class="p">{{ this.commonData.promote_desc }}</span>
 
         </template>
       </home-project>
 
     </section>
     <!--  你能改变的  -->
-    <section class="change js-parallax-me" :style="{background: `${this.types.color}`}">
+    <section class="change js-parallax-me" :style="{background: `#faf5f5`}">
       <!-- 头部banner   -->
       <GlobalSwiper v-if="change_news.length > 0"
-                    swiperBg="swiper-pg" :backgroundColor="this.types.color"
-                    :spanText="this.types.change_desc" textColor="#fff">
+                    swiperBg="swiper-pg"
+                    :backgroundColor="`${this.commonData?.color ? this.commonData?.color : '#f5f5f5' }`"
+                    :spanText="this.commonData?.change_desc" :text-color="this.commonData?.color ? '#fff' : '#000'">
         <template v-slot:swiper-pagination>
           <!-- swiper翻页器 -->
-          <div :class="`swiper-pagination swiper-pg-white` "></div>
+          <div :class="`swiper-pagination ${this.commonData?.color ? 'swiper-pg-white' : 'swiper-pg'}` "></div>
 
         </template>
         <template v-slot:h2>
-          <h2 class="h2" style="">你能成就改变</h2>
+          <h2 class="h2" :style="{color: `${this.commonData?.color ? '#fff' : '#000'}`}">你能成就改变</h2>
         </template>
         <template v-slot:subtitle>
           <p class="subtitle"></p>
@@ -105,7 +122,7 @@
 
       <template v-slot:column-title>
         <div class="last-more">
-          <h2 :style="{color: `${this.types.color}`}">过去一年</h2>
+          <h2 :style="{color: `${this.commonData?.color}`}">过去一年</h2>
         </div>
 
       </template>
@@ -117,7 +134,7 @@
 
       <template v-slot:column-title>
         <div class="last-more">
-          <h2 :style="{color: `${this.types.color}`}">2010's</h2>
+          <h2 :style="{color: `${this.commonData?.color}`}">2010's</h2>
         </div>
 
       </template>
@@ -125,10 +142,10 @@
 
     </SectionRow>
     <!-- 描述2   -->
-    <CommonBox theme="dark">
+    <CommonBox theme="dark" v-if="this.commonData?.describe2 ">
       <template v-slot:content>
         <div class="ct-container slim"><h2>
-          {{ this.types.describe2 }}</h2>
+          {{ this.commonData?.describe2 }}</h2>
         </div>
       </template>
     </CommonBox>
@@ -166,11 +183,11 @@
     </section>
 
     <!-- 名言警句部分   -->
-    <CommonBox>
+    <CommonBox v-if="this.commonData?.saying">
       <template v-slot:content>
         <div class="ct-container slim"><h2>
-          {{ this.types.saying }}</h2>
-          <p style="padding-left: 23px">—— {{ this.types.saying_author }}</p>
+          {{ this.commonData?.saying }}</h2>
+          <p style="padding-left: 23px">—— {{ this.commonData?.saying_author }}</p>
 
         </div>
       </template>
@@ -202,13 +219,8 @@ export default {
   },
   data() {
     return {
-      types: {},
-      params: {
-        type: 1,
-        id: 5,
-        name: "森林",
-        types_id: 5
-      }, // 此对象里的数据需要从 上一级页面传过来 this.$router.params
+      commonData: {},
+      params: {}, // 此对象里的数据需要从 上一级页面传过来 this.$router.params
       project: [],// 项目数据
       change_news: [], // 改变栏的新闻内容
       lastYear_news: [], //过去一年的新闻
@@ -216,9 +228,11 @@ export default {
       tips: [], // 小提示
     }
   },
-  created() {
-    // 请求数据
-    this._initData()
+
+  mounted() {
+    if (this.$route.query.id) {
+      this._initData(this.$route.query)
+    }
   },
   updated() {
     // 初始化swiper
@@ -227,10 +241,15 @@ export default {
     })
   },
   methods: {
-    async _initData() {
-      let result = await getProjectOrTypesData(this.params)
+    async _initData(data) {
+      let result = await getProjectOrTypesData({
+        type: Number(data.type),
+        id: Number(data.id),
+        name: data.name,
+        types_id: Number(data.types_id)
+      })
       // 类型数据
-      this.types = result.result.types
+      this.commonData = result.result.commonData
       // 项目数据
       this.project = result.result.project
       // 改变栏的新闻内容
@@ -282,7 +301,6 @@ export default {
         on: {
           setTranslate() {
             const slide = this.slide
-            console.log(slide)
           }
         },
         // 如果需要分页器
@@ -493,8 +511,12 @@ export default {
   justify-content: center;
 
   h2 {
-    padding: 40px 20px 30px 20px;
+    padding: 0px 20px 0px 20px;
     font-size: 19px;
+  }
+
+  p {
+    padding: 0px 20px 0px 20px;
   }
 }
 
@@ -550,7 +572,7 @@ export default {
   // banner 文字
   .hero-issue-title {
     h1 {
-      font-size: 150px !important;
+      font-size: 80px !important;
       line-height: 0 !important;
       letter-spacing: 16.7px !important;
       color: #fff;

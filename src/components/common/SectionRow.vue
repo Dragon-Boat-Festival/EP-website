@@ -124,7 +124,8 @@ export default {
 
     //
     .card-mini {
-      display: block;
+      display: flex;
+      flex-direction: column;
       text-decoration: none !important;
       border-bottom: none !important;
       color: #000;
