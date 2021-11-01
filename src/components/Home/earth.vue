@@ -1,43 +1,51 @@
 <template>
   <section class="section-history">
     <div class="ct-container con-box slim">
-      <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自1971年开始的环保里程……</font></font>
+      <h2>
+        <font style="vertical-align: inherit;">
+          <font style="vertical-align: inherit;">自1971年开始的环保里程……</font>
+        </font>
       </h2>
 
-      <div id="history-globe">
-
-      </div>
+      <div id="history-globe"></div>
       <div class="swiper-container label-swiper">
         <div class="swiper-wrapper label-wrapper">
-          <div v-for="(item,index) in this.slide1" :key="index" class="swiper-slide label-slide">
-            {{ item }}
-          </div>
+          <div
+            v-for="(item,index) in this.slide1"
+            :key="index"
+            class="swiper-slide label-slide"
+          >{{ item }}</div>
         </div>
       </div>
 
       <div class="swiper-container maxi-swiper maxi-swiper-centered cards-swiper controlled-swiper">
         <div class="swiper-wrapper maxi-wrapper">
-          <div v-for="(item,index) in this.slide2" :key="index" :data-latitude="item.latitude"
-               :data-longitude="item.longitude"
-               class="swiper-slide card-explainer swiper-slide-active">
+          <div
+            v-for="(item,index) in this.slide2"
+            :key="index"
+            :data-latitude="item.latitude"
+            :data-longitude="item.longitude"
+            class="swiper-slide card-explainer swiper-slide-active"
+          >
             <div class="description">
               <h4>{{ item.title }}</h4>
               <p class="subtitle">{{ item.subtitle }}</p>
               <span>{{ item.span }}</span>
             </div>
-            <div :data-background="item.img_url"
-                 class="thumbnail lazy swiper-lazy "
-                 data-was-processed="true"
+            <div
+              :data-background="item.img_url"
+              class="thumbnail lazy swiper-lazy"
+              data-was-processed="true"
             >
               <div class="swiper-lazy-preloader"></div>
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper外面，需要自定义样式。-->
-        <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper外面，需要自定义样式。-->
+        <div class="swiper-button-prev"></div>
+        <!--左箭头。如果放置在swiper外面，需要自定义样式。-->
+        <div class="swiper-button-next"></div>
+        <!--右箭头。如果放置在swiper外面，需要自定义样式。-->
       </div>
-
-
     </div>
   </section>
 </template>
@@ -50,7 +58,7 @@ import Globalicious from "@/tools/Globalicious";
 export default {
   name: "Earth",
   components: {},
-  data() {
+  data () {
     return {
       slide1: ["1971", "1982", "1986", "1987", "1995", "1996", "1997", "2004", "2011", "2012", "2015", "2015", "2018", "2018", "2019", "2020"],
       slide2: [{
@@ -153,7 +161,7 @@ export default {
     }
   },
 
-  created() {
+  created () {
     this.$nextTick(() => {
       this._initSwiper()
       this.loadEarth()
@@ -162,7 +170,7 @@ export default {
 
   methods: {
 
-    _initSwiper() {
+    _initSwiper () {
       const Swiper1 = new Swiper('.label-swiper', {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
@@ -217,14 +225,14 @@ export default {
       Swiper2.controller.control = Swiper1;//Swiper2控制Swiper1，需要在Swiper1初始化后
     },
 
-    loadEarth() {
+    loadEarth () {
 
-      function mID(lat, long) {
+      function mID (lat, long) {
         return (
-            'glbl-marker_' +
-            lat.toString().replace('.', '♥') +
-            '_' +
-            long.toString().replace('.', '♥')
+          'glbl-marker_' +
+          lat.toString().replace('.', '♥') +
+          '_' +
+          long.toString().replace('.', '♥')
         );
       }
 
@@ -233,22 +241,22 @@ export default {
       if (!globe) return;
 
       const years = document.querySelectorAll(
-          '.section-history .label-swiper .swiper-slide'
+        '.section-history .label-swiper .swiper-slide'
       );
       const latitudes = document.querySelectorAll(
-          '.section-history .maxi-swiper .swiper-slide[data-latitude]'
+        '.section-history .maxi-swiper .swiper-slide[data-latitude]'
       );
       const longitudes = document.querySelectorAll(
-          '.section-history .maxi-swiper .swiper-slide[data-longitude]'
+        '.section-history .maxi-swiper .swiper-slide[data-longitude]'
       );
       console.log(latitudes)
 
       if (
-          years.length !== latitudes.length ||
-          latitudes.length !== longitudes.length
+        years.length !== latitudes.length ||
+        latitudes.length !== longitudes.length
       ) {
         console.warn(
-            '无法继续，请提供所有swiper的经度和纬度'
+          '无法继续，请提供所有swiper的经度和纬度'
         );
         return;
       }
@@ -256,13 +264,13 @@ export default {
       /** swiper 容器
        ******************************************************************************************/
       const swiperContainer = document.querySelector(
-          '.section-history .maxi-swiper'
+        '.section-history .maxi-swiper'
       );
 
       /** 位置 svg
        ******************************************************************************************/
       const pin =
-          '<svg viewBox="0 0 24 24" width="40" height="40" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41"><path fill="#000000" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>';
+        '<svg viewBox="0 0 24 24" width="40" height="40" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41"><path fill="#000000" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>';
 
       /** 建立坐标数组
        ******************************************************************************************/
@@ -295,51 +303,49 @@ export default {
 
       /** 等待页面加载完，进行渲染位置角标
        ******************************************************************************************/
-      window.addEventListener('load', function () {
-        if (!swiperContainer.swiper) return;
+      if (!swiperContainer.swiper) return;
 
-        /** 在 地球模型 上放置位置角标
-         ******************************************************************************************/
-        markers.forEach(marker => {
-          window.Earth.mark(marker.lat, marker.long, pin);
+      /** 在 地球模型 上放置位置角标
+       ******************************************************************************************/
+      markers.forEach(marker => {
+        window.Earth.mark(marker.lat, marker.long, pin);
+      });
+
+      /** 保存标记
+       ******************************************************************************************/
+      const markerEls = document.querySelectorAll('g.glbl-marker');
+
+      /** 转到第一个位置
+       ******************************************************************************************/
+      window.Earth.goTo(markers[0].lat - 60, markers[0].long);
+      if (document.getElementById(mID(markers[0].lat, markers[0].long))) {
+        document
+          .getElementById(mID(markers[0].lat, markers[0].long))
+          .classList.add('is-current');
+      }
+
+      /**  监听 swiper slide 的更改，如果有更改进行 地标 更改
+       ******************************************************************************************/
+      swiperContainer.swiper.on('slideChange', function () {
+        window.Earth.goTo(
+          markers[this.activeIndex].lat - 60,
+          markers[this.activeIndex].long
+        );
+
+        Array.from(markerEls).forEach(function (markerEl) {
+          markerEl.classList.remove('is-current');
         });
-
-        /** 保存标记
-         ******************************************************************************************/
-        const markerEls = document.querySelectorAll('g.glbl-marker');
-
-        /** 转到第一个位置
-         ******************************************************************************************/
-        window.Earth.goTo(markers[0].lat - 60, markers[0].long);
-        if (document.getElementById(mID(markers[0].lat, markers[0].long))) {
+        if (
+          document.getElementById(
+            mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
+          )
+        ) {
           document
-              .getElementById(mID(markers[0].lat, markers[0].long))
-              .classList.add('is-current');
+            .getElementById(
+              mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
+            )
+            .classList.add('is-current');
         }
-
-        /**  监听 swiper slide 的更改，如果有更改进行 地标 更改
-         ******************************************************************************************/
-        swiperContainer.swiper.on('slideChange', function () {
-          window.Earth.goTo(
-              markers[this.activeIndex].lat - 60,
-              markers[this.activeIndex].long
-          );
-
-          Array.from(markerEls).forEach(function (markerEl) {
-            markerEl.classList.remove('is-current');
-          });
-          if (
-              document.getElementById(
-                  mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
-              )
-          ) {
-            document
-                .getElementById(
-                    mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
-                )
-                .classList.add('is-current');
-          }
-        });
       });
     },
 
@@ -349,8 +355,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-
 // 大盒子
 .section-history {
   min-height: 400px;
@@ -378,11 +382,7 @@ export default {
       margin: 0 auto -215px;
       overflow: hidden;
       background: 0 0;
-
-
     }
-
-
   }
 
   .swiper-container {
@@ -393,12 +393,13 @@ export default {
     position: relative;
     list-style: none;
     z-index: 1;
-    transition: box-shadow 140ms linear, opacity 140ms linear, filter 140ms linear, transform 140ms linear, -webkit-box-shadow 140ms linear, -webkit-filter 140ms linear, -webkit-transform 140ms linear;
+    transition: box-shadow 140ms linear, opacity 140ms linear,
+      filter 140ms linear, transform 140ms linear,
+      -webkit-box-shadow 140ms linear, -webkit-filter 140ms linear,
+      -webkit-transform 140ms linear;
 
     .maxi-wrapper {
       //left: 300px;
-
-
     }
 
     .label-wrapper {
@@ -412,12 +413,9 @@ export default {
         font-weight: 700;
         position: relative;
         top: -3px;
-
       }
     }
-
   }
-
 
   // 第一个轮播盒子
   .label-swiper {
@@ -443,7 +441,6 @@ export default {
       height: auto;
       position: relative;
 
-
       .card-explainer {
         color: #6c0;
         width: 90%;
@@ -452,7 +449,7 @@ export default {
         flex-direction: column;
         background: #fff;
         border-radius: 4px;
-        box-shadow: 0 0 12px 0 rgba(0, 0, 0, .7);
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.7);
         margin: 0 3%;
         //overflow: hidden;
 
@@ -494,7 +491,6 @@ export default {
             line-height: 28px;
             text-align: center;
             font-weight: 400;
-
           }
         }
 
@@ -523,7 +519,8 @@ export default {
   }
 
   // 按钮
-  .swiper-button-next, .swiper-button-prev {
+  .swiper-button-next,
+  .swiper-button-prev {
     background: #fff;
     border-radius: 50%;
     width: 50px;
@@ -536,8 +533,8 @@ export default {
     font-weight: bolder;
   }
 
-
-  .swiper-button-prev:after, .swiper-button-next:after {
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
     font-size: 25px;
     color: #6c0;
   }
@@ -555,7 +552,6 @@ export default {
     }
   }
 
-
   .ct-container {
     max-width: 1200px;
   }
@@ -563,7 +559,6 @@ export default {
 
 // 大于1024
 @media only screen and (min-width: 1024px) {
-
   .section-history h2 {
     text-align: left;
     font-size: 30px !important;
@@ -598,12 +593,10 @@ export default {
 
   .maxi-swiper-centered {
     padding-bottom: 30px;
-
   }
 
   .maxi-wrapper {
     height: 485px !important;
-
 
     .card-explainer {
       flex-direction: row !important;
@@ -626,15 +619,10 @@ export default {
     }
   }
 
-
   // 第二个轮播图 盒子
   .maxi-swiper-centered .swiper-slide {
     width: calc(100% - 200px);
     margin: 0 100px;
-
-
   }
-
-
 }
 </style>
