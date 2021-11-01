@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import NewsDetail from "@/views/newsDetail/NewsDetail";
 
 const Home = () => import('@/views/Home');
 const EpDetail = () => import('@/views/projectOrTypes/ProjectOrTypes');
@@ -12,6 +13,10 @@ const routes = [
         path: '/epDetail',
         name: 'epDetail',
         component: EpDetail,
+    }, {
+        path: '/newsDetail',
+        name: 'newsDetail',
+        component: NewsDetail,
     },
 ]
 
