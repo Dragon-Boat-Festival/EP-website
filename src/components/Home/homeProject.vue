@@ -104,12 +104,12 @@ export default {
 
 .home-project-view {
   overflow-x: hidden;
-  padding: 40px 0 20px 0;
+  padding: 40px 0;
   .project-view {
     position: relative;
     .project-left {
       position: absolute;
-      margin-left: 20px;
+      margin-left: 10px;
       width: 250px;
     }
 

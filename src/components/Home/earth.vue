@@ -1,7 +1,7 @@
 <template>
   <section class="section-history">
     <div class="ct-container con-box slim">
-      <h2 class="h2">自1971年开始的环保里程……</h2>
+      <h2 class="h2">全球环保历程</h2>
 
       <div id="history-globe"></div>
       <div class="swiper-container label-swiper">
@@ -354,7 +354,7 @@ export default {
 .section-history {
   min-height: 400px;
   min-height: 400px;
-  padding: 40px 0 30px;
+  padding: 40px 0;
   position: relative;
   z-index: 2;
   background: var(--green);
@@ -365,14 +365,14 @@ export default {
     margin: 0 auto;
 
     > h2 {
-      text-align: left;
-      font-size: 19px;
+      position: absolute;
+      width: 300px;
+      margin-left: 0px;
     }
 
     //canvas
     #history-globe {
       position: relative;
-      //top: -130px;
       height: 310px;
       width: 320px;
       margin: 0 auto -215px;
@@ -385,7 +385,6 @@ export default {
     overflow: visible;
     padding-top: 15px;
     padding-bottom: 15px;
-    //margin:  0 auto;
     position: relative;
     list-style: none;
     z-index: 1;
@@ -395,7 +394,6 @@ export default {
       -webkit-transform 140ms linear;
 
     .label-wrapper {
-      //left: 600px;
       width: 100%;
       height: 30px;
 
@@ -440,7 +438,7 @@ export default {
         display: flex;
         flex-direction: column;
         background: var(--white);
-        border-radius: 4px;
+        border-radius: 10px;
         box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.7);
         margin: 0 3%;
         //overflow: hidden;
@@ -453,7 +451,7 @@ export default {
           flex-direction: column;
           justify-content: center;
           overflow: hidden;
-          padding: 40px;
+          padding: 0 40px;
           height: 60%;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -489,9 +487,9 @@ export default {
         // 图片
         .thumbnail {
           width: 100%;
-          height: 40%;
+          height: 50%;
           padding-top: 0;
-          border-radius: 0;
+          border-radius: 0 10px 10px 0;
           box-shadow: none;
           background-position: center;
           background-size: cover;
@@ -511,46 +509,18 @@ export default {
   }
 }
 
-// 大于 1280
-// @media only screen and (min-width: 1280px) {
-//   .ct-container.slim {
-//     //padding-left: 120px;
-//     //padding-right: 120px;
-
-//     .swiper-container {
-//       /*  margin-left: -100px;
-//         margin-right: -100px;*/
-//     }
-//   }
-
-//   .ct-container {
-//     max-width: 1200px;
-//   }
-// }
-
 // 大于1024
-@media only screen and (min-width: 1024px) {
-  .section-history h2 {
-    text-align: left;
-    font-size: 30px !important;
-    position: absolute !important;
-    //left: 22% !important;
-    width: 20% !important;
+@media screen and (min-width: 1024px) {
+  .section-history {
+    .ct-container {
+      > h2 {
+        margin-left: 10px;
+      }
+    }
   }
 
   .swiper-wrapper {
     width: 100%;
-  }
-
-  .maxi-swiper {
-    // 前进按钮
-    .swiper-button-prev {
-      left: 53px;
-    }
-
-    .swiper-button-next {
-      right: 52px;
-    }
   }
 
   .section-history .maxi-swiper-centered {
@@ -573,7 +543,6 @@ export default {
       flex-direction: row !important;
 
       .description {
-        padding: 40px !important;
         width: 280px;
         height: 100% !important;
 
