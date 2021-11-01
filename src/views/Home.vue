@@ -49,9 +49,12 @@
       v-if="homeData.project_date"
       :project-date="homeData.project_date"
       class-name="dark"
+      class="animate__animated animate__fadeIn wow"
+      data-wow-duration="1s"
+      data-wow-delay=".5s"
     >
       <template v-slot:h2>
-        <h2 class="h2">重点项目</h2>
+        <h2 class="h2">重点环保项目</h2>
       </template>
       <template v-slot:span>
         <span class="p">我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span>
@@ -91,7 +94,6 @@ export default {
   updated () {
     this.$nextTick(() => {
       this.initSwiper()
-
     })
   },
   components: {

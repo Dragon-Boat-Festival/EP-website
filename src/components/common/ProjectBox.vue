@@ -1,13 +1,5 @@
 <template>
-  <div
-      class="slide-img box-sha0 AN "
-      :style="{ backgroundImage: `url(${projectData.img_url})` }"
-  ></div>
-  <div class="project-progress">
-    <el-progress :show-text="false" :width="240" stroke-width="10" color="#fff" type="circle"
-                 :percentage="projectData.project_progress"></el-progress>
-
-  </div>
+  <div class="slide-img box-sha0 AN" :style="{ backgroundImage: `url(${projectData.img_url})` }"></div>
   <div :class="`slide-text ${className}`">
     <p class="h4">{{ projectData.name }}</p>
     <p :style="{color:projectData.ep_type.color}">{{ projectData.ep_type.name }}</p>
@@ -16,7 +8,7 @@
 </template>
 
 <script>
-import {ElProgress} from 'element-plus';
+import { ElProgress } from 'element-plus';
 
 export default {
   name: "ProjectBox",
@@ -74,8 +66,12 @@ export default {
 .project-progress {
   position: absolute;
   top: 5px;
-
 }
 
-
+@media screen and (max-width: 1024px) {
+  .slide-img {
+    width: 200px;
+    height: 200px;
+  }
+}
 </style>

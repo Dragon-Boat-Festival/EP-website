@@ -1,5 +1,5 @@
-
-.home-swiper, .tips-swiper {
+.home-swiper,
+.tips-swiper {
   margin-left: 70px;
   width: 860px;
   height: 525px;
@@ -13,7 +13,6 @@
   .swiper-slide {
     transition: all 0.3s;
     //margin-right: 115px
-
 
     .slide-con {
       width: 100%;
@@ -90,9 +89,7 @@
   }
 }
 
-
 @media screen and (max-width: 1300px) {
-
   .home-swiper {
     width: 625px !important;
     height: 460px !important;
@@ -114,7 +111,9 @@
 }
 
 @media screen and (max-width: 1024px) {
-
+  .swiper-slide-active {
+    margin: 0 30px 0 25px !important;
+  }
   .home-swiper {
     width: 90% !important;
     height: 856px !important;
@@ -143,7 +142,7 @@
     }
   }
 
-  /deep/ .swiper-slide-active {
+  :deep(.swiper-slide-active) {
     margin: 0 20px 0 25px;
   }
 }

@@ -39,7 +39,6 @@ import Swiper from "swiper"
 import "swiper/css/swiper.css"
 
 export default {
-  // props: ['projectDate', "className"],
   props: {
     projectDate: {
       type: Array,
@@ -106,23 +105,16 @@ export default {
 .home-project-view {
   overflow-x: hidden;
   padding: 40px 0 20px 0;
-  //background-color: var(--twoBg);
-
   .project-view {
     position: relative;
-
     .project-left {
       position: absolute;
-      top: 0;
-      left: 10px;
-      margin-left: 10px;
-      //color: var(--white);
+      margin-left: 20px;
       width: 250px;
     }
 
     .project-right {
       margin-left: 330px;
-
       .home-project-swiper {
         overflow: visible;
         -webkit-clip-path: inset(-100vw -100vw -100vw 0);
@@ -148,7 +140,6 @@ export default {
   }
 
   .swiper-button-prev {
-    // position: absolute;
     left: 355px;
   }
 
@@ -169,20 +160,16 @@ export default {
       .project-left {
         position: relative;
         width: 100%;
+        margin-left: 0 !important;
         margin-bottom: 20px;
       }
 
       .project-right {
         margin-left: 0;
-
         .home-project-swiper {
-          // .swiper-slide {
-          //   width: 33% !important;
-          //   .slide-img {
-          //     width: 200px !important;
-          //     height: 200px !important;
-          //   }
-          // }
+          overflow: visible;
+          -webkit-clip-path: inset(-100vw -100vw -100vw -20px);
+          clip-path: inset(-100vw -100vw -100vw -20px);
         }
       }
     }

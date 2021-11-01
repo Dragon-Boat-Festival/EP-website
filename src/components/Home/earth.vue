@@ -1,11 +1,7 @@
 <template>
   <section class="section-history">
     <div class="ct-container con-box slim">
-      <h2>
-        <font style="vertical-align: inherit;">
-          <font style="vertical-align: inherit;">自1971年开始的环保里程……</font>
-        </font>
-      </h2>
+      <h2 class="h2">自1971年开始的环保里程……</h2>
 
       <div id="history-globe"></div>
       <div class="swiper-container label-swiper">
@@ -41,9 +37,9 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <!--左箭头。如果放置在swiper外面，需要自定义样式。-->
-        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev swiper-bt box-sha2"></div>
+        <!--左箭头。如果放置在swiper外 面，需要自定义样式。-->
+        <div class="swiper-button-next swiper-bt box-sha2"></div>
         <!--右箭头。如果放置在swiper外面，需要自定义样式。-->
       </div>
     </div>
@@ -169,7 +165,6 @@ export default {
   },
 
   methods: {
-
     _initSwiper () {
       const Swiper1 = new Swiper('.label-swiper', {
         direction: 'horizontal', // 垂直切换选项
@@ -362,7 +357,7 @@ export default {
   padding: 40px 0 30px;
   position: relative;
   z-index: 2;
-  background: #6c0;
+  background: var(--green);
 
   .ct-container {
     width: 100%;
@@ -397,10 +392,6 @@ export default {
       filter 140ms linear, transform 140ms linear,
       -webkit-box-shadow 140ms linear, -webkit-filter 140ms linear,
       -webkit-transform 140ms linear;
-
-    .maxi-wrapper {
-      //left: 300px;
-    }
 
     .label-wrapper {
       //left: 600px;
@@ -442,12 +433,12 @@ export default {
       position: relative;
 
       .card-explainer {
-        color: #6c0;
+        color: var(--green);
         width: 90%;
         height: 500px;
         display: flex;
         flex-direction: column;
-        background: #fff;
+        background: var(--white);
         border-radius: 4px;
         box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.7);
         margin: 0 3%;
@@ -475,7 +466,7 @@ export default {
           }
 
           .subtitle {
-            color: #6c0;
+            color: var(--green);
             letter-spacing: 1px;
             font-size: 14px;
             text-transform: uppercase;
@@ -514,48 +505,27 @@ export default {
 
   h2 {
     position: relative;
-    color: #fff;
+    color: var(--white);
     z-index: 2;
-  }
-
-  // 按钮
-  .swiper-button-next,
-  .swiper-button-prev {
-    background: #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 8px 0 rgb(0 0 0 / 30%);
-    font-weight: bolder;
-  }
-
-  .swiper-button-prev:after,
-  .swiper-button-next:after {
-    font-size: 25px;
-    color: #6c0;
   }
 }
 
 // 大于 1280
-@media only screen and (min-width: 1280px) {
-  .ct-container.slim {
-    //padding-left: 120px;
-    //padding-right: 120px;
+// @media only screen and (min-width: 1280px) {
+//   .ct-container.slim {
+//     //padding-left: 120px;
+//     //padding-right: 120px;
 
-    .swiper-container {
-      /*  margin-left: -100px;
-        margin-right: -100px;*/
-    }
-  }
+//     .swiper-container {
+//       /*  margin-left: -100px;
+//         margin-right: -100px;*/
+//     }
+//   }
 
-  .ct-container {
-    max-width: 1200px;
-  }
-}
+//   .ct-container {
+//     max-width: 1200px;
+//   }
+// }
 
 // 大于1024
 @media only screen and (min-width: 1024px) {
