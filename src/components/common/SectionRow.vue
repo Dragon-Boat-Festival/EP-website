@@ -1,6 +1,6 @@
-<template>'
+<template>
   <!-- 文章 分栏部分 共用模块 -->
-  <section class="section-mixed-content-row layout-default text-align-default ">
+  <section class="section-mixed-content-row layout-default text-align-default " :style="{backgroundColor}">
 
     <div class="ct-container">
       <!-- h2-title 标题 在头部 相关推荐新闻 -->
@@ -40,7 +40,11 @@ export default {
     lastYear_news: {
       type: Array,
       default: []
-    }
+    },
+    backgroundColor: { // 背景颜色
+      type: String,
+      default: "#fff"
+    },
   },
   mounted() {
     this.$nextTick(() => {

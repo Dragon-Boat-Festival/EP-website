@@ -3,13 +3,15 @@
   <section :class="`section-text-images only-text ${theme}  text-align-default column-two`">
 
     <slot name="content"></slot>
+
   </section>
 </template>
 
 <script>
 export default {
   props: {
-    theme: {type: String, default: "light-theme"} // 主题颜色
+    theme: {type: String, default: "light-theme"}, // 主题颜色
+    // pText: {type: String, default: ""} // p 标签文本
   },
   name: "CommonBox"
 }
