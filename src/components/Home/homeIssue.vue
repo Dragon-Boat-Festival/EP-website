@@ -3,12 +3,13 @@
     <h2 class="h2">环保议题</h2>
     <p class="p">了解环保工作</p>
 
-    <div class="swiper issue-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(item,index) in types" :key="index">
-          <img :src="item.img_url" alt />
-          <h2>{{item.name}}</h2>
-          <p>{{item.e_name}}</p>
+    <div class="swiper issue-swiper AN">
+      <div class="swiper-wrapper AN">
+        <div class="swiper-slide AN" v-for="(item,index) in types" :key="index">
+          <div class="img-box box-sha0 AN" :style="{backgroundImage: `url(${item.img_url})`}">
+            <h1>{{item.name}}</h1>
+            <p :style="{background: `${item.color}`}">{{item.e_name}}</p>
+          </div>
           <span>{{item.main_text}}</span>
         </div>
       </div>
@@ -28,8 +29,9 @@ export default {
   methods: {
     initSwiper () {
       new Swiper(".issue-swiper", {
-        slidesPerView: 6,
-        spaceBetween: 10,
+        slidesPerView: 'auto',
+        // slidesPerGroup: 3,
+        spaceBetween: 14,
       });
     }
   }
@@ -49,13 +51,85 @@ export default {
     margin: 10px 0 40px 0;
   }
   .issue-swiper {
-    width: 90%;
+    width: 96%;
     .swiper-wrapper {
       .swiper-slide {
-        height: 245px;
-        width: 19% !important;
-        img {
-          height: 100%;
+        width: 180px !important;
+        height: 305px;
+        .img-box:hover {
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8x);
+        }
+        .img-box {
+          height: 245px;
+          background-size: cover;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          flex-direction: column;
+          border-radius: 8px;
+          cursor: pointer;
+          h1 {
+            margin-bottom: 15px;
+            color: var(--white);
+            font-size: 60px;
+          }
+          p {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            color: var(--white);
+            letter-spacing: 8px;
+            text-align: center;
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+          }
+        }
+        span {
+          display: inline-block;
+          margin: 15px 0;
+          text-align: center;
+          font-size: 16px;
+          line-height: 1.3;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1300px) {
+  .home-issue {
+    padding: 40px 0;
+    .issue-swiper {
+      width: 100%;
+      .swiper-wrapper {
+        justify-content: space-around;
+        .swiper-slide {
+          width: 145px !important;
+          height: 270px;
+          .img-box {
+            height: 190px;
+            h1 {
+              font-size: 44px;
+            }
+          }
+          span {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .home-issue {
+    .issue-swiper {
+      .swiper-wrapper {
+        .swiper-slide {
+          height: auto;
+          .img-box {
+          }
+          span {
+            display: none;
+          }
         }
       }
     }
