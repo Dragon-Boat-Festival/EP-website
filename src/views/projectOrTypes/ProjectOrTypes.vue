@@ -101,7 +101,7 @@
       </GlobalSwiper>
     </section>
     <!-- 最近1年   -->
-    <SectionRow v-if="lastYear_news" :lastYear_news="lastYear_news">
+    <SectionRow background-color="var(--grayBackground)" v-if="lastYear_news" :lastYear_news="lastYear_news">
 
       <template v-slot:column-title>
         <div class="last-more">
@@ -136,7 +136,7 @@
     <!--  小提示 tips  -->
     <section class="section-featured section-featured-tips">
       <GlobalSwiper v-if="change_news.length > 0"
-                    swiperBg="swiper-pg" backgroundColor="#fcfcfc"
+                    swiperBg="swiper-pg" backgroundColor="var(--grayBackground)"
                     textColor="#000">
         <template v-slot:swiper-pagination>
           <!-- swiper翻页器 -->
@@ -165,6 +165,16 @@
       </GlobalSwiper>
     </section>
 
+    <!-- 名言警句部分   -->
+    <CommonBox>
+      <template v-slot:content>
+        <div class="ct-container slim"><h2>
+          {{ this.types.saying }}</h2>
+          <p style="padding-left: 23px">—— {{ this.types.saying_author }}</p>
+
+        </div>
+      </template>
+    </CommonBox>
   </div>
 </template>
 
@@ -195,9 +205,9 @@ export default {
       types: {},
       params: {
         type: 1,
-        id: 6,
-        name: "海洋",
-        types_id: 6
+        id: 5,
+        name: "森林",
+        types_id: 5
       }, // 此对象里的数据需要从 上一级页面传过来 this.$router.params
       project: [],// 项目数据
       change_news: [], // 改变栏的新闻内容
@@ -262,13 +272,18 @@ export default {
         // width: 960,
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, // 修改swiper的父元素时，自动初始化swiper
-        // freeMode: true, // 默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
+        freeMode: true, // 默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
         slidesPerView: "auto",
-        // preventClicksPropagation: false, //阻止click冒泡。拖动Swiper时阻止click事件。
-        // spaceBetween: 0,
+        spaceBetween: 20,
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
+        },
+        on: {
+          setTranslate() {
+            const slide = this.slide
+            console.log(slide)
+          }
         },
         // 如果需要分页器
         pagination: {
@@ -285,6 +300,10 @@ export default {
 
 <style scoped lang="less">
 @import "~@/assets/css/homeSwiper.css";
+
+/deep/ .section-featured .home-swiper-view {
+  height: auto !important;
+}
 
 /*外层盒子*/
 .outer_block_container {
@@ -481,9 +500,12 @@ export default {
 // 小提示部分
 .section-featured-tips {
   color: #fff;
+  box-sizing: border-box;
   // 轮播
   .tips-swiper {
+    height: auto !important;
 
+    box-sizing: border-box;
     margin: 0 auto;
     position: relative;
     overflow: visible;
@@ -495,11 +517,12 @@ export default {
     // 每一个slide
     .swiper-slide {
       //width: 80vw;
+      box-sizing: border-box;
       width: 299px !important;
       max-width: 300px;
-      margin-right: 10vw;
-      margin-bottom: 20px;
-      margin-left: 0;
+      //margin-right: 10vw;
+      //margin-bottom: 20px;
+      //margin-left: 0;
     }
 
   }
