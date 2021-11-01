@@ -24,3 +24,13 @@ export const getProjectOrTypesData = (data) => {
     data: data,
   })
 }
+
+export const getNewsDetail = (news_id) => {
+    return axios({
+        method: "post",
+        url: `${http}v1/news/detail`,
+        data: {
+            news_id
+        }
+    })
+}

@@ -122,6 +122,9 @@ img {
   .swiper-bt {
     display: none !important;
   }
+  .con-box {
+    padding: 0 20px;
+  }
 }
 
 /* 动画 */
@@ -265,6 +268,27 @@ img {
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+/* banner外层盒子 projectOrTypes.vue and newsDetail.vue */
+.section-hero-top {
+  height: 70vh;
+  padding: 0 !important;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/*banner图片盒子 projectOrTypes.vue and newsDetail.vue*/
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+  top: -34px;
+  bottom: -100px;
+  transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
 }
 
 @media only screen and (min-width: 1280px) {
