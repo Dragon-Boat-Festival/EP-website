@@ -350,6 +350,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.swiper-button-prev {
+  left: 55px;
+}
+.swiper-button-next {
+  right: 55px;
+}
 // 大盒子
 .section-history {
   min-height: 400px;
@@ -441,7 +447,6 @@ export default {
         border-radius: 10px;
         box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.7);
         margin: 0 3%;
-        //overflow: hidden;
 
         // 文字部分
         .description {
@@ -451,7 +456,7 @@ export default {
           flex-direction: column;
           justify-content: center;
           overflow: hidden;
-          padding: 0 40px;
+          padding: 0 20px;
           height: 60%;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -459,7 +464,7 @@ export default {
 
           h4 {
             text-align: center;
-            font-size: 40px;
+            font-size: 25px;
             line-height: 59px;
             margin: 0;
           }
@@ -472,12 +477,10 @@ export default {
             font-family: Montserrat, sans-serif;
             font-size: 14px;
             font-weight: 400;
-            line-height: 1.7;
           }
 
           span {
             font-size: 18px;
-            padding-top: 20px;
             line-height: 28px;
             text-align: center;
             font-weight: 400;
@@ -489,7 +492,7 @@ export default {
           width: 100%;
           height: 50%;
           padding-top: 0;
-          border-radius: 0 10px 10px 0;
+          border-radius: 0 0 10px 10px;
           box-shadow: none;
           background-position: center;
           background-size: cover;
@@ -508,6 +511,9 @@ export default {
     z-index: 2;
   }
 }
+:deep(.swiper-slide-active) {
+  margin: 0 20px 0 -35px !important;
+}
 
 // 大于1024
 @media screen and (min-width: 1024px) {
@@ -525,7 +531,7 @@ export default {
 
   .section-history .maxi-swiper-centered {
     padding-top: 15px;
-    width: 1160px;
+    width: 1090px;
 
     .swiper-slide {
       margin: 0 3%;
@@ -545,9 +551,16 @@ export default {
       .description {
         width: 280px;
         height: 100% !important;
-
+        padding: 0 40px !important;
+        h4 {
+          font-size: 40px !important;
+        }
         .subtitle {
           letter-spacing: 8px;
+          line-height: 1.7;
+        }
+        span {
+          padding-top: 20px !important;
         }
       }
 
@@ -555,6 +568,7 @@ export default {
       .thumbnail {
         width: calc(100% - 280px) !important;
         height: 100% !important;
+        border-radius: 0 10px 10px 0 !important;
       }
     }
   }

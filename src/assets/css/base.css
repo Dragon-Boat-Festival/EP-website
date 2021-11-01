@@ -75,10 +75,6 @@ img {
   .con-box {
     padding: 0 20px;
   }
-  /*
-    .swiper-button-next {
-        right: -50px !important;
-    } */
 }
 
 @media screen and (max-width: 1024px) {
@@ -100,6 +96,7 @@ img {
   /* 副标题 */
   .subtitle {
     font-size: 18px;
+    /* margin: 0 !important; */
   }
 
   .box-p {
