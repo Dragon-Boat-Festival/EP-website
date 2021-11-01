@@ -224,6 +224,7 @@ export default {
   },
 
   mounted() {
+    window.scrollTo(0, 0)
     if (this.$route.query.id) {
       this._initData(this.$route.query)
     }
@@ -231,6 +232,7 @@ export default {
   updated() {
     // 初始化swiper
     this.$nextTick(() => {
+
       this._initSwiper()
     })
   },

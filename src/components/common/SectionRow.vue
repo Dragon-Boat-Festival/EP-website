@@ -59,7 +59,7 @@ export default {
     _init() {
       const swiper = new Swiper('.mini-swiper', {
         direction: 'horizontal', // 垂直切换选项
-        initialSlide: 1, // 初始化
+        initialSlide: 2, // 初始化
         loop: false, // 循环模式选项
         // width: 90,
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper
