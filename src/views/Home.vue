@@ -2,10 +2,10 @@
   <div class="home">
     <!-- 头部banner   -->
     <GlobalSwiper
-        v-if="homeData.banner_news"
-        :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
-        swiperBg="swiper-pg"
-        spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
+      v-if="homeData.banner_news"
+      :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
+      swiperBg="swiper-pg"
+      spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
     >
       <template v-slot:swiper-pagination>
         <!-- swiper翻页器 -->
@@ -21,8 +21,12 @@
         <div class="swiper home-swiper">
           <!-- 单个swiper -->
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="(item,index) in homeData.banner_news" :key="index"
-                 @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})">
+            <div
+              class="swiper-slide"
+              v-for="(item,index) in homeData.banner_news"
+              :key="index"
+              @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+            >
               <div class="slide-con box-sha1 AN">
                 <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
                 <div class="right-content">
@@ -47,9 +51,9 @@
 
     <!-- 项目部分   -->
     <home-project
-        v-if="homeData.project_date"
-        :project-date="homeData.project_date"
-        class-name="dark"
+      v-if="homeData.project_date"
+      :project-date="homeData.project_date"
+      class-name="dark"
     >
       <template v-slot:h2>
         <h2 class="h2">重点环保项目</h2>
@@ -60,10 +64,10 @@
     </home-project>
 
     <!-- earth   -->
-    <Earth v-if="homeData.project_date"/>
+    <Earth v-if="homeData.project_date" />
 
     <!-- 环保分类模块 -->
-    <home-issue v-if="homeData.project_date" :types="homeData.types"/>
+    <home-issue v-if="homeData.project_date" :types="homeData.types" />
   </div>
 </template>
 <script>
@@ -71,24 +75,24 @@ import homeProject from "@/components/Home/homeProject"
 import homeIssue from "@/components/Home/homeIssue"
 import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
-import {getHomeData} from '@/tools/request'
+import { getHomeData } from '@/tools/request'
 
 import Swiper from "swiper";
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
       homeData: {},
     }
   },
-  created() {
+  created () {
     this.getData()
     new this.$wow.WOW({
       live: false
     }).init()
   },
-  updated() {
+  updated () {
     this.$nextTick(() => {
       this.initSwiper()
     })
@@ -100,13 +104,13 @@ export default {
     homeIssue
   },
   methods: {
-    async getData() {
+    async getData () {
       // console.log(result);
       let res = await getHomeData()
       this.homeData = res.result
       console.log(this.homeData);
     },
-    initSwiper() {
+    initSwiper () {
       new Swiper(".home-swiper", {
         // 循环模式选项
         loop: false,
@@ -135,7 +139,6 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
-
 
 </style>
 
