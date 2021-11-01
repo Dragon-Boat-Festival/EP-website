@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <div class="home-loading" v-loading="!homeData.banner_news" v-if="!homeData.banner_news"></div>
     <!-- 头部banner   -->
     <GlobalSwiper
       v-if="homeData.banner_news"
@@ -49,9 +50,6 @@
       v-if="homeData.project_date"
       :project-date="homeData.project_date"
       class-name="dark"
-      class="animate__animated animate__fadeIn wow"
-      data-wow-duration="1s"
-      data-wow-delay=".5s"
     >
       <template v-slot:h2>
         <h2 class="h2">重点环保项目</h2>
@@ -62,20 +60,19 @@
     </home-project>
 
     <!-- earth   -->
+    <Earth v-if="homeData.project_date" />
 
-    <Earth
-      v-if="homeData.project_date"
-      class="animate__animated animate__fadeIn wow"
-      data-wow-duration=".5s"
-      data-wow-delay=".5s"
-    />
+    <!-- 环保分类模块 -->
+    <home-issue v-if="homeData.project_date" :types="homeData.types" />
   </div>
 </template>
 <script>
 import homeProject from "@/components/Home/homeProject"
+import homeIssue from "@/components/Home/homeIssue"
 import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
 import { getHomeData } from '@/tools/request'
+
 import Swiper from "swiper";
 
 export default {
@@ -99,7 +96,8 @@ export default {
   components: {
     GlobalSwiper,
     homeProject,
-    Earth
+    Earth,
+    homeIssue
   },
   methods: {
     async getData () {
@@ -137,5 +135,14 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
+
+.home-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 7;
+}
 </style>
 
