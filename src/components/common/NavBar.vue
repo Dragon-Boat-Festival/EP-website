@@ -44,7 +44,8 @@ export default {
   name: 'NavBar',
   methods: {
     toHome () {
-      this.$router.go('/')
+      console.log(1);
+      this.$router.push('/')
     }
   }
 }

@@ -3,9 +3,9 @@
     <div class="project-view con-box">
       <!-- 左侧内容 -->
       <div
-          class="project-left animate__animated animate__fadeIn wow"
-          data-wow-duration="1s"
-          data-wow-delay=".5s"
+        class="project-left animate__animated animate__fadeIn wow"
+        data-wow-duration="1s"
+        data-wow-delay="1s"
       >
         <!-- swiper翻页器 -->
         <div class="swiper-pagination1 swiper-pg-white"></div>
@@ -17,14 +17,14 @@
         <div class="swiper home-project-swiper">
           <div class="swiper-wrapper">
             <router-link
-
-                class="swiper-slide"
-                v-for="(item,index) in projectDate"
-                :to="{name: 'epDetail',query:{type:0,id: item.id,name: item.name,types_id: item.ep_type.id }}"
-
-                :key="index"
+              class="swiper-slide animate__animated animate__fadeInRightBig wow"
+              v-for="(item,index) in projectDate"
+              :to="{name: 'epDetail',query:{type:0,id: item.id,name: item.name,types_id: item.ep_type.id }}"
+              data-wow-duration="1.5s"
+              :data-wow-delay="`${(index +  1) * 0.2}s`"
+              :key="index"
             >
-              <ProjectBox :projectData="item" :className="`${className}`"/>
+              <ProjectBox :projectData="item" :className="`${className}`" />
             </router-link>
           </div>
           <div class="swiper-button-next swiper-bt box-sha2"></div>
@@ -55,7 +55,7 @@ export default {
   components: {
     ProjectBox
   },
-  mounted() {
+  mounted () {
     new this.$wow.WOW({
       live: false
     }).init()
@@ -65,7 +65,7 @@ export default {
     })
   },
   methods: {
-    initSwiper() {
+    initSwiper () {
       new Swiper(".home-project-swiper", {
         // slidesPerView: 3,
         slidesPerView: 'auto',
@@ -106,14 +106,13 @@ export default {
 
 .home-project-view {
   overflow-x: hidden;
-  padding: 40px 0 20px 0;
-
+  padding: 40px 0;
   .project-view {
     position: relative;
 
     .project-left {
       position: absolute;
-      margin-left: 20px;
+      margin-left: 10px;
       width: 250px;
     }
 

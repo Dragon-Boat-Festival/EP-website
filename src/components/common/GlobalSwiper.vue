@@ -31,7 +31,6 @@ import BackgroundMotion from "@/components/common/BackgroundMotion";
 
 
 export default {
-  // props: ['bannerNews', "img_url"],
   name: "GlobalSwiper",
   props: {
 
@@ -63,7 +62,6 @@ export default {
   components: {
     BackgroundMotion
   },
-
 }
 
 </script>
@@ -82,15 +80,11 @@ export default {
 .home-swiper-view {
   height: 610px;
   overflow-x: hidden;
-  //background-color: #f0f0f0;
-  //background: url('~@/assets/images/world.webp') left center/auto 140% no-repeat;
-
   .swiper-con {
     display: flex;
     margin-top: 40px;
-
     .swiper-content {
-      margin-left: 20px;
+      margin-left: 10px;
       width: 250px;
 
       span {
@@ -103,7 +97,6 @@ export default {
 @media screen and(max-width: 1300px) {
   .home-swiper-view {
     height: 550px;
-    //background: url('~@/assets/images/world.webp') left center/auto 120% no-repeat;
   }
 }
 
@@ -111,13 +104,10 @@ export default {
   .home-swiper-view {
     height: 730px;
     overflow: hidden;
-
     .swiper-con {
       flex-direction: column;
-
       .swiper-content {
         margin-left: 0 !important;
-
         span {
           display: none;
         }
