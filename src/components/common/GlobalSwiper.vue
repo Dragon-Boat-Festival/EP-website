@@ -4,7 +4,7 @@
       <BackgroundMotion
         v-if="img_url"
         eClassName="section-featured-background"
-        :style="{background: `url(${img_url}) left center/auto 100% no-repeat`}"
+        :style="{background: `url(${img_url}) left center/auto 85% no-repeat`}"
       />
       <!-- 整体容器 -->
       <div class="swiper-con con-box">
@@ -69,17 +69,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.bg {
-  /*  background-image: linear-gradient(to bottom,
-    rgba(238, 238, 238, 0) 0%,
-    #eee 100%);
-    background-image: -webkit-gradient(linear,
-    left top,
-    left bottom,
-    from(rgba(238, 238, 238, 0)),
-    to(#eee));*/
-}
-
 // banner背景图片样式
 .section-featured-background {
   top: -100px;
@@ -88,7 +77,6 @@ export default {
   left: 0;
   right: 0;
   transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
-  //background: url('~@/assets/images/world.webp') left center/auto 100% no-repeat;
 }
 
 .home-swiper-view {
