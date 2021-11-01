@@ -1,7 +1,11 @@
 <template>
   <section class="section-history">
     <div class="ct-container con-box slim">
-      <h2 class="h2">全球环保历程</h2>
+      <h2
+        class="animate__animated animate__fadeIn wow h2"
+        data-wow-duration="1s"
+        data-wow-delay=".5s"
+      >全球环保历程</h2>
 
       <div id="history-globe"></div>
       <div class="swiper-container label-swiper">
@@ -367,7 +371,6 @@ export default {
   overflow: hidden;
 
   .ct-container {
-    width: 100%;
     margin: 0 auto;
 
     > h2 {
@@ -480,7 +483,7 @@ export default {
           }
 
           span {
-            font-size: 18px;
+            font-size: 15px;
             line-height: 28px;
             text-align: center;
             font-weight: 400;
@@ -511,10 +514,6 @@ export default {
     z-index: 2;
   }
 }
-:deep(.swiper-slide-active) {
-  margin: 0 20px 0 -35px !important;
-}
-
 // 大于1024
 @media screen and (min-width: 1024px) {
   .section-history {
@@ -560,6 +559,7 @@ export default {
           line-height: 1.7;
         }
         span {
+          font-size: 18px !important;
           padding-top: 20px !important;
         }
       }
