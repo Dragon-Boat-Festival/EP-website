@@ -3,11 +3,11 @@
   <section class="section-mixed-content-row layout-default text-align-default " :style="{backgroundColor}">
 
     <div class="ct-container">
-      <!-- h2-title 标题 在头部 相关推荐新闻 -->
-      <!--      <div class="h2-title">
-              <h2 class="h2">
-                相关文章 </h2>
-            </div>-->
+      <!--       h2-title 标题 在头部 相关推荐新闻 -->
+      <div class="h2-title">
+        <h2 class="h2">
+          {{ h2Text }} </h2>
+      </div>
 
       <slot name="column-title"></slot>
       <!--  swiper    -->
@@ -45,6 +45,10 @@ export default {
       type: String,
       default: "#fff"
     },
+    h2Text: {
+      type: String,
+      default: ""
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -55,7 +59,7 @@ export default {
     _init() {
       const swiper = new Swiper('.mini-swiper', {
         direction: 'horizontal', // 垂直切换选项
-        initialSlide: 2, // 初始化
+        initialSlide: 1, // 初始化
         loop: false, // 循环模式选项
         // width: 90,
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper

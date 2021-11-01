@@ -12,8 +12,8 @@
       <div class="ct-container">
         <div class="content">
           <div class="top-bar">
-            <a href="https://www.greenpeace.org/hongkong/" class="back-button">
-              <i class="iconfont icon-zuo"></i>
+            <a class="back-button">
+              <i class="iconfont icon-zuo" @click="this.$router.go(-1)"></i>
             </a>
             <a href="#" data-topic="68" class="js-issue-follow button button-orange light"
                style="display: none;">立即关注</a>
@@ -192,6 +192,20 @@
         </div>
       </template>
     </CommonBox>
+    <!-- 相关新闻   -->
+    <SectionRow background-color="var(--grayBackground)" v-if="related_news" :lastYear_news="related_news"
+                h2-text="相关新闻">
+
+      <template v-slot:column-title>
+        <div class="last-more">
+          <h2 :style="{color: `${this.commonData?.color}`}"></h2>
+        </div>
+
+      </template>
+
+
+    </SectionRow>
+
   </div>
 </template>
 
@@ -226,6 +240,7 @@ export default {
       lastYear_news: [], //过去一年的新闻
       LastDecade_news: [], // 2010's
       tips: [], // 小提示
+      related_news: [] // 底部相关新闻
     }
   },
 
@@ -260,6 +275,8 @@ export default {
       this.LastDecade_news = result.result.LastDecade_news
       // 小提示
       this.tips = result.result.tips
+      // 相关新闻
+      this.related_news = result.result.related_news
       console.log(result)
     },
     _initSwiper() {
@@ -285,7 +302,7 @@ export default {
         },
       })
       // 第二个轮播图 tips
-      new Swiper(".tips-swiper", {
+      const tips = new Swiper(".tips-swiper", {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
         // width: 960,
@@ -294,6 +311,7 @@ export default {
         freeMode: true, // 默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
         slidesPerView: "auto",
         spaceBetween: 20,
+
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
