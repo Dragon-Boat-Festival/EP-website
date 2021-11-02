@@ -2,8 +2,7 @@
   <!-- 大盒子 -->
   <div class="boxes">
     <!--  文字盒子  -->
-    <div class="box"
-         :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}">
+    <div class="box" :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}">
       <div class="with-images">
         <h2 :style="{color: `${color}`}" v-if="type == 0">{{ h2Text }}</h2>
         <p :style="{color: `${color}`}">{{ swiperData.text }}</p>
@@ -13,20 +12,19 @@
     <div class="box fit">
       <!-- Swiper -->
       <div class="swiper section-text-images-swiper">
-        <div class="swiper-wrapper">
-          <div v-for="(item, index) in JSON.parse(swiperData.img_arr ? swiperData.img_arr : `[]`)" :key="index"
-               class="swiper-slide image" :style="{backgroundImage: `url(${item})`}">
+        <div class="swiper-wrapper small_img">
+          <div
+            v-for="(item, index) in JSON.parse(swiperData.img_arr ? swiperData.img_arr : `[]`)"
+            :key="index"
+            class="swiper-slide image"
+            :style="{backgroundImage: `url(${item})`}"
+          >
             <!--            <div class="swiper-lazy-preloader"></div>-->
           </div>
-
         </div>
         <div class="project-pagination"></div>
-
       </div>
-
-
     </div>
-
   </div>
 </template>
 
@@ -54,22 +52,22 @@ export default {
       default: "你知道吗？"
     }
   },
-  data() {
+  data () {
     return {
       img_arr: []
     }
   },
-  mounted() {
+  mounted () {
     console.log(this.swiperData)
     this.$nextTick(() => {
       this._init()
     })
   },
-  updated() {
+  updated () {
     console.log('123')
   },
   methods: {
-    _init() {
+    _init () {
       const swiper = new Swiper(".section-text-images-swiper", {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
@@ -104,6 +102,9 @@ export default {
 </script>
 
 <style scoped lang="less">
+.small_img > .swiper-slide-active {
+  margin: 0 !important;
+}
 // 大盒子
 .boxes {
   display: flex;
@@ -144,7 +145,6 @@ export default {
     width: 100%;
     z-index: 1 !important;
 
-
     // swiper
     .section-text-images-swiper {
       width: 100%;
@@ -157,8 +157,6 @@ export default {
         background-position: center;
         //width: 600px;
       }
-
-
     }
   }
 }
@@ -182,7 +180,7 @@ export default {
     background-color: #fff !important;
     height: 4px;
     border-radius: 4px;
-    opacity: .3;
+    opacity: 0.3;
     cursor: pointer;
   }
 
@@ -197,10 +195,7 @@ export default {
   .swiper-pagination-bullet-active {
     opacity: 1;
   }
-
-
 }
-
 
 @media only screen and (min-width: 1024px) {
   .boxes {
@@ -213,14 +208,14 @@ export default {
       min-height: 500px;
     }
 
-
     .fit {
       height: auto !important;
       min-height: 50px !important;
     }
   }
 
-  .section-text-images .box .with-images h2, .section-text-images .box .with-images p {
+  .section-text-images .box .with-images h2,
+  .section-text-images .box .with-images p {
     width: initial;
     margin-left: calc(((100vw - 960px) / 2) + 20px);
     margin-right: 80px;
@@ -230,7 +225,8 @@ export default {
 }
 
 @media only screen and (min-width: 1280px) {
-  .section-text-images .box .with-images h2, .section-text-images .box .with-images p {
+  .section-text-images .box .with-images h2,
+  .section-text-images .box .with-images p {
     width: initial;
     margin-left: calc(((100vw - 1200px) / 2) + 20px) !important;
     margin-right: 120px !important;

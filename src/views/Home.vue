@@ -78,12 +78,14 @@ import GlobalSwiper from "@/components/common/GlobalSwiper";
 import { getHomeData } from '@/tools/request'
 
 import Swiper from "swiper";
+import { mapMutations } from "vuex"
 
 export default {
   name: 'Home',
   data () {
     return {
       homeData: {},
+      isTrue: true
     }
   },
   created () {
@@ -94,7 +96,11 @@ export default {
   },
   updated () {
     this.$nextTick(() => {
-      this.initSwiper()
+      if (this.isTrue) {
+        this.initSwiper()
+        this.isTrue = false
+        this.changeIsData()
+      }
     })
   },
   components: {
@@ -104,11 +110,10 @@ export default {
     homeIssue
   },
   methods: {
+    ...mapMutations(['changeIsData']),
     async getData () {
-      // console.log(result);
       let res = await getHomeData()
       this.homeData = res.result
-      console.log(this.homeData);
     },
     initSwiper () {
       new Swiper(".home-swiper", {
@@ -139,6 +144,5 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
-
 </style>
 

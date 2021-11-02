@@ -69,7 +69,12 @@
           <div class="swiper home-swiper">
             <!-- 单个swiper -->
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item,index) in change_news" :key="index">
+              <div
+                class="swiper-slide"
+                v-for="(item,index) in change_news"
+                :key="index"
+                @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+              >
                 <div class="slide-con box-sha1 AN">
                   <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
                   <div class="right-content">
@@ -215,6 +220,7 @@ export default {
       related_news: [] // 底部相关新闻
     }
   },
+
 
 
   mounted() {

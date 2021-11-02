@@ -61,7 +61,6 @@ export default {
     }).init()
     this.$nextTick(() => {
       this.initSwiper()
-      console.log(this.projectDate);
     })
   },
   methods: {

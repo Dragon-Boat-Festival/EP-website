@@ -1,7 +1,13 @@
 <template>
-  <nav-bar />
+  <nav-bar v-if="this.$store.state.isData" />
 
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="el-fade-in-linear">
+      <keep-alive include="Home">
+        <component :is="Component" />
+      </keep-alive>
+    </transition>
+  </router-view>
 </template>
 <script>
 import NavBar from '@/components/common/NavBar.vue'

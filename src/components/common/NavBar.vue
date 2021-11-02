@@ -4,7 +4,7 @@
     <div class="nav-bar AN con-box">
       <div class="nav-left ANM" @click="toHome">
         <span class="iconfont icon-search ANM mobile-show"></span>
-        <img src="~@/assets/images/logo.png" alt="logo" />
+        <img src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png" alt="logo" />
       </div>
       <div class="nav-content pc-show">
         <router-link to="/" class="nav-item p">
