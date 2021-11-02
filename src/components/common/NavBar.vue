@@ -20,16 +20,12 @@
         <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
         <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button>
       </div>
+      <el-drawer direction="ttb" size="35%" v-model="isDrawer" title="搜索">
+        <span>Hi, there!</span>
+      </el-drawer>
     </div>
   </div>
-  <el-drawer
-    v-model="isDrawer"
-    title="I am the title"
-    :direction="direction"
-    :before-close="handleClose"
-  >
-    <span>Hi, there!</span>
-  </el-drawer>
+
   <!-- 移动端显示的盒子 -->
   <div class="mobile-Container box-sha2 animate__animated animate__fadeInDown">
     <div class="nav-content">
@@ -118,7 +114,27 @@ export default {
     }
   }
 }
-
+:deep(.el-overlay) {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+:deep(.el-drawer__close) {
+  font-size: 25px;
+  color: var(--black);
+}
+:deep(.el-drawer__header > :first-child) {
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-size: 38px;
+  margin: 40px 0 0 40px;
+  color: var(--black);
+}
+:deep(.el-drawer) {
+  background-color: #e6f5f5;
+}
 .nav-Container {
   position: fixed;
   top: 0;

@@ -1,5 +1,9 @@
 @import './normalize.css';
 
+* {
+  touch-action: none;
+}
+
 :root {
   /* 主题色 */
   --green: #6c0;
