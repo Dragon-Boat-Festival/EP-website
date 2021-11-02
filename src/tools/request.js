@@ -6,7 +6,7 @@ let http = 'http://b163-120-230-126-33.ngrok.io/'
 
 // 获取首页所有数据
 export function getHomeData() {
-  return axios.get(http + `v1/main/data`)
+    return axios.get(http + `v1/main/data`)
 }
 
 /**
@@ -18,13 +18,18 @@ export function getHomeData() {
  * @returns {AxiosPromise}
  */
 export const getProjectOrTypesData = (data) => {
-  return axios({
-    method: 'post',
-    url: `${http}v1/projectOrTypes/data`,
-    data: data,
-  })
+    return axios({
+        method: 'post',
+        url: `${http}v1/projectOrTypes/data`,
+        data: data,
+    })
 }
 
+/**
+ * 获取 文章 详情
+ * @param news_id 新闻id
+ * @returns {AxiosPromise}
+ */
 export const getNewsDetail = (news_id) => {
     return axios({
         method: "post",
@@ -32,5 +37,16 @@ export const getNewsDetail = (news_id) => {
         data: {
             news_id
         }
+    })
+}
+/**
+ * 获取 最新消息页
+ * @returns {AxiosPromise}
+ */
+export const getNewsMessage = () => {
+    return axios({
+        method: "get",
+        url: `${http}/v1/new_message/date`,
+
     })
 }

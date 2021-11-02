@@ -42,7 +42,8 @@ axios.interceptors.response.use(function (response) {
     setTimeout(() => {
         hideLoading()
     }, 200)
-
+    // 路由拦截 跳转404
+    window.location.href = "/404"
     ElMessage({
         message: `'请求出错' + ${error.message}`,
         type: 'error',
