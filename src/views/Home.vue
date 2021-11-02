@@ -160,7 +160,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
-  min-height: 575px;
+  min-height: 645px;
   overflow: hidden;
   top: 0;
 
@@ -170,8 +170,8 @@ export default {
     right: 0;
     background-size: cover !important;
     background-position: center !important;
-    top: -34px;
-    bottom: -270px;
+    top: 300px;
+    bottom: -300px;
     transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
   }
 }

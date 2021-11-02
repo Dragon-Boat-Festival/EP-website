@@ -1,5 +1,9 @@
 <template>
-  <div :class="`${eClassName} js-parallax-me`" :style="{ transform: `translate3d(0px, 0px, 0px)`}"></div>
+  <div
+    ref="bgm"
+    :class="`${eClassName} js-parallax-me`"
+    :style="{ transform: `translate3d(0px, 0px, 0px)`}"
+  ></div>
 </template>
 
 <script>
@@ -19,12 +23,9 @@ export default {
     this.$nextTick(() => {
       // setTimeout(() => {
       this.backgroundMotion()
-      // }, 0);
-
-
+      // }, 2000);
     })
   },
-
   methods: {
     backgroundMotion () {
       const winHeight = window.innerHeight //窗口高
@@ -32,8 +33,8 @@ export default {
       // console.log(this.elClassName)
       const El = document.querySelector(`.${this.eClassName}`)
       const divHeight = El.offsetHeight // 盒子高度
-      const divTop = El.offsetTop //盒子距离html顶部高度
-      console.log(divHeight);
+      const divTop = this.$refs.bgm.getBoundingClientRect().top //盒子距离html顶部高度
+      console.log(divTop);
 
       // console.log(divHeight)
       // 监听滚动条
