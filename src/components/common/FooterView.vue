@@ -36,8 +36,8 @@
         </div>
         <div class="class">
           <p class="title">分工合作</p>
-          <span>编写前端后端70%代码</span>
-          <span>编写前端后端30%代码</span>
+          <span>编写前端70%,后端100%代码</span>
+          <span>编写前端30%代码</span>
           <span>录入50%新闻数据</span>
           <span>录入50%新闻数据</span>
         </div>
