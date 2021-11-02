@@ -70,12 +70,12 @@
     <home-issue v-if="homeData.project_date" :types="homeData.types" />
 
     <!-- 环保概念模块 -->
-    <!-- <div class="home-concept" v-if="homeData.project_date">
+    <div class="home-concept" v-if="homeData.project_date">
       <BackgroundMotion
         eClassName="banners_background"
         :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
       />
-    </div>-->
+    </div>
   </div>
 </template>
 <script>
@@ -160,7 +160,7 @@ export default {
   position: relative;
   top: 0;
   left: 0;
-  min-height: 575px;
+  min-height: 645px;
   overflow: hidden;
   top: 0;
   .banners_background {
@@ -169,8 +169,8 @@ export default {
     right: 0;
     background-size: cover !important;
     background-position: center !important;
-    top: -34px;
-    bottom: -270px;
+    top: 300px;
+    bottom: -300px;
     transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
   }
 }
