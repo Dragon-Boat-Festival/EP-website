@@ -68,6 +68,14 @@
 
     <!-- 环保分类模块 -->
     <home-issue v-if="homeData.project_date" :types="homeData.types" />
+
+    <!-- 环保概念模块 -->
+    <!-- <div class="home-concept" v-if="homeData.project_date">
+      <BackgroundMotion
+        eClassName="banners_background"
+        :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
+      />
+    </div>-->
   </div>
 </template>
 <script>
@@ -76,6 +84,8 @@ import homeIssue from "@/components/Home/homeIssue"
 import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
 import { getHomeData } from '@/tools/request'
+import BackgroundMotion from "@/components/common/BackgroundMotion";
+
 
 import Swiper from "swiper";
 import { mapMutations } from "vuex"
@@ -107,7 +117,8 @@ export default {
     GlobalSwiper,
     homeProject,
     Earth,
-    homeIssue
+    homeIssue,
+    BackgroundMotion
   },
   methods: {
     ...mapMutations(['changeIsData']),
@@ -144,5 +155,24 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
+// 背景
+.home-concept {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-height: 575px;
+  overflow: hidden;
+  top: 0;
+  .banners_background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-size: cover !important;
+    background-position: center !important;
+    top: -34px;
+    bottom: -270px;
+    transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
+  }
+}
 </style>
 
