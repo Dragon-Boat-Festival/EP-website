@@ -130,7 +130,7 @@ export default {
     }).init()
     window.addEventListener('scroll', this.handleScroll, true)
   },
-  beforeUnmount () {
+  beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll, true)
   },
   updated() {
@@ -141,7 +141,7 @@ export default {
       }
     })
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
         document.body.scrollTop = this.$store.state.srcollNum
@@ -158,7 +158,7 @@ export default {
     BackgroundMotion
   },
   methods: {
-    ...mapMutations([ 'changeScroll'])
+    ...mapMutations(['changeScroll']),
     async getData() {
       let res = await getHomeData()
       this.homeData = res.result
@@ -186,7 +186,7 @@ export default {
       })
     },
     // 监听滚动方法
-    handleScroll () {
+    handleScroll() {
       this.changeScroll(window.pageYOffset)
     }
   },
