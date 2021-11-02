@@ -14,15 +14,17 @@
       <div class="swiper section-text-images-swiper">
         <div class="swiper-wrapper small_img">
           <div
-            v-for="(item, index) in JSON.parse(swiperData.img_arr ? swiperData.img_arr : `[]`)"
-            :key="index"
-            class="swiper-slide image"
-            :style="{backgroundImage: `url(${item})`}"
+              v-for="(item, index) in JSON.parse(swiperData?.img_arr ? swiperData?.img_arr : `[]`)"
+              :key="index"
+              class="swiper-slide image"
+              :style="{backgroundImage: `url(${item})`}"
           >
             <!--            <div class="swiper-lazy-preloader"></div>-->
           </div>
         </div>
-        <div class="project-pagination"></div>
+        <div class="project-pagination"
+             :style="{opacity: `${ JSON.parse(this.swiperData?.img_arr ? this.swiperData?.img_arr : `[]`).length > 1 ? '1': '0'}`}"
+        ></div>
       </div>
     </div>
   </div>
@@ -52,22 +54,22 @@ export default {
       default: "你知道吗？"
     }
   },
-  data () {
+  data() {
     return {
       img_arr: []
     }
   },
-  mounted () {
+  mounted() {
     console.log(this.swiperData)
     this.$nextTick(() => {
       this._init()
     })
   },
-  updated () {
+  updated() {
     console.log('123')
   },
   methods: {
-    _init () {
+    _init() {
       const swiper = new Swiper(".section-text-images-swiper", {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
@@ -95,6 +97,7 @@ export default {
           loadOnTransitionStart: true // 默认当过渡到slide后开始加载图片，如果你想在过渡一开始就加载，设置为true
         },*/
       });
+
     }
 
   }
@@ -105,6 +108,7 @@ export default {
 .small_img > .swiper-slide-active {
   margin: 0 !important;
 }
+
 // 大盒子
 .boxes {
   display: flex;

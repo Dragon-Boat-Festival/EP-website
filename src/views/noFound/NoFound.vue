@@ -63,7 +63,7 @@ export default {
   }
 
   .section-hero-shade::before {
-    display: block;
+    display:  block;
     position: absolute;
     left: 0;
     right: 0;
