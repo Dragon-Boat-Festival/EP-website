@@ -3,9 +3,7 @@
 
   <router-view v-slot="{ Component }">
     <transition name="el-fade-in-linear">
-      <keep-alive include="Home">
-        <component :is="Component" />
-      </keep-alive>
+      <component :is="Component" />
     </transition>
   </router-view>
 

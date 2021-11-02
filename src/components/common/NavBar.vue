@@ -17,11 +17,19 @@
         </router-link>
       </div>
       <div class="nav-right">
-        <span class="iconfont icon-search ANM pc-show"></span>
+        <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
         <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button>
       </div>
     </div>
   </div>
+  <el-drawer
+    v-model="isDrawer"
+    title="I am the title"
+    :direction="direction"
+    :before-close="handleClose"
+  >
+    <span>Hi, there!</span>
+  </el-drawer>
   <!-- 移动端显示的盒子 -->
   <div class="mobile-Container box-sha2 animate__animated animate__fadeInDown">
     <div class="nav-content">
@@ -42,10 +50,18 @@
 <script>
 export default {
   name: 'NavBar',
+  data () {
+    return {
+      isDrawer: false
+    }
+  },
   methods: {
     toHome () {
       console.log(1);
       this.$router.push('/')
+    },
+    showSearch () {
+      this.isDrawer = true
     }
   }
 }
