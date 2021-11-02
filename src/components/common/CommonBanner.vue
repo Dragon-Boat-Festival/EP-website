@@ -2,8 +2,10 @@
   <!-- 公共 banner 图片 -->
   <section class="section-hero-top">
     <!--   背景   -->
-    <BackgroundMotion eClassName="banner_background"
-                      :style="{backgroundImage: `url(${commonData?.banner_url})`}"/>
+    <BackgroundMotion
+      eClassName="banner_background"
+      :style="{backgroundImage: `url(${commonData?.banner_url})`}"
+    />
     <!--   黑阴影   -->
     <div class="section-hero-shade"></div>
     <!--  文字内容部分    -->
@@ -11,14 +13,22 @@
       <div class="content">
         <div class="top-bar">
           <a class="back-button">
-            <i class="iconfont icon-zuo" @click="this.$router.go(-1)">上一页</i>
+            <i class="iconfont icon-zuo ANM" @click="this.$router.go(-1)">上一页</i>
           </a>
-          <a href="#" v-if="this.$route.name == 'epDetail'" data-topic="68"
-             class="js-issue-follow button button-orange light"
-             style="display: none;">立即关注</a>
-          <a href="#" v-if="this.$route.name == 'epDetail'" data-topic="68"
-             class="js-issue-unfollow button not-following button-orange light"
-             style="display: inline;">你正在关注</a>
+          <a
+            href="#"
+            v-if="this.$route.name == 'epDetail'"
+            data-topic="68"
+            class="js-issue-follow button button-orange light"
+            style="display: none;"
+          >立即关注</a>
+          <a
+            href="#"
+            v-if="this.$route.name == 'epDetail'"
+            data-topic="68"
+            class="js-issue-unfollow button not-following button-orange light"
+            style="display: inline;"
+          >你正在关注</a>
         </div>
         <div class="hero-issue-title">
           <h1>{{ commonData?.name }}</h1>
@@ -28,9 +38,7 @@
     </div>
   </section>
   <!-- 文章部分 -->
-  <div class="con-box">
-
-  </div>
+  <div class="con-box"></div>
 </template>
 
 <script>
@@ -48,7 +56,7 @@ export default {
     }
 
   },
-  mounted() {
+  mounted () {
     console.log(this.$route)
   }
 }
@@ -61,7 +69,7 @@ export default {
   height: 70vh;
   padding: 0 !important;
   background-size: cover;
-  background-position: center;;
+  background-position: center;
   overflow: hidden;
   /*banner图片盒子 projectOrTypes.vue and newsDetail.vue*/
 
@@ -75,7 +83,6 @@ export default {
     bottom: -100px;
     transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
   }
-
 
   // 黑阴影
   .section-hero-shade {
@@ -95,7 +102,7 @@ export default {
     right: 0;
     height: 101px;
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0), #000);
-    content: "";
+    content: '';
   }
 
   // 黑阴影-下
@@ -106,8 +113,12 @@ export default {
     right: 0;
     bottom: 0;
     height: 210px;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
-    content: "";
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.7)
+    );
+    content: '';
   }
 
   // banner 文字部分
@@ -181,13 +192,10 @@ export default {
           line-height: 21px;
           margin-bottom: 50px;
         }
-
       }
     }
   }
-
 }
-
 
 @media only screen and (min-width: 1024px) {
   // banner 文字
@@ -203,7 +211,6 @@ export default {
       font-size: 22px;
       letter-spacing: 11px;
       margin-bottom: 90px;
-
     }
   }
 
@@ -213,7 +220,6 @@ export default {
 
     h2 {
       font-size: 30px !important;
-
     }
   }
 }
@@ -228,5 +234,4 @@ export default {
     padding: 0 120px;
   }
 }
-
 </style>
