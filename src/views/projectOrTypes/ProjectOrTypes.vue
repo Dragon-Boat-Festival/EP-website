@@ -69,7 +69,12 @@
           <div class="swiper home-swiper">
             <!-- 单个swiper -->
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item,index) in change_news" :key="index">
+              <div
+                class="swiper-slide"
+                v-for="(item,index) in change_news"
+                :key="index"
+                @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+              >
                 <div class="slide-con box-sha1 AN">
                   <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
                   <div class="right-content">
@@ -218,7 +223,7 @@ export default {
 
 
   mounted () {
-window.scrollTo(0, 0)
+    window.scrollTo(0, 0)
     if (this.$route.query.id) {
       this._initData(this.$route.query)
     }
@@ -264,7 +269,7 @@ window.scrollTo(0, 0)
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, // 修改swiper的父元素时，自动初始化swiper
         grabCursor: true,
-        slidesPerView: "auto",
+        // slidesPerView: "auto",
 
         navigation: {
           nextEl: ".swiper-button-next",
