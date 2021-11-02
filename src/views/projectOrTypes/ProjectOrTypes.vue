@@ -2,7 +2,7 @@
   <!-- 项目或全球议题详情页 -->
   <div class="outer_block_container">
     <!--  头部banner  -->
-    <CommonBanner :commonData="this.commonData" />
+    <CommonBanner :commonData="this.commonData"/>
     <!-- 下部分项目目标 部分 全球议题显示   -->
     <CommonBox v-if="this.commonData?.describe">
       <template v-slot:content>
@@ -26,9 +26,9 @@
     <CommonBox theme="light-theme">
       <template v-slot:content>
         <CommonSwiper
-          :color="this.commonData?.color ?this.commonData?.color : this.commonData?.ep_type?.color "
-          :swiperData="this.commonData?.ep_detail_content_swiper"
-          :type="this.$route?.query?.type"
+            :color="this.commonData?.color ?this.commonData?.color : this.commonData?.ep_type?.color "
+            :swiperData="this.commonData?.ep_detail_content_swiper"
+            :type="this.$route?.query?.type"
         ></CommonSwiper>
       </template>
     </CommonBox>
@@ -47,16 +47,16 @@
     <section class="change js-parallax-me" :style="{background: `#faf5f5`}">
       <!-- 头部banner   -->
       <GlobalSwiper
-        v-if="change_news.length > 0"
-        swiperBg="swiper-pg"
-        :backgroundColor="`${this.commonData?.color ? this.commonData?.color : '#f5f5f5' }`"
-        :spanText="this.commonData?.change_desc"
-        :text-color="this.commonData?.color ? '#fff' : '#000'"
+          v-if="change_news.length > 0"
+          swiperBg="swiper-pg"
+          :backgroundColor="`${this.commonData?.color ? this.commonData?.color : '#f5f5f5' }`"
+          :spanText="this.commonData?.change_desc"
+          :text-color="this.commonData?.color ? '#fff' : '#000'"
       >
         <template v-slot:swiper-pagination>
           <!-- swiper翻页器 -->
           <div
-            :class="`swiper-pagination ${this.commonData?.color ? 'swiper-pg-white' : 'swiper-pg'}` "
+              :class="`swiper-pagination ${this.commonData?.color ? 'swiper-pg-white' : 'swiper-pg'}` "
           ></div>
         </template>
         <template v-slot:h2>
@@ -99,9 +99,9 @@
     </section>
     <!-- 最近1年   -->
     <SectionRow
-      background-color="var(--grayBackground)"
-      v-if="lastYear_news"
-      :lastYear_news="lastYear_news"
+        background-color="var(--grayBackground)"
+        v-if="lastYear_news"
+        :lastYear_news="lastYear_news"
     >
       <template v-slot:column-title>
         <div class="last-more">
@@ -129,10 +129,10 @@
     <!--  小提示 tips  -->
     <section class="section-featured section-featured-tips">
       <GlobalSwiper
-        v-if="change_news.length > 0"
-        swiperBg="swiper-pg"
-        backgroundColor="var(--grayBackground)"
-        textColor="#000"
+          v-if="change_news.length > 0"
+          swiperBg="swiper-pg"
+          backgroundColor="var(--grayBackground)"
+          textColor="#000"
       >
         <template v-slot:swiper-pagination>
           <!-- swiper翻页器 -->
@@ -149,7 +149,7 @@
             <!-- 单个swiper -->
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(item,index) in this.tips" :key="index">
-                <tips :tip="item" />
+                <tips :tip="item"/>
               </div>
             </div>
             <div class="swiper-button-next swiper-bt box-sha2"></div>
@@ -170,10 +170,10 @@
     </CommonBox>
     <!-- 相关新闻   -->
     <SectionRow
-      background-color="var(--grayBackground)"
-      v-if="related_news"
-      :lastYear_news="related_news"
-      h2-text="相关新闻"
+        background-color="var(--grayBackground)"
+        v-if="related_news"
+        :lastYear_news="related_news"
+        h2-text="相关新闻"
     >
       <template v-slot:column-title>
         <div class="last-more">
@@ -193,7 +193,7 @@ import GlobalSwiper from "@/components/common/GlobalSwiper";
 import homeProject from "@/components/Home/homeProject";
 import SectionRow from "@/components/common/SectionRow";
 import Tips from '@/components/projectOrTypes/Tips'
-import { getProjectOrTypesData } from "@/tools/request";
+import {getProjectOrTypesData} from "@/tools/request";
 import Swiper from "swiper";
 
 export default {
@@ -208,7 +208,7 @@ export default {
     GlobalSwiper,
     Tips
   },
-  data () {
+  data() {
     return {
       commonData: {},
       params: {}, // 此对象里的数据需要从 上一级页面传过来 this.$router.params
@@ -222,13 +222,14 @@ export default {
   },
 
 
-  mounted () {
+
+  mounted() {
     window.scrollTo(0, 0)
     if (this.$route.query.id) {
       this._initData(this.$route.query)
     }
   },
-  updated () {
+  updated() {
     // 初始化swiper
     this.$nextTick(() => {
 
@@ -236,7 +237,7 @@ export default {
     })
   },
   methods: {
-    async _initData (data) {
+    async _initData(data) {
       let result = await getProjectOrTypesData({
         type: Number(data.type),
         id: Number(data.id),
@@ -259,7 +260,7 @@ export default {
       this.related_news = result.result.related_news
       console.log(result)
     },
-    _initSwiper () {
+    _initSwiper() {
       // 第一个轮播图 你能改变
       new Swiper(".home-swiper", {
         // 循环模式选项
@@ -297,7 +298,7 @@ export default {
           prevEl: ".swiper-button-prev",
         },
         on: {
-          setTranslate () {
+          setTranslate() {
             const slide = this.slide
           }
         },
