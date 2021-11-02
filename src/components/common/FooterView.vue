@@ -73,7 +73,7 @@ export default {
         letter-spacing: 4px;
       }
       img {
-        width: 60%;
+        width: 70%;
       }
     }
     .footer-right {
