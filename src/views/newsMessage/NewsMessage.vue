@@ -58,7 +58,16 @@
     </template>
   </CommonBox>
   <!-- 精选文章 -->
-  <SelectedNews />
+  <SelectedNews :related_news="this.selected_news"/>
+  <!-- 专栏  -->
+  <div class="column"></div>
+  <SectionRow v-if="LastDecade_news" :lastYear_news="LastDecade_news">
+    <template v-slot:column-title>
+      <div class="last-more">
+        <h2 :style="{color: `${this.commonData?.color}`}">2010's</h2>
+      </div>
+    </template>
+  </SectionRow>
 </template>
 
 <script>
@@ -66,6 +75,7 @@ import GlobalSwiper from "@/components/common/GlobalSwiper";
 import CommonBox from "@/components/projectOrTypes/commonBox";
 import CommonSwiper from "@/components/projectOrTypes/CommonSwiper";
 import SelectedNews from "@/components/selectedNews/SelectedNews";
+import SectionRow from "@/components/common/SectionRow";
 import {getNewsMessage} from "@/tools/request";
 import {mapMutations} from "vuex"
 import Swiper from "swiper";
@@ -76,14 +86,16 @@ export default {
     GlobalSwiper,
     CommonBox,
     CommonSwiper,
-    SelectedNews
+    SelectedNews,
+    SectionRow
   },
   data() {
     return {
       related_news: [], // 相关新闻
+      selected_news: [], // 精选文章
     }
   },
-  mounted() {
+  created() {
     this._initData()
   },
   updated() {
@@ -99,6 +111,8 @@ export default {
       result.result.related_news.length > 0 ? this.changeIsData() : null
       // 相关新闻
       this.related_news = result.result.related_news
+      // 精选文章
+      this.selected_news = result.result.selected_news
       console.log(result)
     },
 

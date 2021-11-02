@@ -5,26 +5,33 @@
     <div class="left-content">
       <!--   上部分     -->
       <div class="meta-box">
-        <span class="types" style="color: #00b474">生活</span>
+        <span class="types" :style="{color: `${news.ep_type?.color}`}">{{ news.ep_type?.name }}</span>
         <span>专题报道</span>
       </div>
       <!--   中间 文章标题     -->
       <p class="title">
-        环境喜讯！户外品牌供应商Gore Fabrics宣布全面淘汰PFCs</p>
+        {{ news?.title }}</p>
       <!--   底部时间     -->
-      <span class="time meta-box">2021-11-2</span>
+      <span class="time meta-box">{{ news.release_time?.substring(0, 10) }}</span>
     </div>
     <!--  右边图片  -->
     <div class="right-img"
-         style="background-image: url('https://www.greenpeace.org/static/planet4-hongkong-stateless/2021/10/734abe35-gp0stplqr_web_size-150x150.jpg')">
+         :style="{backgroundImage: `url(${news?.main_img})`}">
 
     </div>
+    <!--    {{ news }}-->
   </router-link>
 </template>
 
 <script>
 export default {
-  name: "ArticlesItem"
+  name: "ArticlesItem",
+  props: {
+    news: {
+      type: Object,
+      default: {}
+    }
+  }
 }
 </script>
 

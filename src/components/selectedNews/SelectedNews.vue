@@ -3,7 +3,7 @@
   <GlobalSwiper
       swiperBg="swiper-pg"
       spanText="为你呈上近期环保热话及编辑推介文章，罗列国际和本地你不可不知道的重要资讯。"
-      
+
   >
     <template v-slot:swiper-pagination>
       <!-- swiper翻页器 -->
@@ -17,7 +17,7 @@
     </template>
     <template v-slot:right-swiper>
       <div class="article_list">
-        <ArticleItem/>
+        <ArticleItem v-for="(item, index) in this.related_news" :news="item" :key="index"/>
       </div>
     </template>
   </GlobalSwiper>
@@ -29,9 +29,21 @@ import ArticleItem from "@/components/selectedNews/ArticleItem";
 
 export default {
   name: "SelectedNews",
+  props: {
+    related_news: {
+      type: Array,
+      default: []
+    }
+  },
   components: {
     GlobalSwiper,
     ArticleItem
+  },
+  mounted() {
+    this.$nextTick(() => {
+      console.log(this.related_news)
+
+    })
   }
 }
 </script>
