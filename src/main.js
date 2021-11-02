@@ -5,8 +5,7 @@ import store from './store'
 import animated from 'animate.css'
 import WOW from 'wowjs'
 import 'element-plus/dist/index.css'
-import { ElLoading } from 'element-plus'
-import { ElMessageBox } from 'element-plus'
+import ElementPlus from 'element-plus'
 
 const app = createApp(App)
 
@@ -16,6 +15,5 @@ app
   .use(store)
   .use(router)
   .use(animated)
-  .use(ElLoading)
-  .use(ElMessageBox)
+  .use(ElementPlus)
   .mount('#app')

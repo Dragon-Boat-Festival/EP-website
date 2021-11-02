@@ -3,12 +3,12 @@
     <div class="home-swiper-view animate__animated animate__fadeIn AN" :style="{backgroundColor}">
       <!--         ref="background" -->
       <BackgroundMotion
-          v-if="img_url"
-          eClassName="section-featured-background"
-          :style="{background: `url(${img_url})  left center/auto 85% no-repeat`}"
+        v-if="img_url"
+        eClassName="section-featured-background"
+        :style="{background: `url(${img_url})  left center/auto 85% no-repeat`}"
       />
       <!-- 整体容器 -->
-      <div class="swiper-con con-box" style="display: flex; justify-content: space-between">
+      <div class="swiper-con con-box" style="justify-content: space-between">
         <div class="swiper-content">
           <!-- swiper翻页器 -->
           <slot name="swiper-pagination"></slot>
@@ -63,7 +63,7 @@ export default {
   components: {
     BackgroundMotion
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       // setTimeout(() => {
       // console.log(this.$refs['background'].$el.offsetHeight);
