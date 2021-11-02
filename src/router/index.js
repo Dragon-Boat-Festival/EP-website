@@ -19,11 +19,15 @@ const routes = [
         path: '/newsDetail',
         name: 'newsDetail',
         component: newsDetail,
-    },{
+    }, {
         path: '/404',
         name: 'NotFound',
         component: NoFound,
     },
+    {
+        path: '/:pathMatch(.*)',
+        redirect: '/404'
+    }
 ]
 
 const router = createRouter({
