@@ -69,11 +69,24 @@ export default {
   },
   methods: {
     async _initData(news_id) {
+      window.scrollTo(0, 0)
       const result = await getNewsDetail(news_id)
+      console.log(result)
+      if (!result.result.news_detail) return window.location.href = "/404"
+
+
       // 新闻详情数据赋值
       this.news_detail = result.result.news_detail
       this.about_news = result.result.about_news
       console.log(result)
+    }
+  },
+  watch: {
+    $route: {
+      handler: function (val, oldVal) {
+        console.log(val);
+        this._initData(val.query?.news_id)
+      }
     }
   }
 }

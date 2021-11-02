@@ -5,7 +5,7 @@
       <div
         class="project-left animate__animated animate__fadeIn wow"
         data-wow-duration="1s"
-        data-wow-delay=".5s"
+        data-wow-delay="1s"
       >
         <!-- swiper翻页器 -->
         <div class="swiper-pagination1 swiper-pg-white"></div>
@@ -61,6 +61,7 @@ export default {
     }).init()
     this.$nextTick(() => {
       this.initSwiper()
+      console.log(this.projectDate);
     })
   },
   methods: {

@@ -1,5 +1,5 @@
 <template>
-  <router-link to="/" class="">
+  <a @click="this.$router.push({path:'/newsDetail', query: { news_id: news?.news_id }})" class="">
     <!--     图片       -->
     <div class="thumbnail lazy swiper-lazy "
          :data-background="news.main_img"
@@ -13,7 +13,7 @@
     </div>
     <!--     新闻标题       -->
     <p class="news-title">{{ news.title }}</p>
-  </router-link>
+  </a>
 </template>
 
 <script>

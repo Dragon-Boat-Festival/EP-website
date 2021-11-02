@@ -58,16 +58,21 @@
     </template>
   </CommonBox>
   <!-- 精选文章 -->
-  <SelectedNews :related_news="this.selected_news"/>
+  <SelectedNews class="selected-con" :related_news="this.selected_news"/>
   <!-- 专栏  -->
-  <div class="column"></div>
-  <SectionRow v-if="LastDecade_news" :lastYear_news="LastDecade_news">
-    <template v-slot:column-title>
-      <div class="last-more">
-        <h2 :style="{color: `${this.commonData?.color}`}">2010's</h2>
-      </div>
-    </template>
-  </SectionRow>
+  <div class="column" v-for="(item, index) in this.news_column">
+    <SectionRow v-if="item.news?.length > 0" :lastYear_news="item.news">
+      <template v-slot:column-title>
+        <div class="last-more">
+          <h2>
+            <router-link to="/">
+              {{ item.dataValues?.column_name }} <i class="iconfont icon-you"></i>
+            </router-link>
+          </h2>
+        </div>
+      </template>
+    </SectionRow>
+  </div>
 </template>
 
 <script>
@@ -93,6 +98,7 @@ export default {
     return {
       related_news: [], // 相关新闻
       selected_news: [], // 精选文章
+      news_column: [], // 新闻专栏数据
     }
   },
   created() {
@@ -113,6 +119,8 @@ export default {
       this.related_news = result.result.related_news
       // 精选文章
       this.selected_news = result.result.selected_news
+      // 新闻专栏
+      this.news_column = result.result.news_column
       console.log(result)
     },
 
@@ -142,7 +150,35 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 @import '~@/assets/css/homeSwiper.css';
 
+h2 {
+  margin-bottom: 20px;
+  font-size: 38px;
+  color: var(--black);
+
+  a {
+    display: flex;
+    color: var(--black);
+    align-items: center;
+
+    i {
+      margin-left: 5px;
+    }
+  }
+}
+
+.selected-con {
+  height: auto;
+}
+
+
+@media only screen and (min-width: 1024px) {
+  // 第二部分样式
+  .selected-con {
+    max-height: 450px !important;
+    overflow: hidden;
+  }
+}
 </style>

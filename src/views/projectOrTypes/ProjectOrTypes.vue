@@ -39,7 +39,7 @@
           <h2 class="h2">我们提倡</h2>
         </template>
         <template v-slot:span>
-          <span class="p">{{ this.commonData.promote_desc }}</span>
+          <span class="p">{{ this.commonData?.promote_desc }}</span>
         </template>
       </home-project>
     </section>
@@ -47,7 +47,7 @@
     <section class="change js-parallax-me" :style="{background: `#faf5f5`}">
       <!-- 头部banner   -->
       <GlobalSwiper
-          v-if="change_news.length > 0"
+          v-if="change_news?.length > 0"
           swiperBg="swiper-pg"
           :backgroundColor="`${this.commonData?.color ? this.commonData?.color : '#f5f5f5' }`"
           :spanText="this.commonData?.change_desc"
@@ -70,10 +70,10 @@
             <!-- 单个swiper -->
             <div class="swiper-wrapper">
               <div
-                class="swiper-slide"
-                v-for="(item,index) in change_news"
-                :key="index"
-                @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+                  class="swiper-slide"
+                  v-for="(item,index) in change_news"
+                  :key="index"
+                  @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
               >
                 <div class="slide-con box-sha1 AN">
                   <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
@@ -129,7 +129,7 @@
     <!--  小提示 tips  -->
     <section class="section-featured section-featured-tips">
       <GlobalSwiper
-          v-if="change_news.length > 0"
+          v-if="change_news?.length > 0"
           swiperBg="swiper-pg"
           backgroundColor="var(--grayBackground)"
           textColor="#000"
@@ -222,7 +222,6 @@ export default {
   },
 
 
-
   mounted() {
     window.scrollTo(0, 0)
     if (this.$route.query.id) {
@@ -244,6 +243,8 @@ export default {
         name: data.name,
         types_id: Number(data.types_id)
       })
+      if (!result.result.commonData)
+        return window.location.href = "/404"
       // 类型数据
       this.commonData = result.result.commonData
       // 项目数据

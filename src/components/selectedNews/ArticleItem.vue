@@ -1,6 +1,7 @@
 <template>
   <!-- 精选文章模块中的 文章 -->
-  <router-link to="/" class="card-update compact">
+  <router-link :to="{ path: '/newsDetail', query: {news_id: news?.news_id} }" class="card-update compact"
+               :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}">
     <!--  左边文字  -->
     <div class="left-content">
       <!--   上部分     -->
@@ -30,6 +31,9 @@ export default {
     news: {
       type: Object,
       default: {}
+    },
+    index: {
+      type: Number,
     }
   }
 }
@@ -41,20 +45,21 @@ export default {
   align-items: center;
   width: 100%;
   padding: 20px 0;
-
 }
 
 .card-update {
   display: flex;
   text-decoration: none !important;
   border-bottom: none !important;
-  color: #000;
+  color: var(--black);
 }
 
 // 左边部分
 .left-content {
   width: 70%;
   display: flex;
+  flex-direction: column;
+
   // 文字
   .meta-box {
     margin: 8px 0 0;
@@ -76,6 +81,8 @@ export default {
     align-items: center;
     margin: 0;
     -webkit-box-align: center;
+    display: flex;
+    margin: 5px 0;
   }
 
   // 时间
@@ -86,6 +93,8 @@ export default {
 
 // 右边图片
 .right-img {
+  width: 95px;
+  height: 95px;
   border-radius: 3px;
   box-shadow: 0 0 8px 0 rgb(199, 196, 196);
   background-color: #e5e8e9;
@@ -123,6 +132,7 @@ export default {
         font-size: 22px;
         min-height: 85px;
         font-size: 22px;
+        margin: 0 !important;
       }
     }
 

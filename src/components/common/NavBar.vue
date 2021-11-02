@@ -7,11 +7,11 @@
         <img src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png" alt="logo" />
       </div>
       <div class="nav-content pc-show">
-        <router-link to="/" class="nav-item p">
+        <router-link :to="{ path: '/' }" class="nav-item p">
           <span class="iconfont icon-earth_line"></span>
           <p class="ANM">进入首页</p>
         </router-link>
-        <router-link to="/" class="nav-item p">
+        <router-link :to="{ path: '/newsMessage' }" class="nav-item p">
           <span class="iconfont icon-xinxi"></span>
           <p class="ANM">最新消息</p>
         </router-link>
@@ -48,7 +48,7 @@
 <script>
 export default {
   name: 'NavBar',
-  data () {
+  data() {
     return {
       isDrawer: false,
       // 输入框输入的值
@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    toHome () {
+    toHome() {
       console.log(1);
       this.$router.push('/')
     },
@@ -78,18 +78,23 @@ export default {
   .mobile-show {
     display: block !important;
   }
+
   .pc-show {
     display: none !important;
   }
+
   .nav-left {
     flex: 3 !important;
     justify-content: flex-start !important;
+
     img {
       max-width: 180px !important;
     }
   }
+
   .nav-right {
     flex: 1 !important;
+
     button {
       overflow: hidden;
       max-width: 100px;
@@ -98,10 +103,12 @@ export default {
       font-size: 13px;
     }
   }
+
   .nav-placeholder {
     height: 95px !important;
   }
 }
+
 @media screen and (max-width: 512px) {
   .nav-right {
     button {
@@ -124,17 +131,21 @@ export default {
     }
   }
 }
+
 @media screen and (max-width: 376px) {
   .nav-right {
     display: none !important;
   }
+
   .nav-left {
     justify-content: flex-start !important;
+
     img {
       margin-left: 10%;
     }
   }
 }
+
 :deep(.el-overlay) {
   position: absolute;
   top: 50px;
@@ -142,6 +153,7 @@ export default {
   width: 100vw;
   height: 100vh;
 }
+
 :deep(.el-drawer__close) {
   font-size: 25px;
   color: var(--black);
@@ -150,6 +162,7 @@ export default {
 :deep(.el-drawer__close-btn:hover i) {
   color: var(--green) !important;
 }
+
 :deep(.el-drawer__header > :first-child) {
   letter-spacing: 2px;
   font-weight: 700;
@@ -157,6 +170,7 @@ export default {
   margin: 40px 0 0 40px;
   color: var(--black);
 }
+
 :deep(.el-drawer) {
   background-color: #e6f5f5;
 }
@@ -203,54 +217,65 @@ export default {
   width: 100vw;
   z-index: 9;
   animation-duration: 0.3s;
+
   .nav-bar {
     height: 100%;
     display: flex;
     align-items: center;
     color: var(--white);
     transition: all 0.3s;
+
     .nav-left {
       flex: 1.5;
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       img {
         max-width: 200px;
         overflow: hidden;
       }
+
       .mobileBox {
         display: none;
       }
     }
+
     .nav-content {
       flex: 2;
       display: flex;
       align-items: center;
+
       .nav-item {
         display: flex;
         align-items: center;
         color: var(--white);
         text-decoration: none;
         flex: 1;
+
         .iconfont {
           font-size: 26px;
           margin-right: 15px;
         }
+
         .icon-xinxi {
           font-size: 22px;
         }
       }
     }
+
     .icon-search {
       font-size: 24px;
       margin-right: 20px;
     }
+
     .nav-right {
       flex: 2;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       margin-right: 10px;
+
       button {
         background-color: var(--button);
         border: none;
@@ -258,15 +283,18 @@ export default {
         padding: 10px 30px;
         cursor: pointer;
       }
+
       button:hover {
         background-color: #f07800;
       }
     }
   }
 }
+
 .mobile-show {
   display: none;
 }
+
 .mobile-Container {
   display: none;
   position: fixed;
@@ -277,10 +305,12 @@ export default {
   width: 100vw;
   animation-duration: 0.3s;
   z-index: 8;
+
   .nav-content {
     display: flex;
     align-items: center;
     justify-content: center;
+
     .nav-item {
       width: 200px;
       display: flex;
@@ -288,6 +318,7 @@ export default {
       // justify-content: space-between;
       justify-content: center;
       text-decoration: none;
+
       .iconfont {
         font-size: 24px;
         margin: 0 10px;
@@ -295,6 +326,7 @@ export default {
     }
   }
 }
+
 .nav-placeholder {
   width: 100%;
   height: 50px;

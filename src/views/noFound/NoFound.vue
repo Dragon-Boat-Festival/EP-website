@@ -2,8 +2,8 @@
   <session class="no_found">
     <!-- 背景   -->
     <BackgroundMotion
-      eClassName="banner_background"
-      :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/eda5b48aae9b9f8b.jpg)`}"
+        eClassName="banner_background"
+        :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/eda5b48aae9b9f8b.jpg)`}"
     />
     <div class="section-hero-shade"></div>
     <!-- 内容   -->
@@ -15,11 +15,19 @@
 
 <script>
 import BackgroundMotion from "@/components/common/BackgroundMotion";
+import {mapMutations} from 'vuex'
 
 export default {
   name: "NoFound",
   components: {
     BackgroundMotion
+  },
+  mounted() {
+    this.changeIsData()
+  },
+  methods: {
+    ...mapMutations(['changeIsData']),
+
   }
 }
 </script>
@@ -29,11 +37,9 @@ export default {
   display: flex;
   height: 75vh;
   min-height: 400px;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(238, 238, 238, 0) 0%,
-    #eee 100%
-  );
+  background-image: linear-gradient(to bottom,
+  rgba(238, 238, 238, 0) 0%,
+  #eee 100%);
   position: relative;
   z-index: 2;
   padding: 0 !important;
@@ -63,7 +69,7 @@ export default {
   }
 
   .section-hero-shade::before {
-    display:  block;
+    display: block;
     position: absolute;
     left: 0;
     right: 0;
@@ -74,13 +80,11 @@ export default {
 
   .section-hero-shade::after {
     height: 210px;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.7) 64%,
-      #000 74%,
-      #000 100%
-    );
+    background-image: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 64%,
+    #000 74%,
+    #000 100%);
     display: block;
     position: absolute;
     left: 0;
@@ -118,6 +122,7 @@ export default {
   .no_found {
     top: 0 !important;
   }
+
   .section-hero-shade {
     top: 0 !important;
   }
@@ -125,13 +130,11 @@ export default {
   .section-hero-shade::after {
     height: 100% !important;
     background-image: linear-gradient(to right, #000 5%, rgba(0, 0, 0, 0) 50%);
-    background-image: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      color-stop(5%, #000),
-      color-stop(50%, rgba(0, 0, 0, 0))
-    ) !important;
+    background-image: -webkit-gradient(linear,
+    left top,
+    right top,
+    color-stop(5%, #000),
+    color-stop(50%, rgba(0, 0, 0, 0))) !important;
   }
 
   // 文字
