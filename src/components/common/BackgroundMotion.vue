@@ -19,15 +19,16 @@ export default {
       prevTop: 0,
     }
   },
-  created() {
+  mounted() {
     this.$nextTick(() => {
-      // setTimeout(() => {
-      this.backgroundMotion()
-      // }, 2000);
+      setTimeout(() => {
+        this.backgroundMotion()
+      }, 1000);
     })
   },
   methods: {
     backgroundMotion() {
+      console.log('123')
       const winHeight = window.innerHeight //窗口高
 
       // console.log(this.elClassName)

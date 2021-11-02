@@ -241,7 +241,7 @@ export default {
         type: Number(data.type),
         id: Number(data.id),
         name: data.name,
-        types_id: Number(data.types_id)
+        types_id: data.types_id.trim() ? Number(data.types_id) : ""
       })
       if (!result.result.commonData)
         return window.location.href = "/404"
