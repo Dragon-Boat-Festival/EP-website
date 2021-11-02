@@ -8,12 +8,16 @@
       </keep-alive>
     </transition>
   </router-view>
+
+  <footer-view v-if="this.$store.state.isData" />
 </template>
 <script>
-import NavBar from '@/components/common/NavBar.vue'
+import NavBar from '@/components/common/NavBar'
+import FooterView from '@/components/common/FooterView'
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterView
   }
 }
 </script>

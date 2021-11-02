@@ -11,10 +11,8 @@
   --gray: #898b92;
   /* 按钮背景颜色 */
   --button: #ff8100;
-  /* footer 颜色之一 */
+  /* 紫色 */
   --twoBg: #292f47;
-  /* footer 颜色之一 */
-  --footer: #1a1c26;
   /* 解决 web页面放在移动端，点击button 标签或者添加了cursor:pointer 样式的标签，会出现 蓝色背景色 */
   -webkit-tap-highlight-color: transparent;
   /* 灰色背景 */
