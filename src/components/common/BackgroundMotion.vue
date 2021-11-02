@@ -62,9 +62,6 @@ export default {
       // console.log(divTop)
     },
   },
-  data () {
-    return {}
-  }
 }
 </script>
 
