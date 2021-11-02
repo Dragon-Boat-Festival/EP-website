@@ -4,6 +4,7 @@ const Home = () => import('@/views/Home');
 const EpDetail = () => import('@/views/projectOrTypes/ProjectOrTypes');
 const newsDetail = () => import("@/views/newsDetail/NewsDetail");
 const NoFound = () => import("@/views/noFound/NoFound")
+// const NewsMessage = () => import()
 
 
 const routes = [
