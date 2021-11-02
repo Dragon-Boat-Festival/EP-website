@@ -111,6 +111,7 @@ import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
 import {getHomeData} from '@/tools/request'
 import BackgroundMotion from "@/components/common/BackgroundMotion";
+import {mapMutations} from 'vuex'
 
 
 import Swiper from "swiper";

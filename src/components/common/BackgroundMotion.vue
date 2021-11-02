@@ -1,8 +1,8 @@
 <template>
   <div
-    ref="bgm"
-    :class="`${eClassName} js-parallax-me`"
-    :style="{ transform: `translate3d(0px, 0px, 0px)`}"
+      ref="bgm"
+      :class="`${eClassName} js-parallax-me`"
+      :style="{ transform: `translate3d(0px, 0px, 0px)`}"
   ></div>
 </template>
 
@@ -12,14 +12,14 @@
 export default {
   name: "BackgroundMotion.vue",
   props: {
-    eClassName: { type: String, default: "" }
+    eClassName: {type: String, default: ""}
   },
-  data () {
+  data() {
     return {
       prevTop: 0,
     }
   },
-  mounted () {
+  created() {
     this.$nextTick(() => {
       // setTimeout(() => {
       this.backgroundMotion()
@@ -27,7 +27,7 @@ export default {
     })
   },
   methods: {
-    backgroundMotion () {
+    backgroundMotion() {
       const winHeight = window.innerHeight //窗口高
 
       // console.log(this.elClassName)
@@ -50,12 +50,12 @@ export default {
             //滚动条往下
 
             El.style.transform = `translate3d(0px, ${window.scrollY *
-              -0.15}px, 0px)`
+            -0.15}px, 0px)`
           } else {
             //滚动条往上
 
             El.style.transform = `translate3d(0px, ${window.scrollY *
-              -0.15}px, 0px)`
+            -0.15}px, 0px)`
           }
           this.prevTop = document.documentElement.scrollTop
         }

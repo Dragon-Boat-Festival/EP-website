@@ -17,7 +17,7 @@
     </template>
     <template v-slot:right-swiper>
       <div class="article_list">
-        <ArticleItem v-for="(item, index) in this.related_news" :news="item" :key="index"/>
+        <ArticleItem v-for="(item, index) in this.related_news" :news="item" :key="index" :index="index"/>
       </div>
     </template>
   </GlobalSwiper>
@@ -52,7 +52,7 @@ export default {
 @import '~@/assets/css/homeSwiper.css';
 
 .article_list {
-
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 1024px) {
@@ -60,6 +60,7 @@ export default {
     width: 65%;
     display: grid;
     grid-column-gap: 30px;
+    margin-bottom: 0 !important;
     grid-template-columns:repeat(auto-fill, minmax(45%, 1fr));
   }
 }
