@@ -1,6 +1,6 @@
 <template>
   <!-- 精选文章模块中的 文章 -->
-  <router-link to="/" class="card-update compact"
+  <router-link :to="{ path: '/newsDetail', query: {news_id: news?.news_id} }" class="card-update compact"
                :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}">
     <!--  左边文字  -->
     <div class="left-content">
