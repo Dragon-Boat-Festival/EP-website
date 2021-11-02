@@ -1,17 +1,30 @@
 <template>
   <div class="home-issue con-box">
-    <h2 class="h2">环保议题</h2>
-    <p class="p">了解环保工作</p>
+    <h2
+      class="h2 animate__animated animate__fadeIn wow"
+      data-wow-duration="1s"
+      data-wow-delay=".5s"
+    >环保议题</h2>
+    <p
+      class="p animate__animated animate__fadeIn wow"
+      data-wow-duration="1s"
+      data-wow-delay=".7s"
+    >了解环保工作</p>
 
     <div class="swiper issue-swiper AN">
       <div class="swiper-wrapper AN">
-        <div class="swiper-slide AN" v-for="(item,index) in types" :key="index">
+        <router-link
+          class="swiper-slide AN"
+          v-for="(item,index) in types"
+          :key="index"
+          :to="{name: 'epDetail',query:{type:1,id: item.id,name: item.name,types_id: item.id }}"
+        >
           <div class="img-box box-sha0 AN" :style="{backgroundImage: `url(${item.img_url})`}">
             <h1>{{item.name}}</h1>
             <p :style="{background: `${item.color}`}">{{item.e_name}}</p>
           </div>
           <span>{{item.main_text}}</span>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -24,14 +37,20 @@ import "swiper/css/swiper.css"
 export default {
   props: ['types'],
   mounted () {
+    new this.$wow.WOW({
+      live: false
+    }).init()
     this.initSwiper()
   },
   methods: {
     initSwiper () {
       new Swiper(".issue-swiper", {
         slidesPerView: 'auto',
-        // slidesPerGroup: 3,
+        // slidesPerView: 1,
         spaceBetween: 14,
+        loop: false,
+        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
       });
     }
   }
@@ -39,6 +58,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+:deep(.swiper-slide-active) {
+  margin: 0 15px 0 15px !important;
+}
 .home-issue {
   display: flex;
   flex-direction: column;
@@ -53,6 +75,7 @@ export default {
   .issue-swiper {
     width: 96%;
     .swiper-wrapper {
+      padding: 10px 0;
       .swiper-slide {
         width: 180px !important;
         height: 305px;
@@ -119,14 +142,22 @@ export default {
     }
   }
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
   .home-issue {
+    margin-bottom: 0px;
+    .p {
+      margin: 10px 0 20px 0;
+    }
+    .issue-swiper::-webkit-scrollbar {
+      display: none;
+    }
     .issue-swiper {
+      overflow: scroll;
+
       .swiper-wrapper {
+        justify-content: normal;
         .swiper-slide {
           height: auto;
-          .img-box {
-          }
           span {
             display: none;
           }
