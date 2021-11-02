@@ -2,19 +2,19 @@
   <!-- 最新消息页 -->
   <!-- 头部banner   -->
   <GlobalSwiper
-      v-if="homeData.banner_news"
+      v-if="related_news.length>0"
       swiperBg="swiper-pg"
-      spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
+      spanText="为你呈上近期环保热话及编辑推介文章，罗列国际和本地你不可不知道的重要资讯。"
   >
     <template v-slot:swiper-pagination>
       <!-- swiper翻页器 -->
       <div :class="`swiper-pagination swiper-pg` "></div>
     </template>
     <template v-slot:h2>
-      <h2 class="h2" style="color: var(--green)">行动带来改变</h2>
+      <h2 class="h2" style="color: var(--black)">最新消息</h2>
     </template>
     <template v-slot:subtitle>
-      <p class="subtitle">保护环境，人人有责</p>
+      <p class="subtitle">FROM THE EARTH</p>
     </template>
     <template v-slot:right-swiper>
       <div class="swiper home-swiper">
@@ -22,7 +22,7 @@
         <div class="swiper-wrapper">
           <div
               class="swiper-slide"
-              v-for="(item,index) in homeData.banner_news"
+              v-for="(item,index) in related_news"
               :key="index"
               @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
           >
@@ -47,29 +47,102 @@
       </div>
     </template>
   </GlobalSwiper>
+  <!-- 第二部分 -->
+  <CommonBox theme="dark-theme">
+    <template v-slot:content>
+      <CommonSwiper
+          :color="this.commonData?.color ?this.commonData?.color : this.commonData?.ep_type?.color "
+          :swiperData='{img_arr: `["http://49.233.14.172:9999/imgs/2021/11/00d08af67985e41a.jpg"]`,text: "世界上无数人都在竭力追求更好的未来。在此你可以了解更多环保、生活相关的故事及消息。"}'
+          :type="1"
+      ></CommonSwiper>
+    </template>
+  </CommonBox>
+  <!-- 精选文章 -->
+  <SelectedNews :related_news="this.selected_news"/>
+  <!-- 专栏  -->
+  <div class="column"></div>
+  <SectionRow v-if="LastDecade_news" :lastYear_news="LastDecade_news">
+    <template v-slot:column-title>
+      <div class="last-more">
+        <h2 :style="{color: `${this.commonData?.color}`}">2010's</h2>
+      </div>
+    </template>
+  </SectionRow>
 </template>
 
 <script>
 import GlobalSwiper from "@/components/common/GlobalSwiper";
+import CommonBox from "@/components/projectOrTypes/commonBox";
+import CommonSwiper from "@/components/projectOrTypes/CommonSwiper";
+import SelectedNews from "@/components/selectedNews/SelectedNews";
+import SectionRow from "@/components/common/SectionRow";
 import {getNewsMessage} from "@/tools/request";
+import {mapMutations} from "vuex"
+import Swiper from "swiper";
 
 export default {
   name: "NewsMessage",
   components: {
-    GlobalSwiper
+    GlobalSwiper,
+    CommonBox,
+    CommonSwiper,
+    SelectedNews,
+    SectionRow
   },
-  mounted() {
+  data() {
+    return {
+      related_news: [], // 相关新闻
+      selected_news: [], // 精选文章
+    }
+  },
+  created() {
     this._initData()
   },
+  updated() {
+    this.$nextTick(() => {
+      this.initSwiper()
+    })
+  },
   methods: {
+    ...mapMutations(['changeIsData']),
     async _initData() {
       const result = await getNewsMessage()
+      //显示 nav
+      result.result.related_news.length > 0 ? this.changeIsData() : null
+      // 相关新闻
+      this.related_news = result.result.related_news
+      // 精选文章
+      this.selected_news = result.result.selected_news
       console.log(result)
-    }
+    },
+
+    initSwiper() {
+      new Swiper(".home-swiper", {
+        // 循环模式选项
+        loop: false,
+        // 自动播放
+        autoplay: false,
+        observer: true, // 修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, // 修改swiper的父元素时，自动初始化swiper
+        grabCursor: true,
+        // slidesPerView: "auto",
+
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        // 如果需要分页器
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      })
+    },
   },
 }
 </script>
 
 <style scoped>
+@import '~@/assets/css/homeSwiper.css';
 
 </style>

@@ -1,4 +1,4 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
 
 export default createStore({
   state: {
@@ -7,7 +7,7 @@ export default createStore({
   },
   mutations: {
     changeIsData(state) {
-      state.isData = !state.isData
+       state.isData = true
     },
     changeScroll(state, value) {
       state.srcollNum = value
