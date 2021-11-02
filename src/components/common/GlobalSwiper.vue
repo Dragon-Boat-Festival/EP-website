@@ -1,10 +1,11 @@
 <template>
   <div class="bg">
     <div class="home-swiper-view animate__animated animate__fadeIn AN" :style="{backgroundColor}">
+      <!--         ref="background" -->
       <BackgroundMotion
         v-if="img_url"
         eClassName="section-featured-background"
-        :style="{background: `url(${img_url}) left center/auto 85% no-repeat`}"
+        :style="{background: `url(${img_url})  left center/auto 85% no-repeat`}"
       />
       <!-- 整体容器 -->
       <div class="swiper-con con-box">
@@ -62,6 +63,15 @@ export default {
   components: {
     BackgroundMotion
   },
+  mounted () {
+    this.$nextTick(() => {
+      // setTimeout(() => {
+      // console.log(this.$refs['background'].$el.offsetHeight);
+
+      // }, 1800)
+
+    })
+  }
 }
 
 </script>
@@ -70,6 +80,7 @@ export default {
 // banner背景图片样式
 .section-featured-background {
   top: -100px;
+  height: 900px;
   bottom: -100px;
   position: absolute;
   left: 0;
