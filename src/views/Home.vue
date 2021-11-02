@@ -128,6 +128,10 @@ export default {
     new this.$wow.WOW({
       live: false
     }).init()
+    window.addEventListener('scroll', this.handleScroll, true)
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.handleScroll, true)
   },
   updated() {
     this.$nextTick(() => {
@@ -135,6 +139,15 @@ export default {
         this.initSwiper()
         this.isTrue = false
       }
+    })
+  },
+  mounted () {
+    this.$nextTick(() => {
+      setTimeout(() => {
+        document.body.scrollTop = this.$store.state.srcollNum
+        document.documentElement.scrollTop = this.$store.state.srcollNum
+        window.scrollTo(0, this.$store.state.srcollNum)
+      }, 800);
     })
   },
   components: {
@@ -145,6 +158,7 @@ export default {
     BackgroundMotion
   },
   methods: {
+    ...mapMutations([ 'changeScroll'])
     async getData() {
       let res = await getHomeData()
       this.homeData = res.result
@@ -171,6 +185,10 @@ export default {
         },
       })
     },
+    // 监听滚动方法
+    handleScroll () {
+      this.changeScroll(window.pageYOffset)
+    }
   },
 
 
