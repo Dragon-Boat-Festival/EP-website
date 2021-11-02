@@ -72,7 +72,7 @@ export default {
       window.scrollTo(0, 0)
       const result = await getNewsDetail(news_id)
       console.log(result)
-      if (!result.result.news_detail) return window.location.href = "/404"
+      if (!result.result?.news_detail) return window.location.href = "/404"
 
 
       // 新闻详情数据赋值
