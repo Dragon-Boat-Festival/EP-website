@@ -20,14 +20,8 @@
         <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
         <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button>
       </div>
-      <el-drawer direction="ttb" size="35%" v-model="isDrawer" title="搜索">
-        <input type="text" placeholder="输入关键字搜索" v-model="inputData" class="AN" />
-        <span class="iconfont icon-butongguodechacha" @click="emptyData" v-if="inputData !== ''"></span>
-        <p class="ANM">搜索</p>
-      </el-drawer>
     </div>
   </div>
-
   <!-- 移动端显示的盒子 -->
   <div class="mobile-Container box-sha2 animate__animated animate__fadeInDown">
     <div class="nav-content">
@@ -43,12 +37,18 @@
   </div>
   <!-- 占位盒子 -->
   <div class="nav-placeholder"></div>
+  <!-- 弹出搜索框 -->
+  <el-drawer direction="ttb" size="35%" v-model="isDrawer" title="搜索">
+    <input type="text" placeholder="输入关键字搜索" v-model="inputData" class="AN" />
+    <span class="iconfont icon-butongguodechacha" @click="emptyData" v-if="inputData !== ''"></span>
+    <p class="ANM">搜索</p>
+  </el-drawer>
 </template>
 
 <script>
 export default {
   name: 'NavBar',
-  data() {
+  data () {
     return {
       isDrawer: false,
       // 输入框输入的值
@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    toHome() {
+    toHome () {
       console.log(1);
       this.$router.push('/')
     },
@@ -71,7 +71,92 @@ export default {
 }
 </script>
 
-
+<style lang="less">
+// 搜索样式
+.el-overlay {
+  top: 49px !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 6 !important;
+}
+.el-drawer__close {
+  font-size: 25px !important;
+  color: var(--black) !important;
+  transition: all 0.3s !important;
+}
+.el-drawer__close-btn:hover i {
+  color: var(--green) !important;
+}
+.el-drawer__header {
+  margin: 0 auto !important;
+  width: 97%;
+  max-width: 1200px;
+  padding: 35px 0 !important;
+}
+.el-drawer__header > :first-child {
+  letter-spacing: 2px !important;
+  font-weight: 700 !important;
+  font-size: 38px !important;
+  color: var(--black) !important;
+}
+.el-drawer {
+  background-color: #e6f5f5 !important;
+}
+.el-drawer__body {
+  margin-left: 40px !important;
+  display: flex !important;
+  input {
+    width: 90%;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 24px 0 0 24px;
+    padding-left: 16px;
+    border: 1px solid rgb(87, 87, 87);
+    outline: none;
+  }
+  span {
+    color: var(--black);
+    position: absolute;
+    top: 172px;
+    right: 160px;
+  }
+  p {
+    text-align: center;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0 20px;
+    border-radius: 0 24px 24px 0;
+    background-color: var(--button);
+    font-size: 18px;
+    font-weight: 700;
+    border: 1px solid rgb(87, 87, 87);
+    border-left: none;
+    color: var(--white);
+  }
+}
+@media screen and (max-width: 1024px) {
+  .el-overlay {
+    top: 95px !important;
+  }
+  .el-drawer__header > :first-child {
+    margin: 10px 0 0 10px !important;
+  }
+  .el-drawer__body {
+    margin-left: 10px !important;
+    p {
+      padding: 0 10px !important;
+    }
+    span {
+      top: 143px !important;
+      right: 110px !important;
+    }
+  }
+}
+</style>
 <style lang="less" scoped>
 @media screen and (max-width: 1024px) {
   .mobile-Container,
@@ -117,19 +202,6 @@ export default {
       font-size: 12px;
     }
   }
-  :deep(.el-drawer__header > :first-child) {
-    margin: 10px 0 0 10px !important;
-  }
-  :deep(.el-drawer__body) {
-    margin-left: 10px !important;
-    p {
-      padding: 0 10px !important;
-    }
-    span {
-      top: 143px !important;
-      right: 110px !important;
-    }
-  }
 }
 
 @media screen and (max-width: 376px) {
@@ -146,68 +218,6 @@ export default {
   }
 }
 
-:deep(.el-overlay) {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-:deep(.el-drawer__close) {
-  font-size: 25px;
-  color: var(--black);
-  transition: all 0.3s;
-}
-:deep(.el-drawer__close-btn:hover i) {
-  color: var(--green) !important;
-}
-
-:deep(.el-drawer__header > :first-child) {
-  letter-spacing: 2px;
-  font-weight: 700;
-  font-size: 38px;
-  margin: 40px 0 0 40px;
-  color: var(--black);
-}
-
-:deep(.el-drawer) {
-  background-color: #e6f5f5;
-}
-:deep(.el-drawer__body) {
-  margin-left: 40px;
-  display: flex;
-  input {
-    width: 90%;
-    font-size: 18px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 24px 0 0 24px;
-    padding-left: 16px;
-    border: 1px solid rgb(87, 87, 87);
-    outline: none;
-  }
-  span {
-    color: var(--black);
-    position: absolute;
-    top: 172px;
-    right: 160px;
-  }
-  p {
-    text-align: center;
-    width: 80px;
-    height: 50px;
-    line-height: 50px;
-    margin: 0;
-    padding: 0 20px;
-    border-radius: 0 24px 24px 0;
-    background-color: var(--button);
-    font-size: 18px;
-    font-weight: 700;
-    border: 1px solid rgb(87, 87, 87);
-    border-left: none;
-  }
-}
 .nav-Container {
   position: fixed;
   top: 0;

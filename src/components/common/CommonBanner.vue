@@ -15,20 +15,6 @@
           <a class="back-button">
             <i class="iconfont icon-zuo ANM" @click="this.$router.go(-1)">上一页</i>
           </a>
-          <a
-            href="#"
-            v-if="this.$route.name == 'epDetail'"
-            data-topic="68"
-            class="js-issue-follow button button-orange light"
-            style="display: none;"
-          >立即关注</a>
-          <a
-            href="#"
-            v-if="this.$route.name == 'epDetail'"
-            data-topic="68"
-            class="js-issue-unfollow button not-following button-orange light"
-            style="display: inline;"
-          >你正在关注</a>
         </div>
         <div class="hero-issue-title">
           <h1>{{ commonData?.name }}</h1>
@@ -146,7 +132,7 @@ export default {
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
-        padding: 10px 20px;
+        padding: 20px 0;
         -webkit-box-align: center;
         align-items: center;
         z-index: 5;
@@ -175,10 +161,9 @@ export default {
         z-index: 5;
         // 标题
         h1 {
-          font-size: 90px;
+          font-size: 40px;
           line-height: 0;
           letter-spacing: 10px;
-
           text-align: center;
         }
 
@@ -216,7 +201,11 @@ export default {
 
   // banner 下部分 文字
   .ct-container {
-    //width: 58% !important;
+    .content {
+      .top-bar {
+        padding: 20px 10px !important;
+      }
+    }
 
     h2 {
       font-size: 30px !important;
