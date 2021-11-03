@@ -68,7 +68,6 @@ export default {
     this._initData(this.news_id)
   },
   beforeUnmount () {
-    console.log(1);
     this.about_news = null
   },
   methods: {

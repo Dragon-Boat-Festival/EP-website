@@ -7,7 +7,11 @@
     <div class="con-box">
       <!--       h2-title 标题 在头部 相关推荐新闻 -->
       <div class="h2-title">
-        <h2 class="h2">{{ h2Text }}</h2>
+        <h2
+          class="h2 animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+        >{{ h2Text }}</h2>
       </div>
 
       <slot name="column-title"></slot>
@@ -15,10 +19,12 @@
       <div class="mini-swiper">
         <div class="swiper-wrapper">
           <NewsColumn
-            class="swiper-slide card-mini mini-update"
+            class="swiper-slide card-mini mini-update animate__animated animate__fadeInRightBig wow"
             v-for="(item, index) in lastYear_news"
             :news="item"
             :key="index"
+            data-wow-duration="2s"
+            :data-wow-delay="`${(index +  1) * 0.1}s`"
           ></NewsColumn>
         </div>
         <div class="swiper-button-prev swiper-bt box-sha2"></div>
@@ -53,11 +59,17 @@ export default {
   },
 
   updated () {
+    new this.$wow.WOW({
+      live: false
+    }).init()
     this.$nextTick(() => {
       this._init()
     })
   },
   mounted () {
+    new this.$wow.WOW({
+      live: false
+    }).init()
     this.$nextTick(() => {
       this._init()
     })

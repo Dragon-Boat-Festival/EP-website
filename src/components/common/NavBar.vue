@@ -42,34 +42,103 @@
   <!-- 占位盒子 -->
   <div class="nav-placeholder"></div>
   <!-- 弹出搜索框 -->
-  <el-drawer direction="ttb" size="35%" v-model="isDrawer" title="搜索">
-    <input type="text" placeholder="输入关键字搜索" v-model="inputData" class="AN" />
-    <span class="iconfont icon-butongguodechacha" @click="emptyData" v-if="inputData !== ''"></span>
-    <p class="ANM">搜索</p>
+  <el-drawer direction="ttb" size="auto" v-model="$store.state.isDrawer" title="搜索">
+    <form @submit.prevent="goSearchView" class="con-box">
+      <input
+        type="text"
+        placeholder="输入关键字搜索"
+        @input="search($event)"
+        v-model="inputData"
+        class="searchInput AN"
+        required
+      />
+      <span
+        class="iconfont icon-butongguodechacha ANM"
+        @click="emptyData"
+        @keyup.enter="goSearchView"
+        v-if="inputData !== ''"
+      ></span>
+      <input type="submit" class="searchButton ANM" value="搜索" />
+    </form>
+    <div class="searchData con-box" v-if="this.searchData.rows">
+      <p v-if="this.searchData.count == 0">没有要搜索的内容哦</p>
+      <p v-else>文章</p>
+      <ArticleItem
+        v-for="(item, index) in this.searchData.rows"
+        :news="item"
+        :key="index"
+        :index="index"
+      />
+    </div>
   </el-drawer>
 </template>
 
 <script>
+import ArticleItem from "@/components/selectedNews/ArticleItem"
+
+import { getSearchData } from '@/tools/request'
+import { mapMutations } from "vuex"
+
 export default {
   name: 'NavBar',
+  components: {
+    ArticleItem
+  },
   data () {
     return {
-      isDrawer: false,
       // 输入框输入的值
-      inputData: ''
+      inputData: '',
+      // 搜索的结果
+      searchData: [],
+      //标记当前事件函数的时间戳
+      lastTimeStamp: 0,
     }
   },
   methods: {
+    ...mapMutations(['openDrawer', 'changeDrawer']),
+    // 回到首页
     toHome () {
-      console.log(1);
       this.$router.push('/')
     },
+    // 显示搜索框
     showSearch () {
-      this.isDrawer = !this.isDrawer
+      this.openDrawer()
     },
     // 清空输入框
     emptyData () {
       this.inputData = ''
+      this.searchData = []
+    },
+    // 搜索内容
+    search (event) {
+      this.lastTimeStamp = event.timeStamp;
+      setTimeout(() => {
+        if (this.lastTimeStamp == event.timeStamp) {
+          this.searchCallBack()
+        }
+      }, 1000);
+    },
+    // 搜索回调
+    async searchCallBack () {
+      if (this.inputData == '') {
+        this.searchData = []
+      } else {
+        let result = await getSearchData({
+          keyword: this.inputData,
+          types_id: 0,
+          column_id: 0,
+          pageNum: 1,
+          pageSize: 6
+        })
+        this.searchData.count = result.result.count
+        this.searchData.rows = result.result.rows
+      }
+
+    },
+    // 去搜索页面
+    goSearchView () {
+      this.searchCallBack()
+      console.log(this.inputData);
     }
   }
 }
@@ -77,6 +146,9 @@ export default {
 
 <style lang="less">
 // 搜索样式
+.el-drawer.ttb {
+  min-height: 35% !important;
+}
 .el-overlay {
   top: 49px !important;
   left: 0 !important;
@@ -94,7 +166,7 @@ export default {
 }
 .el-drawer__header {
   margin: 0 auto !important;
-  width: 97%;
+  width: 88%;
   max-width: 1200px;
   padding: 35px 0 !important;
 }
@@ -108,9 +180,9 @@ export default {
   background-color: #e6f5f5 !important;
 }
 .el-drawer__body {
-  margin-left: 40px !important;
-  display: flex !important;
-  input {
+  margin: 0 !important;
+  padding: 0 !important;
+  .searchInput {
     width: 90%;
     font-size: 18px;
     height: 50px;
@@ -120,17 +192,17 @@ export default {
     border: 1px solid rgb(87, 87, 87);
     outline: none;
   }
-  span {
+  .iconfont {
     color: var(--black);
     position: absolute;
-    top: 172px;
-    right: 160px;
+    top: 19px;
+    right: 170px;
   }
-  p {
+  .searchButton {
     text-align: center;
-    width: 80px;
-    height: 50px;
-    line-height: 50px;
+    width: 130px;
+    height: 54px;
+    line-height: 54px;
     margin: 0;
     padding: 0 20px;
     border-radius: 0 24px 24px 0;
@@ -155,14 +227,38 @@ export default {
       padding: 0 10px !important;
     }
     span {
-      top: 143px !important;
-      right: 110px !important;
+      top: 20px !important;
+      right: 150px !important;
     }
   }
 }
 </style>
 <style lang="less" scoped>
+.con-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 90%;
+}
+.searchData {
+  position: relative;
+  padding: 50px 10px;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+  padding-bottom: 70px;
+  margin-bottom: 40px;
+  p {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    font-weight: 700;
+  }
+}
 @media screen and (max-width: 1024px) {
+  .searchData {
+    grid-template-columns: repeat(auto-fill, minmax(35%, 1fr));
+  }
   .mobile-Container,
   .mobile-show {
     display: block !important;
@@ -199,6 +295,9 @@ export default {
 }
 
 @media screen and (max-width: 512px) {
+  .searchData {
+    grid-template-columns: none;
+  }
   .nav-right {
     button {
       max-width: 100px;

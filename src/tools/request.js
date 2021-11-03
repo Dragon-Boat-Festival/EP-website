@@ -2,7 +2,7 @@ import axios from './ajax'
 
 axios.defaults.withCredentials = true
 
-let http = 'http://b163-120-230-126-33.ngrok.io/'
+let http = 'http://9aa7-120-230-126-43.ngrok.io/'
 
 // 获取首页所有数据
 export function getHomeData() {
@@ -47,5 +47,14 @@ export const getNewsMessage = () => {
   return axios({
     method: 'get',
     url: `${http}v1/new_message/date`,
+  })
+}
+
+// 获取搜索返回结果
+export const getSearchData = (data) => {
+  return axios({
+    method: 'post',
+    url: `${http}v1/news/search`,
+    data: data,
   })
 }
