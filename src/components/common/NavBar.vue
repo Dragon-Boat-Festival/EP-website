@@ -2,9 +2,13 @@
   <!-- pc 移动端都显示的盒子 -->
   <div class="nav-Container box-sha1 animate__animated animate__fadeInDown">
     <div class="nav-bar AN con-box">
-      <div class="nav-left ANM" @click="toHome">
+      <div class="nav-left ANM">
         <span class="iconfont icon-search ANM mobile-show" @click="showSearch"></span>
-        <img src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png" alt="logo" />
+        <img
+          src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png"
+          @click="toHome"
+          alt="logo"
+        />
       </div>
       <div class="nav-content pc-show">
         <router-link :to="{ path: '/' }" class="nav-item p">
@@ -225,7 +229,7 @@ export default {
   background-color: var(--green);
   height: 50px;
   width: 100vw;
-  z-index: 9;
+  z-index: 11;
   animation-duration: 0.3s;
 
   .nav-bar {

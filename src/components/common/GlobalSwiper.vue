@@ -8,7 +8,7 @@
         :style="{background: `url(${img_url})  left center/auto 85% no-repeat`}"
       />
       <!-- 整体容器 -->
-      <div class="swiper-con con-box" style="justify-content: space-between">
+      <div class="swiper-con con-box">
         <div class="swiper-content">
           <!-- swiper翻页器 -->
           <slot name="swiper-pagination"></slot>

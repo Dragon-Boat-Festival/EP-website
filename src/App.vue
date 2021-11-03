@@ -3,7 +3,9 @@
 
   <router-view v-slot="{ Component }">
     <transition name="el-fade-in-linear">
-      <component :is="Component" />
+      <div>
+        <component :is="Component" />
+      </div>
     </transition>
   </router-view>
 

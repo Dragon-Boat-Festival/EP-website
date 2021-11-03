@@ -1,7 +1,10 @@
 <template>
   <!-- 精选文章模块中的 文章 -->
-  <router-link :to="{ path: '/newsDetail', query: {news_id: news?.news_id} }" class="card-update compact"
-               :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}">
+  <router-link
+    :to="{ path: '/newsDetail', query: {news_id: news?.news_id} }"
+    class="card-update compact"
+    :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}"
+  >
     <!--  左边文字  -->
     <div class="left-content">
       <!--   上部分     -->
@@ -10,16 +13,12 @@
         <span>专题报道</span>
       </div>
       <!--   中间 文章标题     -->
-      <p class="title">
-        {{ news?.title }}</p>
+      <p class="title">{{ news?.title }}</p>
       <!--   底部时间     -->
       <span class="time meta-box">{{ news.release_time?.substring(0, 10) }}</span>
     </div>
     <!--  右边图片  -->
-    <div class="right-img"
-         :style="{backgroundImage: `url(${news?.main_img})`}">
-
-    </div>
+    <div class="right-img" :style="{backgroundImage: `url(${news?.main_img})`}"></div>
     <!--    {{ news }}-->
   </router-link>
 </template>
@@ -49,6 +48,7 @@ export default {
 
 .card-update {
   display: flex;
+  justify-content: space-between;
   text-decoration: none !important;
   border-bottom: none !important;
   color: var(--black);
@@ -152,6 +152,5 @@ export default {
       justify-content: center;
     }
   }
-
 }
 </style>

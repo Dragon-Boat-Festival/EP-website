@@ -1,10 +1,6 @@
 <template>
   <!--  精选文章 -->
-  <GlobalSwiper
-      swiperBg="swiper-pg"
-      spanText="为你呈上近期环保热话及编辑推介文章，罗列国际和本地你不可不知道的重要资讯。"
-
-  >
+  <GlobalSwiper swiperBg="swiper-pg" spanText="为你呈上近期环保热话及编辑推介文章，罗列国际和本地你不可不知道的重要资讯。">
     <template v-slot:swiper-pagination>
       <!-- swiper翻页器 -->
       <div :class="`swiper-pagination swiper-pg` "></div>
@@ -17,7 +13,12 @@
     </template>
     <template v-slot:right-swiper>
       <div class="article_list">
-        <ArticleItem v-for="(item, index) in this.related_news" :news="item" :key="index" :index="index"/>
+        <ArticleItem
+          v-for="(item, index) in this.related_news"
+          :news="item"
+          :key="index"
+          :index="index"
+        />
       </div>
     </template>
   </GlobalSwiper>
@@ -39,7 +40,7 @@ export default {
     GlobalSwiper,
     ArticleItem
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       console.log(this.related_news)
 
@@ -57,11 +58,12 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   .article_list {
+    margin-left: 20%;
     width: 65%;
     display: grid;
     grid-column-gap: 30px;
     margin-bottom: 0 !important;
-    grid-template-columns:repeat(auto-fill, minmax(45%, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
   }
 }
 </style>
