@@ -1,5 +1,5 @@
 <template>
-  <a @click="this.$router.push({path:'/newsDetail', query: { news_id: news?.news_id }})" class="">
+  <a @click="this.$router.push({path:'/newsDetail', query: { news_id: news?.news_id }})" class="ANM">
     <!--     图片       -->
     <div class="thumbnail lazy swiper-lazy "
          :data-background="news.main_img"
