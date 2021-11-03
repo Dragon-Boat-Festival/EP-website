@@ -2,10 +2,10 @@
   <div class="home">
     <!-- 头部banner   -->
     <GlobalSwiper
-        v-if="homeData.banner_news"
-        :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
-        swiperBg="swiper-pg"
-        spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
+      v-if="homeData.banner_news"
+      :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
+      swiperBg="swiper-pg"
+      spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
     >
       <template v-slot:swiper-pagination>
         <!-- swiper翻页器 -->
@@ -22,10 +22,10 @@
           <!-- 单个swiper -->
           <div class="swiper-wrapper">
             <div
-                class="swiper-slide"
-                v-for="(item,index) in homeData.banner_news"
-                :key="index"
-                @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+              class="swiper-slide"
+              v-for="(item,index) in homeData.banner_news"
+              :key="index"
+              @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
             >
               <div class="slide-con box-sha1 AN">
                 <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
@@ -51,9 +51,9 @@
 
     <!-- 项目部分   -->
     <home-project
-        v-if="homeData.project_date"
-        :project-date="homeData.project_date"
-        class-name="dark"
+      v-if="homeData.project_date"
+      :project-date="homeData.project_date"
+      class-name="dark"
     >
       <template v-slot:h2>
         <h2 class="h2">重点环保项目</h2>
@@ -64,21 +64,21 @@
     </home-project>
 
     <!-- earth   -->
-    <Earth v-if="homeData.project_date"/>
+    <Earth v-if="homeData.project_date" />
 
     <!-- 环保分类模块 -->
-    <home-issue v-if="homeData.project_date" :types="homeData.types"/>
+    <home-issue v-if="homeData.project_date" :types="homeData.types" />
 
     <!-- 环保概念模块 -->
     <div
-        v-if="homeData.project_date"
-        class="home-concept animate__animated animate__fadeIn wow"
-        data-wow-duration="1s"
-        data-wow-delay=".5s"
+      v-if="homeData.project_date"
+      class="home-concept animate__animated animate__fadeIn wow"
+      data-wow-duration="1s"
+      data-wow-delay=".5s"
     >
       <BackgroundMotion
-          eClassName="banners_background"
-          :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
+        eClassName="banners_background"
+        :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
       />
       <div class="concept-text con-box">
         <h2 class="h2">环保相关概念</h2>
@@ -109,33 +109,33 @@ import homeProject from "@/components/Home/homeProject"
 import homeIssue from "@/components/Home/homeIssue"
 import Earth from '@/components/Home/earth'
 import GlobalSwiper from "@/components/common/GlobalSwiper";
-import {getHomeData} from '@/tools/request'
+import { getHomeData } from '@/tools/request'
 import BackgroundMotion from "@/components/common/BackgroundMotion";
 
-import {mapMutations} from "vuex";
+import { mapMutations } from "vuex";
 
 import Swiper from "swiper";
 import "swiper/css/swiper.css"
 
 export default {
   name: 'Home',
-  data() {
+  data () {
     return {
       homeData: {},
       isTrue: true // 是否需要请求 是否第一次进入页面
     }
   },
-  created() {
+  created () {
     this.getData()
     new this.$wow.WOW({
       live: false
     }).init()
     window.addEventListener('scroll', this.handleScroll, true)
   },
-  beforeUnmount() {
+  beforeUnmount () {
     window.removeEventListener('scroll', this.handleScroll, true)
   },
-  updated() {
+  updated () {
     this.$nextTick(() => {
       if (this.isTrue) {
         this.initSwiper()
@@ -143,7 +143,7 @@ export default {
       }
     })
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       setTimeout(() => {
         document.body.scrollTop = this.$store.state.srcollNum
@@ -161,11 +161,11 @@ export default {
   },
   methods: {
     ...mapMutations(['changeScroll']),
-    async getData() {
+    async getData () {
       let res = await getHomeData()
       this.homeData = res.result
     },
-    initSwiper() {
+    initSwiper () {
       new Swiper(".home-swiper", {
         // 循环模式选项
         loop: false,
@@ -188,7 +188,7 @@ export default {
       })
     },
     // 监听滚动方法
-    handleScroll() {
+    handleScroll () {
       this.changeScroll(window.pageYOffset)
     }
   },
@@ -210,11 +210,13 @@ export default {
   bottom: 0;
   z-index: 2;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-  background: -webkit-gradient(linear,
-  left top,
-  left bottom,
-  from(rgba(0, 0, 0, 0.5)),
-  to(rgba(0, 0, 0, 0)));
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.5)),
+    to(rgba(0, 0, 0, 0))
+  );
 }
 
 // 背景
