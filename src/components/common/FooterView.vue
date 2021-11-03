@@ -84,7 +84,7 @@ export default {
         display: flex;
         flex-direction: column;
         color: var(--white);
-        line-height: 2.5;
+        line-height: 2;
 
         .title {
           font-size: 20px;

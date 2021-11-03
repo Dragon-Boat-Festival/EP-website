@@ -1,9 +1,11 @@
 <template>
-  <!-- 精选文章模块中的 文章 -->
+  <!-- 精选文章模块中的 文章  
+      :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}"
+  -->
   <router-link
+    @click="backDrawer"
     :to="{ path: '/newsDetail', query: {news_id: news?.news_id} }"
     class="card-update compact"
-    :style="{borderBottom: `${index < 2 ? '1px solid var(--gray) !important': 'none'}`}"
   >
     <!--  左边文字  -->
     <div class="left-content">
@@ -24,6 +26,8 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex"
+
 export default {
   name: "ArticlesItem",
   props: {
@@ -33,6 +37,12 @@ export default {
     },
     index: {
       type: Number,
+    }
+  },
+  methods: {
+    ...mapMutations(['changeDrawer']),
+    backDrawer () {
+      this.changeDrawer(false)
     }
   }
 }
@@ -50,7 +60,7 @@ export default {
   display: flex;
   justify-content: space-between;
   text-decoration: none !important;
-  border-bottom: none !important;
+  border-bottom: 1px solid var(--gray) !important;
   color: var(--black);
 }
 

@@ -6,10 +6,19 @@
       <div :class="`swiper-pagination swiper-pg` "></div>
     </template>
     <template v-slot:h2>
-      <h2 class="h2" style="color: var(--black)">精选文章</h2>
+      <h2
+        class="h2 animate__animated animate__fadeIn wow"
+        data-wow-duration="1s"
+        data-wow-delay=".5s"
+        style="color: var(--black)"
+      >精选文章</h2>
     </template>
     <template v-slot:subtitle>
-      <p class="subtitle">FROM THE EARTH</p>
+      <p
+        class="subtitle animate__animated animate__fadeIn wow"
+        data-wow-duration="1s"
+        data-wow-delay=".8s"
+      >FROM THE EARTH</p>
     </template>
     <template v-slot:right-swiper>
       <div class="article_list">
@@ -41,10 +50,13 @@ export default {
     ArticleItem
   },
   mounted () {
-    this.$nextTick(() => {
-      console.log(this.related_news)
+    new this.$wow.WOW({
+      live: false
+    }).init()
+    // this.$nextTick(() => {
+    //   console.log(this.related_news)
 
-    })
+    // })
   }
 }
 </script>

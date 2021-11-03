@@ -2,7 +2,12 @@
   <!-- 大盒子 -->
   <div class="boxes">
     <!--  文字盒子  -->
-    <div class="box" :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}">
+    <div
+      class="box animate__animated animate__fadeIn wow"
+      data-wow-duration="1s"
+      data-wow-delay=".5s"
+      :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}"
+    >
       <div class="with-images">
         <h2 :style="{color: `${color}`}" v-if="type == 0">{{ h2Text }}</h2>
         <p :style="{color: `${color}`}">{{ swiperData.text }}</p>
@@ -14,16 +19,17 @@
       <div class="swiper section-text-images-swiper">
         <div class="swiper-wrapper small_img">
           <div
-              v-for="(item, index) in JSON.parse(swiperData?.img_arr ? swiperData?.img_arr : `[]`)"
-              :key="index"
-              class="swiper-slide image"
-              :style="{backgroundImage: `url(${item})`}"
+            v-for="(item, index) in JSON.parse(swiperData?.img_arr ? swiperData?.img_arr : `[]`)"
+            :key="index"
+            class="swiper-slide image"
+            :style="{backgroundImage: `url(${item})`}"
           >
             <!--            <div class="swiper-lazy-preloader"></div>-->
           </div>
         </div>
-        <div class="project-pagination"
-             :style="{opacity: `${ JSON.parse(this.swiperData?.img_arr ? this.swiperData?.img_arr : `[]`).length > 1 ? '1': '0'}`}"
+        <div
+          class="project-pagination"
+          :style="{opacity: `${ JSON.parse(this.swiperData?.img_arr ? this.swiperData?.img_arr : `[]`).length > 1 ? '1': '0'}`}"
         ></div>
       </div>
     </div>
@@ -54,22 +60,24 @@ export default {
       default: "你知道吗？"
     }
   },
-  data() {
+  data () {
     return {
       img_arr: []
     }
   },
-  mounted() {
-    console.log(this.swiperData)
+  mounted () {
+    new this.$wow.WOW({
+      live: false
+    }).init()
     this.$nextTick(() => {
       this._init()
     })
   },
-  updated() {
-    console.log('123')
-  },
+  // updated () {
+  // console.log('123')
+  // },
   methods: {
-    _init() {
+    _init () {
       const swiper = new Swiper(".section-text-images-swiper", {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
