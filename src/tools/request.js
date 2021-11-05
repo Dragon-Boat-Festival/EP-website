@@ -1,12 +1,14 @@
-import axios from './ajax'
+import axios from './ajax';
 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
-let http = 'https://b4b8-223-74-67-221.ngrok.io/'
+
+let http = 'https://127.0.0.1:7001/';
 
 // 获取首页所有数据
 export function getHomeData() {
-  return axios.get(http + `v1/main/data`)
+  return axios.get(http + `v1/main/data`);
+
 }
 
 /**
@@ -22,8 +24,9 @@ export const getProjectOrTypesData = (data) => {
     method: 'post',
     url: `${http}v1/projectOrTypes/data`,
     data: data,
-  })
-}
+
+  });
+};
 
 /**
  * 获取 文章 详情
@@ -37,8 +40,9 @@ export const getNewsDetail = (news_id) => {
     data: {
       news_id,
     },
-  })
-}
+
+  });
+};
 /**
  * 获取 最新消息页
  * @returns {AxiosPromise}
@@ -47,8 +51,10 @@ export const getNewsMessage = () => {
   return axios({
     method: 'get',
     url: `${http}v1/new_message/date`,
-  })
-}
+
+  });
+};
+
 
 // 获取搜索返回结果
 export const getSearchData = (data) => {
@@ -56,5 +62,6 @@ export const getSearchData = (data) => {
     method: 'post',
     url: `${http}v1/news/search`,
     data: data,
-  })
-}
+
+  });
+};
