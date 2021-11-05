@@ -2,10 +2,13 @@
   <div :style="{transform: `rotate(${Math.floor(Math.random() * (0 - 2)) + 0})`}" class="tip">
     <div class="meta-box">
       <span>每天</span>
-      <span :style="{color: `${this.tip.ep_type?.color}`}" class="issue">{{ this.tip.ep_type?.name }}</span>
+      <span
+        :style="{color: `${this.tip.ep_type?.color}`}"
+        class="issue"
+      >{{ this.tip.ep_type?.name }}</span>
     </div>
-    <div class="tip-icon"><img :src="this.tip.img_url"
-                               loading="lazy">
+    <div class="tip-icon">
+      <img :src="this.tip.img_url" loading="lazy" />
     </div>
     <p class="title">{{ this.tip.tips_name }}</p>
     <div class="tip-actions">
@@ -14,19 +17,28 @@
       </div>
       <div class="tip-action-buttons has-committed">
         <div class="social-box">
-          <a class="tip-share-facebook"
-             href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             rel="noopener noreferrer" target="_blank">
+          <a
+            class="tip-share-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span class="icon-facebook"></span>
           </a>
-          <a class="tip-share-whatsapp"
-             href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             rel="noopener noreferrer" target="_blank">
+          <a
+            class="tip-share-whatsapp"
+            href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span class="icon-whatsapp"></span>
           </a>
-          <a class="tip-share-twitter"
-             href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-             rel="noopener noreferrer" target="_blank">
+          <a
+            class="tip-share-twitter"
+            href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <span class="icon-twitter"></span>
           </a>
         </div>
@@ -36,7 +48,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -71,7 +82,6 @@ export default {
   -webkit-box-pack: justify;
   justify-content: space-between;
   flex-direction: column;
-
   // 文字盒子
   .meta-box {
     color: #898b92;
@@ -102,7 +112,6 @@ export default {
 
 @media only screen and (min-width: 1024px) {
   .tip {
-
     .meta-box {
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
@@ -111,6 +120,15 @@ export default {
       justify-content: space-between;
       -webkit-box-align: start;
       align-items: flex-start;
+    }
+  }
+}
+@media screen and (max-width: 1300px) {
+  .tip {
+    width: 250px;
+    height: 350px;
+    .title {
+      font-size: 19px;
     }
   }
 }

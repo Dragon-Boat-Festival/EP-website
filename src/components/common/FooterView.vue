@@ -1,25 +1,15 @@
 <template>
+  <!--  animate__animated animate__fadeIn wow"
+    data-wow-duration="1s"
+    data-wow-delay=".7s"
+  data-wow-iteration="1-->
   <div class="footer">
     <div class="con-box">
       <div class="footer-left">
-        <img
-          class="animate__animated animate__fadeIn wow"
-          data-wow-duration="1s"
-          data-wow-delay=".4s"
-          src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png"
-          alt="logo"
-        />
-        <p
-          class="animate__animated animate__fadeIn wow"
-          data-wow-duration="1s"
-          data-wow-delay=".5s"
-        >此环保网站属于广东省高新技术高级技工学校，2021年网页比赛-环保网站比赛作品。</p>
+        <img src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png" alt="logo" />
+        <p>此环保网站属于广东省高新技术高级技工学校，2021年网页比赛-环保网站比赛作品。</p>
       </div>
-      <div
-        class="footer-right animate__animated animate__fadeIn wow"
-        data-wow-duration="1s"
-        data-wow-delay=".7s"
-      >
+      <div class="footer-right">
         <div class="class">
           <p class="title">我们的班级</p>
           <span>21计算机技师班</span>
@@ -47,13 +37,18 @@
 </template>
 
 <script>
-export default {
-  mounted () {
-    new this.$wow.WOW({
-      live: false
-    }).init()
-  },
-}
+// export default {
+//   // mounted () {
+//   //   new this.$wow.WOW({
+//   //     live: false
+//   //   }).init()
+//   // },
+//   // updated () {
+//   //   new this.$wow.WOW({
+//   //     live: false
+//   //   }).init()
+//   // }
+// }
 </script>
 
 <style lang="less" scoped>

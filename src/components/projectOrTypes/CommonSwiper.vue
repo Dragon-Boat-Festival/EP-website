@@ -2,15 +2,21 @@
   <!-- 大盒子 -->
   <div class="boxes">
     <!--  文字盒子  -->
-    <div
-      class="box animate__animated animate__fadeIn wow"
-      data-wow-duration="1s"
-      data-wow-delay=".5s"
-      :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}"
-    >
+    <div class="box" :style="{background: `${type == 0 ? 'var(--white)': 'var(--twoBg)'}`}">
       <div class="with-images">
-        <h2 :style="{color: `${color}`}" v-if="type == 0">{{ h2Text }}</h2>
-        <p :style="{color: `${color}`}">{{ swiperData.text }}</p>
+        <h2
+          class="animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+          :style="{color: `${color}`}"
+          v-if="type == 0"
+        >{{ h2Text }}</h2>
+        <p
+          class="animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+          :style="{color: `${color}`}"
+        >{{ swiperData.text }}</p>
       </div>
     </div>
     <!--  图片盒子  -->

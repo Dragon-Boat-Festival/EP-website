@@ -64,6 +64,9 @@ export default {
     }
   },
   mounted () {
+    new this.$wow.WOW({
+      live: false
+    }).init()
     this.news_id = this.$route.query.news_id
     this._initData(this.news_id)
   },

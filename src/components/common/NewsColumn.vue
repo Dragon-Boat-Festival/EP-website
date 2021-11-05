@@ -1,9 +1,14 @@
 <template>
-  <a @click="this.$router.push({path:'/newsDetail', query: { news_id: news?.news_id }})" class="ANM">
+  <a
+    @click="this.$router.push({path:'/newsDetail', query: { news_id: news?.news_id }})"
+    class="ANM"
+  >
     <!--     图片       -->
-    <div class="thumbnail lazy swiper-lazy "
-         :data-background="news.main_img"
-         data-was-processed="true">
+    <div
+      class="thumbnail lazy swiper-lazy"
+      :data-background="news.main_img"
+      data-was-processed="true"
+    >
       <div class="swiper-lazy-preloader"></div>
     </div>
     <!--     相关新闻信息       -->
@@ -35,7 +40,7 @@ export default {
   height: 0;
   padding-top: 50%;
   border-radius: 3px;
-  box-shadow: 0 0 15px 0 rgba(255, 255, 255, .5);
+  box-shadow: 0 0 15px 0 rgba(255, 255, 255, 0.5);
   background-color: #e5e8e9;
   background-position: center;
   background-size: cover;
@@ -46,7 +51,6 @@ export default {
 
 .thumbnail:hover {
   box-shadow: 0 0 20px 0 rgba(90, 82, 82, 0.5);
-
 }
 
 .meta-box {
@@ -60,11 +64,10 @@ export default {
   color: #898b92;
   font-size: 12px;
   line-height: 18px;
-
 }
 
 .news-title {
-  line-height: 1.5
+  line-height: 1.5;
 }
 
 @media only screen and (min-width: 1024px) {

@@ -22,7 +22,22 @@
       </div>
       <div class="nav-right">
         <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
-        <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button>
+        <!-- <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button> -->
+
+        <!--           :active-icon=""
+        :inactive-icon=""-->
+        <el-switch
+          v-model="isDark"
+          style="margin-left: 24px"
+          active-color="var(--green)"
+          inactive-color="var(--twoBg)"
+          :inline-prompt="true"
+          :active-icon="Moon"
+          :inactive-icon="Sunny"
+        ></el-switch>
+        <el-icon class="is-loading">
+          <sunny />
+        </el-icon>
       </div>
     </div>
   </div>
@@ -33,7 +48,7 @@
         <span class="iconfont icon-earth_line"></span>
         <p class="ANM">进入首页</p>
       </router-link>
-      <router-link to="/" class="nav-item p">
+      <router-link to="/newsMessage" class="nav-item p">
         <span class="iconfont icon-xinxi"></span>
         <p class="ANM">最新消息</p>
       </router-link>
@@ -43,10 +58,10 @@
   <div class="nav-placeholder"></div>
   <!-- 弹出搜索框 -->
   <el-drawer direction="ttb" size="auto" v-model="$store.state.isDrawer" title="搜索">
-    <form @submit.prevent="goSearchView" class="con-box">
+    <form @submit.prevent="goSearchView" class="wd9 con-box">
       <input
         type="text"
-        placeholder="输入关键字搜索"
+        placeholder="输入文章关键字搜索"
         @input="search($event)"
         v-model="inputData"
         class="searchInput AN"
@@ -60,20 +75,34 @@
       ></span>
       <input type="submit" class="searchButton ANM" value="搜索" />
     </form>
-    <div class="searchData con-box" v-if="this.searchData.rows">
-      <p v-if="this.searchData.count == 0">没有要搜索的内容哦</p>
-      <p v-else>文章</p>
+    <div class="searchData con-box" v-if="searchData.rows">
+      <p v-if="searchData.count == 0">没有要搜索文章有该相关的的内容哦</p>
+      <p v-else>文章({{searchData.count}})</p>
       <ArticleItem
-        v-for="(item, index) in this.searchData.rows"
+        v-for="(item, index) in searchData.rows"
         :news="item"
         :key="index"
         :index="index"
       />
     </div>
+    <div :class="searchData.count > 0 ? 'paging con-box pb':'paging con-box'">
+      <el-pagination
+        @size-change="changePage"
+        @current-change="changePage"
+        v-model:currentPage="currentPage"
+        :hide-on-single-page="searchData.count > 6 ? false : true"
+        background
+        layout="prev, pager, next"
+        :total="searchData.count"
+        :page-size="6"
+      ></el-pagination>
+    </div>
   </el-drawer>
 </template>
 
 <script>
+import { Sunny, Moon } from '@element-plus/icons'
+
 import ArticleItem from "@/components/selectedNews/ArticleItem"
 
 import { getSearchData } from '@/tools/request'
@@ -82,16 +111,24 @@ import { mapMutations } from "vuex"
 export default {
   name: 'NavBar',
   components: {
-    ArticleItem
+    ArticleItem,
+    Sunny,
+    Moon
   },
   data () {
     return {
+      // Check: Sunny,
+      // Close: Moon,
       // 输入框输入的值
       inputData: '',
       // 搜索的结果
       searchData: [],
       //标记当前事件函数的时间戳
       lastTimeStamp: 0,
+      // 当前展示第几页数据
+      currentPage: 1,
+      // 切换夜晚模式
+      isDark: false
     }
   },
   methods: {
@@ -114,12 +151,12 @@ export default {
       this.lastTimeStamp = event.timeStamp;
       setTimeout(() => {
         if (this.lastTimeStamp == event.timeStamp) {
-          this.searchCallBack()
+          this.searchCallBack(this.currentPage)
         }
       }, 1000);
     },
     // 搜索回调
-    async searchCallBack () {
+    async searchCallBack (pageNum) {
       if (this.inputData == '') {
         this.searchData = []
       } else {
@@ -127,7 +164,7 @@ export default {
           keyword: this.inputData,
           types_id: 0,
           column_id: 0,
-          pageNum: 1,
+          pageNum: pageNum,
           pageSize: 6
         })
         this.searchData.count = result.result.count
@@ -138,13 +175,32 @@ export default {
     // 去搜索页面
     goSearchView () {
       this.searchCallBack()
-      console.log(this.inputData);
+    },
+    // 点击页码回调
+    changePage (num) {
+      this.currentPage = num
+      console.log(this.currentPage);
+      this.searchCallBack(this.currentPage)
     }
   }
 }
 </script>
 
 <style lang="less">
+// 分页样式
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  color: var(--white) !important;
+  background-color: #0fb87d !important ;
+}
+.el-pagination.is-background .el-pager li:not(.disabled, .active):hover {
+  color: var(--el-text-color-regular) !important;
+}
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  // transition: all 0.2s;
+  background-color: transparent !important;
+}
 // 搜索样式
 .el-drawer.ttb {
   min-height: 35% !important;
@@ -238,16 +294,16 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+}
+.wd9 {
   width: 90%;
 }
 .searchData {
   position: relative;
-  padding: 50px 10px;
+  padding: 50px 10px 20px 10px;
   display: grid;
   grid-column-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
-  padding-bottom: 70px;
-  margin-bottom: 40px;
   p {
     position: absolute;
     top: 20px;
@@ -255,7 +311,16 @@ export default {
     font-weight: 700;
   }
 }
+.paging {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
 @media screen and (max-width: 1024px) {
+  .pb {
+    padding-bottom: 100px;
+  }
   .searchData {
     grid-template-columns: repeat(auto-fill, minmax(35%, 1fr));
   }

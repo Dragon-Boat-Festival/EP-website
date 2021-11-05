@@ -15,16 +15,17 @@
       </div>
 
       <slot name="column-title"></slot>
-      <!--  swiper    -->
+      <!--  swiper               
+      animate__animated animate__fadeInRightBig wow
+      data-wow-duration="2s"
+      :data-wow-delay="`${(index +  1) * 0.1}s`"-->
       <div class="mini-swiper">
         <div class="swiper-wrapper">
           <NewsColumn
-            class="swiper-slide card-mini mini-update animate__animated animate__fadeInRightBig wow"
+            class="swiper-slide card-mini mini-update"
             v-for="(item, index) in lastYear_news"
             :news="item"
             :key="index"
-            data-wow-duration="2s"
-            :data-wow-delay="`${(index +  1) * 0.1}s`"
           ></NewsColumn>
         </div>
         <div class="swiper-button-prev swiper-bt box-sha2"></div>
@@ -59,18 +60,22 @@ export default {
   },
 
   updated () {
-    new this.$wow.WOW({
-      live: false
-    }).init()
+    // new this.$wow.WOW({
+    //   live: false
+    // }).init()
     this.$nextTick(() => {
+      new this.$wow.WOW({
+        live: false
+      }).init()
       this._init()
     })
   },
   mounted () {
-    new this.$wow.WOW({
-      live: false
-    }).init()
+
     this.$nextTick(() => {
+      // new this.$wow.WOW({
+      //   live: false
+      // }).init()
       this._init()
     })
   },
@@ -182,6 +187,10 @@ export default {
 @media screen and (max-width: 512px) {
   :deep(.swiper-slide-active) {
     margin: 0 0 0 10px !important;
+  }
+  .section-mixed-content-row .mini-swiper .swiper-slide:first-child {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
   }
 }
 </style>
