@@ -2,11 +2,7 @@
   <div :class="`home-project-view ${className}`">
     <div class="project-view con-box">
       <!-- 左侧内容 -->
-      <div
-        class="project-left animate__animated animate__fadeIn wow"
-        data-wow-duration="1s"
-        data-wow-delay="1s"
-      >
+      <div class="project-left">
         <!-- swiper翻页器 -->
         <div class="swiper-pagination1 swiper-pg-white"></div>
         <slot name="h2"></slot>
@@ -17,11 +13,11 @@
         <div class="swiper home-project-swiper">
           <div class="swiper-wrapper">
             <router-link
-              class="swiper-slide animate__animated animate__fadeInRightBig wow"
+              class="swiper-slide animate__animated animate__fadeInRight wow"
               v-for="(item,index) in projectDate"
               :to="{name: 'epDetail',query:{type:0,id: item.id,name: item.name,types_id: item.ep_type.id }}"
-              data-wow-duration="1.5s"
-              :data-wow-delay="`${(index +  1) * 0.2}s`"
+              data-wow-duration="1s"
+              :data-wow-delay="`${(index +  1) * 0.1}s`"
               :key="index"
             >
               <ProjectBox :projectData="item" :className="`${className}`" />
@@ -61,9 +57,9 @@ export default {
     }).init()
     this.$nextTick(() => {
       this.initSwiper()
-      console.log(this.projectDate);
     })
   },
+
   methods: {
     initSwiper () {
       new Swiper(".home-project-swiper", {
@@ -157,6 +153,9 @@ export default {
 }
 
 @media screen and (max-width: 1024px) {
+  .swiper-slide-active {
+    margin: 0 !important;
+  }
   .home-project-view {
     .project-view {
       flex-direction: column;

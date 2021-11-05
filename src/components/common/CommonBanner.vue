@@ -223,4 +223,10 @@ export default {
     padding: 0 120px;
   }
 }
+
+@media screen and (max-width: 512px) {
+  .top-bar {
+    padding: 20px 15px !important;
+  }
+}
 </style>

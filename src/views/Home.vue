@@ -56,10 +56,18 @@
       class-name="dark"
     >
       <template v-slot:h2>
-        <h2 class="h2">重点环保项目</h2>
+        <h2
+          class="h2 animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+        >重点环保项目</h2>
       </template>
       <template v-slot:span>
-        <span class="p">我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span>
+        <span
+          class="p animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+        >我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span>
       </template>
     </home-project>
 
@@ -81,23 +89,59 @@
         :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
       />
       <div class="concept-text con-box">
-        <h2 class="h2">环保相关概念</h2>
+        <h2
+          class="h2 animate__animated animate__fadeIn wow"
+          data-wow-duration="1s"
+          data-wow-delay=".5s"
+        >环保相关概念</h2>
         <div class="text-box">
           <div class="text-bottom">
-            <h2 class="h2">一词解释</h2>
-            <p class="p">是指人类为解决现实的或潜在的环境问题，协调人类与环境的关系，保障经济、社会的持续发展而采取的各种行动的总称。</p>
+            <h2
+              class="h2 animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".3s"
+            >一词解释</h2>
+            <p
+              class="p animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".4s"
+            >是指人类为解决现实的或潜在的环境问题，协调人类与环境的关系，保障经济、社会的持续发展而采取的各种行动的总称。</p>
           </div>
           <div class="text-bottom">
-            <h2 class="h2">环保意义</h2>
-            <p class="p">人类的环保行动作用于地球生态，生态反哺于人类更好的生存环境。环保，在这个循环里，始于人类，途经地球生态，终于人类。</p>
+            <h2
+              class="h2 animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".5s"
+            >环保意义</h2>
+            <p
+              class="p animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".6s"
+            >人类的环保行动作用于地球生态，生态反哺于人类更好的生存环境。环保，在这个循环里，始于人类，途经地球生态，终于人类。</p>
           </div>
           <div class="text-bottom">
-            <h2 class="h2">相关概念</h2>
-            <p class="p">环境成本又称环境降级成本，是指由于经济活动造成环境污染而使环境服务功能质量下降的代价。</p>
+            <h2
+              class="h2 animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".7s"
+            >相关概念</h2>
+            <p
+              class="p animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".8s"
+            >环境成本又称环境降级成本，是指由于经济活动造成环境污染而使环境服务功能质量下降的代价。</p>
           </div>
           <div class="text-bottom">
-            <h2 class="h2">最终目标</h2>
-            <p class="p">环保的最终目标就是辅助人类追求更好更舒适的生活。</p>
+            <h2
+              class="h2 animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay=".9s"
+            >最终目标</h2>
+            <p
+              class="p animate__animated animate__fadeIn wow"
+              data-wow-duration="1s"
+              data-wow-delay="1s"
+            >环保的最终目标就是辅助人类追求更好更舒适的生活。</p>
           </div>
         </div>
       </div>

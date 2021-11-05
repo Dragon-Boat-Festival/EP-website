@@ -15,7 +15,12 @@
 
           <slot name="h2"></slot>
           <slot name="subtitle"></slot>
-          <span :style="{color: `${textColor}`}">{{ spanText }}</span>
+          <span
+            :style="{color: `${textColor}`}"
+            class="animate__animated animate__fadeIn wow"
+            data-wow-duration="1s"
+            data-wow-delay=".7s"
+          >{{ spanText }}</span>
         </div>
         <!-- swiper整体 -->
         <!-- 右侧内容 -->
@@ -65,11 +70,9 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      // setTimeout(() => {
-      // console.log(this.$refs['background'].$el.offsetHeight);
-
-      // }, 1800)
-
+      new this.$wow.WOW({
+        live: false
+      }).init()
     })
   }
 }
