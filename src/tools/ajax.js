@@ -21,6 +21,8 @@ axios.interceptors.request.use(function (config) {
 
     const {method, data} = config
     // 处理post请求，将data对象转换为query参数格式的字符串
+    // config.headers.origin = 'http://49.233.14.172:7001';
+    console.log(config.headers)
     if (method.toLowerCase() === 'post' && typeof data === 'object') {
         console.log(data)
         // config.data = qs.stringify(data)
@@ -47,7 +49,7 @@ axios.interceptors.response.use(function (response) {
         hideLoading()
     }, 200)
     // 路由拦截 跳转404
-    window.location.href = "/404"
+    // window.location.href = "/404"
 
     ElMessage({
         message: `'请求出错' + ${error.message}`,
