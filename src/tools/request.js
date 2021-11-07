@@ -3,11 +3,12 @@ import axios from './ajax';
 axios.defaults.withCredentials = true;
 
 
-let http = 'https://127.0.0.1:7001/';
+let http = 'http://49.233.14.172:2888/';
+// let http = 'http://127.0.0.1:7001/';
 
 // 获取首页所有数据
 export function getHomeData() {
-  return axios.get(http + `v1/main/data`);
+    return axios.get(http + `v1/main/data`);
 
 }
 
@@ -20,12 +21,14 @@ export function getHomeData() {
  * @returns {AxiosPromise}
  */
 export const getProjectOrTypesData = (data) => {
-  return axios({
-    method: 'post',
-    url: `${http}v1/projectOrTypes/data`,
-    data: data,
-
-  });
+    return axios({
+        method: 'post',
+        url: `${http}v1/projectOrTypes/data`,
+        data: data,
+        header: {
+            origin: "http://49.233.14.172:7001"
+        }
+    });
 };
 
 /**
@@ -34,34 +37,34 @@ export const getProjectOrTypesData = (data) => {
  * @returns {AxiosPromise}
  */
 export const getNewsDetail = (news_id) => {
-  return axios({
-    method: 'post',
-    url: `${http}v1/news/detail`,
-    data: {
-      news_id,
-    },
+    return axios({
+        method: 'post',
+        url: `${http}v1/news/detail`,
+        data: {
+            news_id,
+        },
 
-  });
+    });
 };
 /**
  * 获取 最新消息页
  * @returns {AxiosPromise}
  */
 export const getNewsMessage = () => {
-  return axios({
-    method: 'get',
-    url: `${http}v1/new_message/date`,
+    return axios({
+        method: 'get',
+        url: `${http}v1/new_message/date`,
 
-  });
+    });
 };
 
 
 // 获取搜索返回结果
 export const getSearchData = (data) => {
-  return axios({
-    method: 'post',
-    url: `${http}v1/news/search`,
-    data: data,
+    return axios({
+        method: 'post',
+        url: `${http}v1/news/search`,
+        data: data,
 
-  });
+    });
 };
