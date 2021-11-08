@@ -1,50 +1,50 @@
 @import './normalize.css';
 
 * {
-  transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 body {
-  background-color: var(--white);
+    background-color: var(--white);
 }
 
 :root {
 
-  /* 主题色 */
-  --green: #6c0;
-  /* 白色 */
-  --white: white;
-  /* 黑色 */
-  --black: black;
-  /* 灰色 副标题 a标签用 */
-  --gray: #898b92;
-  /* 按钮背景颜色 */
-  --button: #ff8100;
-  /* 紫色 */
-  --twoBg: #292f47;
-  --grayBackground: #f6f6f6;
-  /* 解决 web页面放在移动端，点击button 标签或者添加了cursor:pointer 样式的标签，会出现 蓝色背景色 */
-  -webkit-tap-highlight-color: transparent;
-  /* 灰色背景 */
-  --el-loading-spinner-size: 60px !important;
-  --swiper-theme-color: var(--green) !important;
+    /* 主题色 */
+    --green: #6c0;
+    /* 白色 */
+    --white: white;
+    /* 黑色 */
+    --black: black;
+    /* 灰色 副标题 a标签用 */
+    --gray: #898b92;
+    /* 按钮背景颜色 */
+    --button: #ff8100;
+    /* 紫色 */
+    --twoBg: #292f47;
+    --grayBackground: #f6f6f6;
+    /* 解决 web页面放在移动端，点击button 标签或者添加了cursor:pointer 样式的标签，会出现 蓝色背景色 */
+    -webkit-tap-highlight-color: transparent;
+    /* 灰色背景 */
+    --el-loading-spinner-size: 60px !important;
+    --swiper-theme-color: var(--green) !important;
 }
 
 :root[theme='dark'] {
-  /* 主题色 */
-  --green: rgb(71, 142, 0);
-  /* 白色 */
-  --white: rgb(211, 211, 211);
-  /* 黑色 */
-  --black: rgb(70, 70, 70);
-  /* 灰色 副标题 a标签用 */
-  --gray: #6d6f75;
-  /* 按钮背景颜色 */
-  --button: #dd6f00;
-  /* 紫色 */
-  --twoBg: #292f47;
-  --grayBackground: #dedede;
-
+    /* 主题色 */
+    --green: rgb(71, 142, 0);
+    /* 白色 */
+    --white: rgb(211, 211, 211);
+    /* 黑色 */
+    --black: rgb(70, 70, 70);
+    /* 灰色 副标题 a标签用 */
+    --gray: #6d6f75;
+    /* 按钮背景颜色 */
+    --button: #dd6f00;
+    /* 紫色 */
+    --twoBg: #292f47;
+    --grayBackground: #dedede;
+}
 
 /* element-plus 加载圈 */
 .el-loading-spinner .path {
