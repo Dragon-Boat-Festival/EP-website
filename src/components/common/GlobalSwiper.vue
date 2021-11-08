@@ -1,6 +1,9 @@
 <template>
   <div class="bg">
-    <div class="home-swiper-view animate__animated animate__fadeIn AN" :style="{backgroundColor}">
+    <div
+      class="home-swiper-view animate__animated animate__fadeIn AN"
+      :style="{backgroundColor: color}"
+    >
       <!--         ref="background" -->
       <BackgroundMotion
         v-if="img_url"
@@ -36,10 +39,10 @@ import "swiper/css/swiper.css"
 import BackgroundMotion from "@/components/common/BackgroundMotion";
 
 
+
 export default {
   name: "GlobalSwiper",
   props: {
-
     // 背景图片
     img_url: {
       type: String,
@@ -48,13 +51,8 @@ export default {
     // 背景颜色
     backgroundColor: {
       type: String,
-      default: "#f0f0f0"
+      default: "var(--white)"
     },
-    // 翻牌器背景颜色
-    /*swiperBg: {
-      type: String,
-      default: "swiper-pg-white"
-    },*/
     spanText: {
       type: String,
       default: ""
@@ -62,18 +60,74 @@ export default {
     // 文字颜色
     textColor: {
       type: String,
-      default: "#000"
+      default: "var(--black)"
     }
   },
   components: {
     BackgroundMotion
   },
+  data () {
+    return {
+      color: ""
+
+    }
+  },
   mounted () {
+    this.color = this.backgroundColor
     this.$nextTick(() => {
       new this.$wow.WOW({
         live: false
       }).init()
     })
+  },
+
+  computed: {
+    isDarks () {
+      return this.$store.state.isDark
+    }
+  },
+  watch: {
+    isDarks: {
+      handler: function (val, oldVal) {
+        // console.log(val);
+        if (this.backgroundColor == '#ffbe00') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(224 167 0)"
+          }
+        }
+        if (this.backgroundColor == '#62cbd7') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(81 164 174)"
+          }
+        }
+        if (this.backgroundColor == '#f96d8c') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(200 86 111)"
+          }
+        }
+        if (this.backgroundColor == '#afaa91') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(145 141 120)"
+          }
+        }
+        if (this.backgroundColor == '#00b474') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(0 145 94)"
+          }
+        }
+        if (this.backgroundColor == '#008fe2') {
+          this.color = this.backgroundColor
+          if (val) {
+            this.color = "rgb(0 96 151)"
+          }
+        }
+      }
+    }
   }
 }
 
@@ -105,6 +159,7 @@ export default {
 
       span {
         line-height: 1.5;
+        color: var(--black);
       }
     }
   }

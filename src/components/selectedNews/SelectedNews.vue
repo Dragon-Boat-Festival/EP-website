@@ -53,10 +53,6 @@ export default {
     new this.$wow.WOW({
       live: false
     }).init()
-    // this.$nextTick(() => {
-    //   console.log(this.related_news)
-
-    // })
   }
 }
 </script>

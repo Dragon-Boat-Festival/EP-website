@@ -1,8 +1,4 @@
 <template>
-  <!--  animate__animated animate__fadeIn wow"
-    data-wow-duration="1s"
-    data-wow-delay=".7s"
-  data-wow-iteration="1-->
   <div class="footer">
     <div class="con-box">
       <div class="footer-left">
@@ -37,18 +33,6 @@
 </template>
 
 <script>
-// export default {
-//   // mounted () {
-//   //   new this.$wow.WOW({
-//   //     live: false
-//   //   }).init()
-//   // },
-//   // updated () {
-//   //   new this.$wow.WOW({
-//   //     live: false
-//   //   }).init()
-//   // }
-// }
 </script>
 
 <style lang="less" scoped>

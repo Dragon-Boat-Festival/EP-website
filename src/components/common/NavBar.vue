@@ -22,22 +22,16 @@
       </div>
       <div class="nav-right">
         <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
-        <!-- <button class="bor-rad box-sha1 AN">希望为环保做出贡献吗</button> -->
-
-        <!--           :active-icon=""
-        :inactive-icon=""-->
+        <sunny class="eleIcon" :style="{  opacity: `${$store.state.isDark ? '1':'0'}`}" />
         <el-switch
-            v-model="isDark"
-            style="margin-left: 24px"
-            active-color="var(--green)"
-            inactive-color="var(--twoBg)"
-            :inline-prompt="true"
-            :active-icon="Moon"
-            :inactive-icon="Sunny"
+
+          v-model="$store.state.isDark"
+          active-color="#6c0"
+          inactive-color="var(--twoBg)"
+          :change="changeColor()"
         ></el-switch>
-        <el-icon class="is-loading">
-          <sunny/>
-        </el-icon>
+        <moon class="eleIcon" :style="{  opacity: `${$store.state.isDark ? '0':'1'}`}" />
+
       </div>
     </div>
   </div>
@@ -101,7 +95,6 @@
 </template>
 
 <script>
-import {Moon, Sunny} from '@element-plus/icons'
 
 import ArticleItem from "@/components/selectedNews/ArticleItem"
 
@@ -112,13 +105,9 @@ export default {
   name: 'NavBar',
   components: {
     ArticleItem,
-    Sunny,
-    Moon
   },
   data() {
     return {
-      // Check: Sunny,
-      // Close: Moon,
       // 输入框输入的值
       inputData: '',
       // 搜索的结果
@@ -127,8 +116,6 @@ export default {
       lastTimeStamp: 0,
       // 当前展示第几页数据
       currentPage: 1,
-      // 切换夜晚模式
-      isDark: false
     }
   },
   methods: {
@@ -179,8 +166,16 @@ export default {
     // 点击页码回调
     changePage(num) {
       this.currentPage = num
-      console.log(this.currentPage);
       this.searchCallBack(this.currentPage)
+    },
+    // 改变颜色
+    changeColor () {
+      const obj = document.querySelector('html');
+      if (this.$store.state.isDark) {
+        obj.setAttribute('theme', 'dark');
+      } else {
+        obj.removeAttribute('theme');
+      }
     }
   }
 }
@@ -308,6 +303,11 @@ export default {
 }
 </style>
 <style lang="less" scoped>
+.eleIcon {
+  width: 20px;
+  margin: 0 5px;
+  transition: all 0.5s;
+}
 .con-box {
   position: relative;
   display: flex;
