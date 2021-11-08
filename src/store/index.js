@@ -21,7 +21,7 @@ export default createStore({
     },
     changeNewsScroll(state, value) {
       state.newsViewNum = value
-      console.log(state.newsViewNum)
+      // console.log(state.newsViewNum)
     },
     openDrawer(state) {
       state.isDrawer = !state.isDrawer

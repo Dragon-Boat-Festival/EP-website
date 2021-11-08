@@ -3,57 +3,59 @@
     <div class="meta-box">
       <span>每天</span>
       <span
-          :style="{color: `${this.tip.ep_type?.color}`}"
-          class="issue"
+        :style="{color: `${this.tip.ep_type?.color}`}"
+        class="issue"
       >{{ this.tip.ep_type?.name }}</span>
     </div>
     <div class="tip-icon">
-      <img :src="this.tip.img_url" loading="lazy"/>
+      <img :src="this.tip.img_url" loading="lazy" />
     </div>
     <p class="title">{{ this.tip.tips_name }}</p>
     <div class="tip-actions">
       <div id="tip_commitments_post_738" class="tip-commitments">
         <span class="js-tip-commitments">{{ this.tip.count }} 人已做到！</span>
       </div>
-      <div class="tip-action-buttons has-committed" @click="">
+      <div class="tip-action-buttons has-committed">
         <div class="social-box">
           <a
-              class="tip-share-facebook"
-              href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-              rel="noopener noreferrer"
-              target="_blank"
+            class="tip-share-facebook"
+            href="https://www.facebook.com/sharer/sharer.php?u=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <span class="icon-facebook"></span>
           </a>
           <a
-              class="tip-share-whatsapp"
-              href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-              rel="noopener noreferrer"
-              target="_blank"
+            class="tip-share-whatsapp"
+            href="whatsapp://send?text=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <span class="icon-whatsapp"></span>
           </a>
           <a
-              class="tip-share-twitter"
-              href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
-              rel="noopener noreferrer"
-              target="_blank"
+            class="tip-share-twitter"
+            href="https://twitter.com/intent/tweet?text=自備手巾仔，柔韌愛地球&amp;url=https://www.greenpeace.org/hongkong/tip/%e8%87%aa%e5%82%99%e6%89%8b%e5%b7%be%e4%bb%94%ef%bc%8c%e6%9f%94%e9%9f%8c%e6%84%9b%e5%9c%b0%e7%90%83/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <span class="icon-twitter"></span>
           </a>
         </div>
-        <button class="button-orange button" :disabled="this.isIdo"
-                :style="{cursor: `${this.isIdo ? 'not-allowed' : 'pointer'}`, opacity: `${this.isIdo ? '.5' : '1'}`}"
-                type="submit" @click="SaveIDo">我做得到！
-        </button>
-
+        <button
+          class="button-orange button"
+          :disabled="this.isIdo"
+          :style="{cursor: `${this.isIdo ? 'not-allowed' : 'pointer'}`, opacity: `${this.isIdo ? '.5' : '1'}`}"
+          type="submit"
+          @click="SaveIDo"
+        >我做得到！</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {ElMessage} from 'element-plus'
+import { ElMessage } from 'element-plus'
 
 export default {
   name: "Tips",
@@ -63,10 +65,10 @@ export default {
       default: {}
     }
   },
-  mounted() {
+  mounted () {
     this.isTip()
   },
-  data() {
+  data () {
     return {
       isIdo: false,
 
@@ -75,7 +77,7 @@ export default {
 
   methods: {
     // 判断 localStorage 里面是否有这个tip
-    isTip() {
+    isTip () {
       const tips = JSON.parse(localStorage.getItem("tips") ? localStorage.getItem("tips") : "[]")
       const tip = tips.filter(item => item === this.tip.tips_name)
       if (tip.length > 0) return this.isIdo = true
@@ -83,7 +85,7 @@ export default {
       return this.isIdo = false
     },
     // 我能做到
-    SaveIDo() {
+    SaveIDo () {
       // step1: 先获取 localStorage
       const tips = JSON.parse(localStorage.getItem("tips") ? localStorage.getItem("tips") : "[]")
       // step: 2保存 点击的 tip 到 localStorage
@@ -114,7 +116,7 @@ export default {
   height: 412px;
   padding: 15px;
   color: var(--black);
-  background-color: #fff;
+  background-color: var(--tipsColor);
   text-align: center;
   display: flex;
   -webkit-box-orient: vertical;
