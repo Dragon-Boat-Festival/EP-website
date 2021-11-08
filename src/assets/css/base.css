@@ -9,6 +9,7 @@ body {
 }
 
 :root {
+
   /* 主题色 */
   --green: #6c0;
   /* 白色 */
@@ -43,17 +44,17 @@ body {
   /* 紫色 */
   --twoBg: #292f47;
   --grayBackground: #dedede;
-}
+
 
 /* element-plus 加载圈 */
 .el-loading-spinner .path {
-  stroke: var(--green) !important;
+    stroke: var(--green) !important;
 }
 
 a {
-  color: var(--gray);
-  transition: all 0.3s;
-  text-decoration: none;
+    color: var(--gray);
+    transition: all 0.3s;
+    text-decoration: none;
 }
 
 h1,
@@ -61,278 +62,283 @@ h2,
 p,
 span,
 img {
-  transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 /* 主标题 */
 .h2 {
-  font-size: 38px;
+    font-size: 38px;
 }
 
 .h4 {
-  font-size: 30px;
+    font-size: 30px;
 }
 
 /* 描述字段 */
 .p {
-  font-size: 18px;
-  line-height: 1.5;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 /* 盒子中的大字体 */
 .box-p {
-  font-size: 30px;
-  line-height: 1.5;
-  text-align: center;
+    font-size: 30px;
+    line-height: 1.5;
+    text-align: center;
 }
 
 /* 副标题 */
 .subtitle {
-  font-size: 22px;
-  color: #5f5f5f;
-  margin: 20px 0;
+    font-size: 22px;
+    color: #5f5f5f;
+    margin: 20px 0;
 }
 
 /* 按钮 */
 .button {
-  font-size: 18px;
-  padding: 0 50px;
-  height: 40px;
-  line-height: 40px;
+    font-size: 18px;
+    padding: 0 50px;
+    height: 40px;
+    line-height: 40px;
 }
 
 @media screen and (max-width: 1300px) {
-  .con-box {
-    padding: 0 20px;
-  }
-  .button {
-    font-size: 16px;
-  }
+    .con-box {
+        padding: 0 20px;
+    }
+
+    .button {
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
-  /* 主标题 */
-  .h2 {
-    font-size: 28px;
-    margin: 0 0 20px 0;
-  }
+    /* 主标题 */
+    .h2 {
+        font-size: 28px;
+        margin: 0 0 20px 0;
+    }
 
-  .h4 {
-    font-size: 20px;
-  }
+    .h4 {
+        font-size: 20px;
+    }
 
-  /* 描述字段 */
-  .p {
-    font-size: 16px !important;
-  }
+    /* 描述字段 */
+    .p {
+        font-size: 16px !important;
+    }
 
-  /* 副标题 */
-  .subtitle {
-    font-size: 18px;
-    /* margin: 0 !important; */
-  }
+    /* 副标题 */
+    .subtitle {
+        font-size: 18px;
+        /* margin: 0 !important; */
+    }
 
-  .box-p {
-    font-size: 19px;
-  }
+    .box-p {
+        font-size: 19px;
+    }
 
-  .button {
-    font-size: 14px;
-    padding: 0 40px;
-    height: 35px;
-    line-height: 35px;
-  }
+    .button {
+        font-size: 14px;
+        padding: 0 40px;
+        height: 35px;
+        line-height: 35px;
+    }
 
-  .swiper-pg-white,
-  .swiper-pg {
-    display: none;
-  }
+    .swiper-pg-white,
+    .swiper-pg {
+        display: none;
+    }
 
-  .swiper-pg-white .swiper-pagination-bullet {
-    background: #fff !important;
-  }
+    .swiper-pg-white .swiper-pagination-bullet {
+        background: #fff !important;
+    }
 
-  .swiper-bt {
-    display: none !important;
-  }
+    .swiper-bt {
+        display: none !important;
+    }
 
-  .con-box {
-    padding: 0 20px;
-  }
+    .con-box {
+        padding: 0 20px;
+    }
 }
 
 @media screen and (max-width: 512px) {
-  .ct-container {
-    padding: 10px 0 !important;
-  }
+    .ct-container {
+        padding: 10px 0 !important;
+    }
 }
 
 /* 动画 */
 .AN {
-  transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 /* 动画 鼠标经过动画 */
 .ANM {
-  cursor: pointer;
-  transition: all 0.3s;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
 .ANM:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 /* 圆角 */
 .bor-rad {
-  border-radius: 99px;
+    border-radius: 99px;
 }
 
 /* 投影 最大 */
 .box-sha0 {
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 /* 投影 大 */
 .box-sha1 {
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
 }
 
 /* 投影 小 */
 .box-sha2 {
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 .con-box {
-  max-width: 1200px;
-  margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .swiper-pg-white,
 .swiper-pg {
-  width: 100px;
-  text-align: left;
+    width: 100px;
+    text-align: left;
 }
 
 .swiper-pg-white .swiper-pagination-bullet {
-  background: #fff !important;
+    background: #fff !important;
 }
 
 .swiper-pg .swiper-pagination-bullet-active {
-  background: var(--black) !important;
+    background: var(--black) !important;
 }
 
 .swiper-pg-white .swiper-pagination-bullet-active {
-  background: var(--white) !important;
+    background: var(--white) !important;
 }
 
 .swiper-pg-white .swiper-pagination-bullet,
 .swiper-pg .swiper-pagination-bullet {
-  margin: 0 2px;
-  background: #989898;
+    margin: 0 2px;
+    background: #989898;
 }
 
 .swiper-bt:hover {
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .swiper-bt {
-  font-weight: bold;
-  width: 40px !important;
-  height: 40px !important;
-  color: var(--green) !important;
-  z-index: 10;
-  background-color: var(--white) !important;
-  border-radius: 50%;
-  transition: all 0.3s;
+    font-weight: bold;
+    width: 40px !important;
+    height: 40px !important;
+    color: var(--green) !important;
+    z-index: 10;
+    background-color: var(--white) !important;
+    border-radius: 50%;
+    transition: all 0.3s;
 }
 
 .swiper-bt:after {
-  font-size: 26px !important;
+    font-size: 26px !important;
 }
 
 /*环形进度条*/
 .el-progress-circle__track {
-  color: var(--white);
-  stroke-opacity: 0.3;
+    color: var(--white);
+    stroke-opacity: 0.3;
 }
 
 .light {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(238, 238, 238, 0) 0%,
-    #eee 100%
-  );
-  color: var(--black) !important;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(238, 238, 238, 0) 0%,
+            #eee 100%
+    );
+    color: var(--black) !important;
 }
 
 .dark {
-  background: var(--twoBg);
-  color: var(--white) !important;
+    background: var(--twoBg);
+    color: var(--white) !important;
 }
 
 /*地球坐标*/
 .glbl-marker {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms linear 300ms;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 300ms linear 300ms;
 }
 
 .is-current {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* 橙色按钮 */
 .button-orange {
-  display: inline-block;
-  margin: 10px 5px 10px 0;
-  color: var(--button) !important;
-  background: var(--white);
-  border-radius: 99px;
-  box-shadow: 0 0 8px 0 rgb(205, 194, 194);
-  font-weight: 700;
-  transition: background-color 140ms linear, box-shadow 140ms linear,
+    display: inline-block;
+    margin: 10px 5px 10px 0;
+    color: var(--button) !important;
+    background: #fff;
+    border-radius: 99px;
+    box-shadow: 0 0 8px 0 rgb(205, 194, 194);
+    font-weight: 700;
+    transition: background-color 140ms linear, box-shadow 140ms linear,
     -webkit-box-shadow 140ms linear;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-orange:active {
+    background: #f5f5f5;
 }
 
 /*共用*/
 .ct-container {
-  /* width: 100%; */
-  height: 100%;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+    /* width: 100%; */
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* banner外层盒子 projectOrTypes.vue and newsDetail.vue */
 .section-hero-top {
-  height: 70vh;
-  padding: 0 !important;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
+    height: 70vh;
+    padding: 0 !important;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
 /*banner图片盒子 projectOrTypes.vue and newsDetail.vue*/
 .background {
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-size: cover;
-  background-position: center;
-  top: -34px;
-  bottom: -100px;
-  transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    background-position: center;
+    top: -34px;
+    bottom: -100px;
+    transition: transform 100ms ease-out, -webkit-transform 100ms ease-out;
 }
 
 @media only screen and (min-width: 1280px) {
-  .ct-container {
-    max-width: 1200px;
-  }
+    .ct-container {
+        max-width: 1200px;
+    }
 }
