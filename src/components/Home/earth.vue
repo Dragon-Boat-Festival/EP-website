@@ -1,43 +1,51 @@
 <template>
   <section class="section-history">
-    <div class="ct-container slim">
-      <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">自1971年开始的环保里程……</font></font>
-      </h2>
+    <div class="ct-container con-box slim">
+      <h2
+        class="animate__animated animate__fadeIn wow h2"
+        data-wow-duration="1s"
+        data-wow-delay=".5s"
+      >环保相关纪念日</h2>
 
-      <div id="history-globe">
-
-      </div>
+      <div id="history-globe"></div>
       <div class="swiper-container label-swiper">
         <div class="swiper-wrapper label-wrapper">
-          <div class="swiper-slide label-slide" v-for="(item,index) in this.slide1" :key="index">
-            {{ item }}
-          </div>
+          <div
+            v-for="(item,index) in this.slide1"
+            :key="index"
+            class="swiper-slide label-slide"
+          >{{ item }}</div>
         </div>
       </div>
 
       <div class="swiper-container maxi-swiper maxi-swiper-centered cards-swiper controlled-swiper">
         <div class="swiper-wrapper maxi-wrapper">
-          <div class="swiper-slide card-explainer swiper-slide-active" v-for="(item,index) in this.slide2" :key="index"
-               :data-latitude="item.latitude"
-               :data-longitude="item.longitude">
+          <div
+            v-for="(item,index) in this.slide2"
+            :key="index"
+            :data-latitude="item.latitude"
+            :data-longitude="item.longitude"
+            class="swiper-slide card-explainer swiper-slide-active"
+          >
             <div class="description">
               <h4>{{ item.title }}</h4>
               <p class="subtitle">{{ item.subtitle }}</p>
               <span>{{ item.span }}</span>
             </div>
-            <div class="thumbnail lazy swiper-lazy "
-                 :data-background="item.img_url"
-                 data-was-processed="true"
+            <div
+              :data-background="item.img_url"
+              class="thumbnail lazy swiper-lazy"
+              data-was-processed="true"
             >
               <div class="swiper-lazy-preloader"></div>
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev"></div><!--左箭头。如果放置在swiper外面，需要自定义样式。-->
-        <div class="swiper-button-next"></div><!--右箭头。如果放置在swiper外面，需要自定义样式。-->
+        <div class="swiper-button-prev swiper-bt box-sha2"></div>
+        <!--左箭头。如果放置在swiper外 面，需要自定义样式。-->
+        <div class="swiper-button-next swiper-bt box-sha2"></div>
+        <!--右箭头。如果放置在swiper外面，需要自定义样式。-->
       </div>
-
-
     </div>
   </section>
 </template>
@@ -45,120 +53,106 @@
 <script>
 import Swiper from 'swiper'
 import "swiper/css/swiper.css"
-import '@/tools/world'
+import Globalicious from "@/tools/Globalicious";
 
 export default {
-  name: "Test",
+  name: "Earth",
   components: {},
-  data() {
+  data () {
     return {
-      slide1: ["1971", "1982", "1986", "1987", "1995", "1996", "1997", "2004", "2011", "2012", "2015", "2015", "2018", "2018", "2019", "2020"],
-      slide2: [{
-        latitude: "66.160507",
-        longitude: "-153.369141",
-        title: "反核武", subtitle: "anti-nuclear weapons",
-        span: "先鋒成員掛起「綠色和平」橫額，駕船反對美國進行核試。綠色和平多次抗議累積民間聲音反核，令法國終在1974年結束於南太平洋的核試。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/6428bbe632aa55d0.jpg"
-      }, {
-        latitude: "51.509865",
-        longitude: "-0.118092",
-        title: "禁止捕鯨", subtitle: "WHALING MORATORIUM",
-        span: "經過多次海上行動，正面揭露和阻截捕鯨惡行後，國際捕鯨委員會 (International Whaling Commission) 最終通過《禁止商業捕鯨公約》，嚴格禁止商業捕鯨。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/6329e738c3af6e00.jpg"
-      }, {
-        latitude: "-36.848461",
-        longitude: "174.763336",
-        title: "彩虹不滅", subtitle: "YOU CAN’T SINK A RAINBOW",
-        span: "彩虹勇士號 (Rainbow Warrior) 前往南太平洋，抗議法國核試，卻於途中遭法國特工炸沉，攝影師 Fernando Pereira 不幸罹難。惟彩虹勇士精神不滅，法國政府最終道歉賠償。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/a18e4d7b0ab55e3b.jpg"
-      }, {
-        latitude: "-90",
-        longitude: "0.1",
-        title: "守護南極", subtitle: "protect the antarctic",
-        span: "在南極設立基地，宣揚「世界公園」理念，守護地球的淨土資源。為1991年成功簽署《南極條約》播下種子，協議書禁止人類開採礦產最少50年（至2048年）。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/d56b26db2dbf85a4.jpg"
-      }, {
-        latitude: "59.496943",
-        longitude: "0.567971",
-        title: "不容妄為", subtitle: "BRENT SPAR REVERSAL",
-        span: "綠色和平行動者透過佔領位於北海的 Brent Spar 儲油平台，迫使蜆殼公司 (Shell) 改變將其棄置於海底的計劃，最終大部份平台結構得以於陸上進行全面拆解回收。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/a531b9721ea07b6f.jpg"
-      }, {
-        latitude: "40.730610",
-        longitude: "-73.935242",
-        title: "核试终结", subtitle: "NUCLEAR TEST BAN",
-        span: "經年爭取後，聯合國通過《全面禁止核試驗條約》(The Comprehensive Nuclear-Test-Ban Treaty)，禁止締約國進行任何核武器試驗爆炸。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/cce978bc3d5e7b1e.jpg"
-      }, {
-        latitude: "53.551086",
-        longitude: "9.9908773",
-        title: "环保制冷", subtitle: "GREENFREEZE",
-        span: "2月14日绿色和平正式在香港注册为非政府组织，组成全球第33个办公室。同年，国际绿色和平自家研发Greenfreeze环保制冷技术，减少温室气体排放，革新制冷行业技术并获广泛利用。",
-        img_url: "https://www.greenpeace.org/static/planet4-hongkong-stateless/2019/06/ac454636-gp0stqx0n.jpg"
-      }, {
-        latitude: "22.302711",
-        longitude: "114.177216",
-        title: "食物安全", subtitle: "food safety",
-        span: "香港团队成立基因改造稻米项目，走入中国，调查基因改造水稻。经过7年努力，于2012年媒体引述农业部消息称，中国未来五至十年内都不会批准基因改造稻米商业化。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/3e3bdff824ab2235.jpg"
-      }, {
-        latitude: "36.778259",
-        longitude: "-119.417931",
-        title: "绿色网络", subtitle: "GREENER INTERNET",
-        span: "在全球70万群众、连续20个月的行动所引发的舆论压力下，Facebook 终订下可再生能源为其发展的目标，承诺推动旗下的资料中心使用可再生能源。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/9b6f992ff431695b.jpg"
-      }, {
-        latitude: "43.304444",
-        longitude: "-8.511389",
-        title: "时尚去毒", subtitle: "DETOX MY FASHION",
-        span: "全球最大时装品牌之一Zara 及其母公司Inditex 承诺，淘汰在供应链中使用有毒有害物质。这是自绿色和平在2011年发起「时尚去毒」项目以来，第八家作出无毒承诺的品牌。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/7832d2309d2302e2.jpg"
-      }, {
-        latitude: "22.302711",
-        longitude: "114.177216",
-        title: "保护鼠海豚", subtitle: "SAVE THE VAQUITA",
-        span: "透过我们的卧底调查，揭发不法商人走私濒危「血花胶」来港，直接威胁濒危加湾鼠海豚(Vaquita) 的生存。在公众的施压下，香港政府加强执法，成功检控不法商人。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/ac04487f4ed62f11.jpg"
-      }, {
-        latitude: "90",
-        longitude: "0.1",
-        title: "守护北极", subtitle: "SAVE THE ARCTIC",
-        span: "绿色和平号召全球800万人守护北极，2015年9月蚬壳终宣布停止在北极阿拉斯加州的钻油计划。绿色和平更督促所有石油公司放弃北极钻油，长远成立北极保护区。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/cc7b23397fb00021.jpg"
-      }, {
-        latitude: "37.532600",
-        longitude: "127.024612",
-        title: "能源转型", subtitle: "SAMSUNG'S CHANGE",
-        span: "集结全球群众力量，推动Samsung 承诺能源转型，于2020年之前在美国、欧洲与中国等消费市场，迈向100%可再生能源。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/f097354816896192.jpg"
-      }, {
-        latitude: "22.302711",
-        longitude: "114.177216",
-        title: "守护郊野", subtitle: "SAVE COUNTRY PARKS",
-        span: "集结超过5万人联署，与众多本地团体合作，成功推动政府认同发展棕地，无再提及开发郊野公园，守住香港青山绿水。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/b067b20de53b8195.jpg"
-      }, {
-        latitude: "12.8797",
-        longitude: "121.7740",
-        title: "气候正义", subtitle: "CLIMATE JUSTICE",
-        span: "要求菲律宾人权委员会调查碳排巨擘无视气候危机侵犯人权；12月委员会在联合国会议正式宣布，企业理应肩负道德责任，或需向受气候变化影响的菲律宾人承担法律。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/7f85eeca9842524d.jpg"
-      }, {
-        latitude: "37.532600",
-        longitude: "127.024612",
-        title: "碳中和目标", subtitle: "CARBON NEUTRALITY GOALS",
-        span: "科学家警告，应对全球气候危机，全球碳排必须在2030年前减半，2050年达成「净零碳排」目标。2020年底，韩国、中国、日本相继宣布碳中和目标，为东亚的气候与能源项目建立新里程。",
-        img_url: "http://49.233.14.172:9999/imgs/2021/10/84f59f35797a3feb.jpg"
-      },]
+      slide1: ["1915", "1960", "1970", "1971", "1972", "1977", "1981", "1986", "1987", "1989", "1995", "2000", "2008"],
+      slide2: [
+        {
+          latitude: "39.55",
+          longitude: "116.23",
+          title: "中国植树节", subtitle: "China Arbor Day",
+          span: "中国曾于1915年规定清明节为植树节，最初由林学家凌道扬等创议设立，而后在1928年将植树节改为孙中山逝世的3月12日，以纪念革命先驱的植树造林愿望。这一设定被中国大陆和中国台湾沿用到现在。",
+          img_url: "https://images.freeimages.com/images/large-previews/b84/handful-of-dirt-5-1400892.jpg"
+        }, {
+          latitude: "46.14",
+          longitude: "6.04",
+          title: "世界气象日", subtitle: "World Meteorological Day",
+          span: `1960年6月，世界气象组织通过决议，从1961年起将公约生效日，即3月23日定为"世界气象日"。每年的“世界气象日”都确定一个主题， 要求各国成员在这一天举行庆祝活动，并广泛宣传气象工作的重要作用。`,
+          img_url: "https://images.freeimages.com/images/large-previews/c7b/sunsets-2-1369123.jpg"
+        }, {
+          latitude: "38.53",
+          longitude: "-77.02",
+          title: "世界地球日", subtitle: "The World Earth Day",
+          span: "地球日由盖洛德·尼尔森和丹尼斯·海斯于1970年发起。现今，地球日的庆祝活动已发展至全球192个国家，每年有超过10亿人参与其中，使其成为世界上最大的民间环保节日。",
+          img_url: "https://images.freeimages.com/images/large-previews/ace/globe-asia-1228197.jpg"
+        }, {
+          latitude: "32.42",
+          longitude: "51.4",
+          title: "世界湿地日", subtitle: "World Wetlands Day",
+          span: "1971年2月2日，来自18个国家的代表在伊朗南部海滨小城拉姆萨尔签署了《关于特别是作为水禽栖息地的国际重要湿地公约》。为了纪念这一创举，并提高公众的湿地保护意识，1996年《湿地公约》常务委员会第19次会议决定，从1997年起，将每年的2月2日定为世界湿地日。",
+          img_url: "https://images.freeimages.com/images/large-previews/b7f/wetlands-at-sunset-1409535.jpg"
+        }, {
+          latitude: "59.23",
+          longitude: "18",
+          title: "世界环境日", subtitle: "World Environment Day",
+          span: `1972年6月5日，联合国在瑞典首都斯德哥尔摩举行第一次人类环境会议，通过了著名的《人类环境宣言》及保护全球环境的“行动计划”，提出“为了这一代和将来世世代代保护和改善环境”的口号。这是人类历史上第一次在全世界范围内研究保护人类环境的会议。出席会议的113个国家和地区的1300名代表建议将大会开幕日定为“世界环境日”。`,
+          img_url: "https://images.freeimages.com/images/large-previews/097/oxygen-1409353.jpg"
+        }, {
+          latitude: "40.44",
+          longitude: "-73.55",
+          title: "世界水日", subtitle: "World Water Day",
+          span: "1977年召开的“联合国水事会议”，向全世界发出严重警告：水不久将成为一个深刻的社会危机，石油危机之后的下一个危机便是水。1993年1月18日，第四十七届联合国大会作出决议，确定每年的3月22日为“世界水日”。2020年3月22日，水利部12314监督举报服务平台正式上线运行。",
+          img_url: "https://images.freeimages.com/images/large-previews/ee2/playing-with-water-1196066.jpg"
+        }, {
+          latitude: "41.52",
+          longitude: "12.37",
+          title: "世界粮食日", subtitle: "World Food Day",
+          span: "世界粮食日起始于1981年10月16日，是世界各国政府每年在10月16日围绕发展粮食和农业生产举行纪念活动的日子，其宗旨在于唤起全世界对发展粮食和农业生产的高度重视。",
+          img_url: "https://images.freeimages.com/images/large-previews/8e4/grain-1326682.jpg"
+        }, {
+          latitude: "39.55",
+          longitude: "116.23",
+          title: "全国土地日", subtitle: "National Land Day",
+          span: `1986年6月25日，第六届全国人民代表大会常务委员会第十六次会议通过并颁布我国第一部专门调整土地关系的大法——《中华人民共和国土地管理法》。为纪念这一天,即《土地管理法》颁布的日期确定为全国土地日。“土地日”是国务院确定的第一个全国纪念宣传日。中国是世界上第一个为保护土地而设立专门纪念日的国家。`,
+          img_url: "https://images.freeimages.com/images/large-previews/7ee/mountains-1362783.jpg"
+        }, {
+          latitude: "40.44",
+          longitude: "-73.55",
+          title: "世界人口日", subtitle: "international Population Day",
+          span: "世界人口日是每年的7月11日。1987年7月11日，地球人口达到50亿。为纪念这个特殊的日子，1989年，联合国建议国际社会把每年的7月11日定为世界人口日，以便把重点放在紧迫性的人口总体发展计划和解决这些问题的方案。",
+          img_url: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_bt%2F0%2F13524585749%2F1000&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1638619373&t=9285b2bda0e064cc3111e0e35d99edb4"
+        }, {
+          latitude: "46.14",
+          longitude: "6.04",
+          title: "世界无烟日", subtitle: "World No Tobacco Day",
+          span: "从1989年开始，世界无烟日改为每年的5月31日，因为第二天是国际儿童节，希望下一代免受烟草危害。烟草依赖是一种慢性疾病，烟草危害是世界最严重的公共卫生问题之一，吸烟和二手烟问题严重危害人类健康。",
+          img_url: "https://images.freeimages.com/images/large-previews/035/don-t-smoke-7-1314914.jpg"
+        }, {
+          latitude: "40.44",
+          longitude: "-73.55",
+          title: "国际臭氧层保护日", subtitle: "International Ozone Layer Protection Day",
+          span: "保护臭氧层就是保护蓝天，保护地球生命。1995 年1月23日联合国大会决定，每年的9月16日为国际保护臭氧层日，要求所有缔约国按照《关于消耗臭氧层物质的蒙特利尔议定书》及其修正案的目标，采取具体行动纪念这个日子。",
+          img_url: "https://images.freeimages.com/images/large-previews/90a/revelations-1183858.jpg"
+        }, {
+          latitude: "40.44",
+          longitude: "-73.55",
+          title: "国际生物多样性日", subtitle: "International Day for Biological Diversity",
+          span: "国际生物多样性日是鉴于公共教育和增强民众生态意识对在各层面执行《生物多样性公约》的重要性，联合国大会于2000年12月20日通过了第55/201号决议，宣布每年5月22日，即《生物多样性公约》通过之日为国际生物多样性日。",
+          img_url: "https://images.freeimages.com/images/large-previews/d20/wildlife-at-masai-mara-1508940.jpg"
+        }, {
+          latitude: "40.44",
+          longitude: "-73.55",
+          title: "世界海洋日", subtitle: "World Oceans Day",
+          span: "2008年12月5日第63届联合国大会通过第111号决议，决定自2009年起，每年的6月8日为“世界海洋日”。联合国秘书长潘基文就此发表致辞时指出，人类活动正在使海洋世界付出可怕的代价，个人和团体都有义务保护海洋环境，认真管理海洋资源。",
+          img_url: "https://images.freeimages.com/images/large-previews/482/malta-1635368.jpg"
+        },]
     }
   },
-  mounted() {
+
+  created () {
     this.$nextTick(() => {
-      this.init()
+      this._initSwiper()
+      this.loadEarth()
     })
   },
+
   methods: {
-    init() {
+    _initSwiper () {
       const Swiper1 = new Swiper('.label-swiper', {
         direction: 'horizontal', // 垂直切换选项
         loop: false, // 循环模式选项
@@ -211,67 +205,185 @@ export default {
       })
       Swiper1.controller.control = Swiper2;//Swiper1控制Swiper2，需要在Swiper2初始化后
       Swiper2.controller.control = Swiper1;//Swiper2控制Swiper1，需要在Swiper1初始化后
-    }
+    },
+
+    loadEarth () {
+
+      function mID (lat, long) {
+        return (
+          'glbl-marker_' +
+          lat.toString().replace('.', '♥') +
+          '_' +
+          long.toString().replace('.', '♥')
+        );
+      }
+
+      const globe = document.getElementById('history-globe');
+      if (!globe) return;
+
+      const years = document.querySelectorAll(
+        '.section-history .label-swiper .swiper-slide'
+      );
+      const latitudes = document.querySelectorAll(
+        '.section-history .maxi-swiper .swiper-slide[data-latitude]'
+      );
+      const longitudes = document.querySelectorAll(
+        '.section-history .maxi-swiper .swiper-slide[data-longitude]'
+      );
+
+      if (
+        years.length !== latitudes.length ||
+        latitudes.length !== longitudes.length
+      ) {
+        console.warn(
+          '无法继续，请提供所有swiper的经度和纬度'
+        );
+        return;
+      }
+
+      /** swiper 容器
+       ******************************************************************************************/
+      const swiperContainer = document.querySelector(
+        '.section-history .maxi-swiper'
+      );
+
+      /** 位置 svg
+       ******************************************************************************************/
+      const pin =
+        '<svg viewBox="0 0 24 24" width="40" height="40" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.41"><path fill="#000000" d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z" /></svg>';
+
+      /** 建立坐标数组
+       ******************************************************************************************/
+      const markers = Array.from(latitudes).map(slide => {
+        const lat = parseFloat(slide.dataset.latitude.trim());
+        const long = parseFloat(slide.dataset.longitude.trim());
+        return {
+          lat,
+          long,
+        };
+      });
+
+      /** 构建地球模型
+       ******************************************************************************************/
+      window.Earth = new Globalicious(globe, {
+        speed: 0,
+        incline: 10,
+        startingRotation: -120, // East Asia
+        borders: false,
+        outline: false,
+        sea: false,
+        gridOver: false,
+        gridUnder: false,
+        land: '#000',
+        // data: world_vars.templateUrl + '/src/tools/world-110m.json',
+        data: '/src/tools/world-110m.json',
+        goToDuration: 1000,
+        goToEasing: 'easeInOutQuart',
+      });
+
+      /** 等待页面加载完，进行渲染位置角标
+       ******************************************************************************************/
+      if (!swiperContainer.swiper) return;
+
+      /** 在 地球模型 上放置位置角标
+       ******************************************************************************************/
+      markers.forEach(marker => {
+        window.Earth.mark(marker.lat, marker.long, pin);
+      });
+
+      /** 保存标记
+       ******************************************************************************************/
+      const markerEls = document.querySelectorAll('g.glbl-marker');
+
+      /** 转到第一个位置
+       ******************************************************************************************/
+      window.Earth.goTo(markers[0].lat - 60, markers[0].long);
+      if (document.getElementById(mID(markers[0].lat, markers[0].long))) {
+        document
+          .getElementById(mID(markers[0].lat, markers[0].long))
+          .classList.add('is-current');
+      }
+
+      /**  监听 swiper slide 的更改，如果有更改进行 地标 更改
+       ******************************************************************************************/
+      swiperContainer.swiper.on('slideChange', function () {
+        window.Earth.goTo(
+          markers[this.activeIndex].lat - 60,
+          markers[this.activeIndex].long
+        );
+
+        Array.from(markerEls).forEach(function (markerEl) {
+          markerEl.classList.remove('is-current');
+        });
+        if (
+          document.getElementById(
+            mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
+          )
+        ) {
+          document
+            .getElementById(
+              mID(markers[this.activeIndex].lat, markers[this.activeIndex].long)
+            )
+            .classList.add('is-current');
+        }
+      });
+    },
+
+
   }
 }
 </script>
 
-<style scoped lang="less">
-
-
+<style lang="less" scoped>
+.swiper-button-prev {
+  left: 55px;
+}
+.swiper-button-next {
+  right: 55px;
+}
 // 大盒子
 .section-history {
   min-height: 400px;
   min-height: 400px;
-  padding: 40px 0 30px;
+  padding: 40px 0;
   position: relative;
   z-index: 2;
-  background: #6c0;
+  background: var(--green);
+  overflow: hidden;
 
   .ct-container {
-    width: 100%;
     margin: 0 auto;
 
     > h2 {
-      text-align: left;
-      font-size: 19px;
-      left: 20px;
+      position: absolute;
+      width: 300px;
+      margin-left: 0px;
     }
 
     //canvas
     #history-globe {
       position: relative;
-      //top: -130px;
       height: 310px;
       width: 320px;
       margin: 0 auto -215px;
       overflow: hidden;
       background: 0 0;
-
-
     }
-
-
   }
 
   .swiper-container {
     overflow: visible;
     padding-top: 15px;
     padding-bottom: 15px;
-    //margin:  0 auto;
     position: relative;
     list-style: none;
     z-index: 1;
-    transition: box-shadow 140ms linear, opacity 140ms linear, filter 140ms linear, transform 140ms linear, -webkit-box-shadow 140ms linear, -webkit-filter 140ms linear, -webkit-transform 140ms linear;
-
-    .maxi-wrapper {
-      //left: 300px;
-
-
-    }
+    transition: box-shadow 140ms linear, opacity 140ms linear,
+      filter 140ms linear, transform 140ms linear,
+      -webkit-box-shadow 140ms linear, -webkit-filter 140ms linear,
+      -webkit-transform 140ms linear;
 
     .label-wrapper {
-      //left: 600px;
       width: 100%;
       height: 30px;
 
@@ -280,13 +392,10 @@ export default {
         font-size: 32px;
         font-weight: 700;
         position: relative;
-        top: -3px;
-
+        top: -10px;
       }
     }
-
   }
-
 
   // 第一个轮播盒子
   .label-swiper {
@@ -312,27 +421,26 @@ export default {
       height: auto;
       position: relative;
 
-
       .card-explainer {
-        color: #6c0;
+        color: var(--green);
         width: 90%;
         height: 500px;
         display: flex;
         flex-direction: column;
-        background: #fff;
-        border-radius: 4px;
-        box-shadow: 0 0 12px 0 rgba(0, 0, 0, .7);
+        background: var(--white);
+        border-radius: 10px;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.7);
         margin: 0 3%;
-        //overflow: hidden;
 
         // 文字部分
         .description {
           box-sizing: content-box;
+          text-align: center;
           display: flex;
           flex-direction: column;
           justify-content: center;
           overflow: hidden;
-          padding: 40px;
+          padding: 0 20px;
           height: 60%;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -340,38 +448,35 @@ export default {
 
           h4 {
             text-align: center;
-            font-size: 40px;
+            font-size: 25px;
             line-height: 59px;
             margin: 0;
           }
 
           .subtitle {
-            color: #6c0;
+            color: var(--green);
             letter-spacing: 1px;
             font-size: 14px;
             text-transform: uppercase;
             font-family: Montserrat, sans-serif;
             font-size: 14px;
             font-weight: 400;
-            line-height: 1.7;
           }
 
           span {
-            font-size: 18px;
-            padding-top: 20px;
+            font-size: 15px;
             line-height: 28px;
             text-align: center;
             font-weight: 400;
-
           }
         }
 
         // 图片
         .thumbnail {
           width: 100%;
-          height: 40%;
+          height: 50%;
           padding-top: 0;
-          border-radius: 0;
+          border-radius: 0 0 10px 10px;
           box-shadow: none;
           background-position: center;
           background-size: cover;
@@ -386,78 +491,27 @@ export default {
 
   h2 {
     position: relative;
-    color: #fff;
+    color: var(--white);
     z-index: 2;
   }
-
-  // 按钮
-  .swiper-button-next, .swiper-button-prev {
-    background: #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 8px 0 rgb(0 0 0 / 30%);
-    font-weight: bolder;
-  }
-
-
-  .swiper-button-prev:after, .swiper-button-next:after {
-    font-size: 25px;
-    color: #6c0;
-  }
 }
-
-// 大于 1280
-@media only screen and (min-width: 1280px) {
-  .ct-container.slim {
-    padding-left: 120px;
-    padding-right: 120px;
-
-    .swiper-container {
-      /*  margin-left: -100px;
-        margin-right: -100px;*/
-    }
-  }
-
-
-  .ct-container {
-    max-width: 1200px;
-  }
-}
-
 // 大于1024
-@media only screen and (min-width: 1024px) {
-
-  .section-history h2 {
-    text-align: left;
-    font-size: 30px !important;
-    position: absolute !important;
-    left: 22% !important;
-    width: 20% !important;
+@media screen and (min-width: 1024px) {
+  .section-history {
+    .ct-container {
+      > h2 {
+        margin-left: 10px;
+      }
+    }
   }
 
   .swiper-wrapper {
     width: 100%;
   }
 
-  .maxi-swiper {
-    // 前进按钮
-    .swiper-button-prev {
-      left: 53px;
-    }
-
-    .swiper-button-next {
-      right: 52px;
-    }
-  }
-
   .section-history .maxi-swiper-centered {
     padding-top: 15px;
-    width: 1160px;
+    width: 1090px;
 
     .swiper-slide {
       margin: 0 3%;
@@ -466,23 +520,28 @@ export default {
 
   .maxi-swiper-centered {
     padding-bottom: 30px;
-
   }
 
   .maxi-wrapper {
     height: 485px !important;
 
-
     .card-explainer {
       flex-direction: row !important;
 
       .description {
-        padding: 40px !important;
         width: 280px;
         height: 100% !important;
-
+        padding: 0 40px !important;
+        h4 {
+          font-size: 40px !important;
+        }
         .subtitle {
           letter-spacing: 8px;
+          line-height: 1.7;
+        }
+        span {
+          font-size: 18px !important;
+          padding-top: 20px !important;
         }
       }
 
@@ -490,19 +549,34 @@ export default {
       .thumbnail {
         width: calc(100% - 280px) !important;
         height: 100% !important;
+        border-radius: 0 10px 10px 0 !important;
       }
     }
   }
-
 
   // 第二个轮播图 盒子
   .maxi-swiper-centered .swiper-slide {
     width: calc(100% - 200px);
     margin: 0 100px;
-
-
   }
-
-
+}
+@media screen and (max-width: 524px) {
+  .section-history
+    .maxi-swiper
+    .swiper-wrapper
+    .card-explainer
+    .description
+    span {
+    line-height: 16px;
+    font-size: 13px;
+  }
+  .section-history
+    .maxi-swiper
+    .swiper-wrapper
+    .card-explainer
+    .description
+    h4 {
+    line-height: normal;
+  }
 }
 </style>

@@ -1,13 +1,23 @@
 <template>
-  <nav-bar />
+  <nav-bar v-if="this.$store.state.isData" />
 
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="el-fade-in-linear">
+      <div>
+        <component :is="Component" />
+      </div>
+    </transition>
+  </router-view>
+
+  <footer-view v-if="this.$store.state.isData" />
 </template>
 <script>
-import NavBar from '@/components/common/NavBar.vue'
+import NavBar from '@/components/common/NavBar'
+import FooterView from '@/components/common/FooterView'
 export default {
   components: {
-    NavBar
+    NavBar,
+    FooterView
   }
 }
 </script>

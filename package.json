@@ -7,10 +7,20 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@element-plus/icons": "0.0.11",
     "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "d3-drag": "^3.0.0",
+    "d3-fetch": "^3.0.1",
+    "d3-geo": "^3.0.1",
+    "d3-selection": "^3.0.0",
+    "d3-timer": "^3.0.1",
+    "element-plus": "^1.1.0-beta.24",
+    "qs": "^6.5.2",
     "swiper": "^5.4.5",
+    "topojson": "^3.0.2",
+    "unplugin-vue-components": "^0.17.0",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
@@ -21,6 +31,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "babel-plugin-component": "^1.1.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "wowjs": "^1.1.3"
