@@ -79,9 +79,6 @@ export default {
       this._init()
     })
   },
-  // updated () {
-  // console.log('123')
-  // },
   methods: {
     _init () {
       const swiper = new Swiper(".section-text-images-swiper", {
@@ -104,12 +101,6 @@ export default {
 
         },
         slidesPerView: "auto",
-
-        /*/// 懒加载
-        lazy: {
-          loadPrevNext: true, //允许将延迟加载应用到最接近的slide的图片（前一个和后一个slide）。
-          loadOnTransitionStart: true // 默认当过渡到slide后开始加载图片，如果你想在过渡一开始就加载，设置为true
-        },*/
       });
 
     }

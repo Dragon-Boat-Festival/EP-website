@@ -9,6 +9,8 @@ export default createStore({
     newsViewNum: 1,
     // 搜索框是否打开
     isDrawer: false,
+    // 切换夜晚模式
+    isDark: false,
   },
   mutations: {
     changeIsData(state) {

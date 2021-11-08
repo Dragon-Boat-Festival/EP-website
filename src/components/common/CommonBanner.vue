@@ -42,9 +42,6 @@ export default {
     }
 
   },
-  mounted () {
-    console.log(this.$route)
-  }
 }
 </script>
 
@@ -189,7 +186,7 @@ export default {
       font-size: 80px !important;
       line-height: 0 !important;
       letter-spacing: 16.7px !important;
-      color: #fff;
+      color: var(--white);
     }
 
     p {

@@ -45,6 +45,10 @@
   padding: 0 20px;
   border-top: 5px solid var(--button);
 }
+.home-swiper .swiper-slide .slide-con .right-content .box-p,
+.tips-swiper .swiper-slide .slide-con .right-content .box-p {
+  color: var(--black);
+}
 .home-swiper .swiper-slide .slide-con .right-content .title,
 .tips-swiper .swiper-slide .slide-con .right-content .title {
   display: flex;

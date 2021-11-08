@@ -62,10 +62,10 @@ export default {
   margin: 0 15px 0 15px !important;
 }
 .home-issue {
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
   .h2 {
     margin-bottom: 10px;
   }

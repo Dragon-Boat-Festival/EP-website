@@ -15,10 +15,6 @@
       </div>
 
       <slot name="column-title"></slot>
-      <!--  swiper               
-      animate__animated animate__fadeInRightBig wow
-      data-wow-duration="2s"
-      :data-wow-delay="`${(index +  1) * 0.1}s`"-->
       <div class="mini-swiper">
         <div class="swiper-wrapper">
           <NewsColumn
@@ -51,7 +47,7 @@ export default {
     },
     backgroundColor: { // 背景颜色
       type: String,
-      default: "#fff"
+      default: "var(--grayBackground)"
     },
     h2Text: {
       type: String,
@@ -60,9 +56,6 @@ export default {
   },
 
   updated () {
-    // new this.$wow.WOW({
-    //   live: false
-    // }).init()
     this.$nextTick(() => {
       new this.$wow.WOW({
         live: false
@@ -71,11 +64,7 @@ export default {
     })
   },
   mounted () {
-
     this.$nextTick(() => {
-      // new this.$wow.WOW({
-      //   live: false
-      // }).init()
       this._init()
     })
   },
@@ -83,19 +72,12 @@ export default {
   methods: {
     _init () {
       new Swiper('.mini-swiper', {
-        // direction: 'horizontal', // 垂直切换选项
-        // initialSlide: 2, // 初始化
         loop: false, // 循环模式选项
-        // width: 90,
         observer: true, // 修改swiper自己或子元素时，自动初始化swiper
         observeParents: true, // 修改swiper的父元素时，自动初始化swiper
         freeMode: true, //  freeMode: true, 。。默认为false，普通模式：slide滑动时只滑动一格，并自动贴合wrapper，设置为true则变为free模式，slide会根据惯性滑动可能不止一格且不会贴合。
-        // slideToClickedSlide: true,
-        // centeredSlides: true,
         slidesPerView: "auto",
         lazyLoading: true,
-        // spaceBetween: 1,
-        // preventClicksPropagation: true, //阻止click冒泡。拖动Swiper时阻止click事件。
 
         navigation: {
           nextEl: '.swiper-button-next',
@@ -119,7 +101,6 @@ export default {
 }
 .section-mixed-content-row {
   min-height: 0 !important;
-  padding: 20px 0 !important;
   overflow: hidden;
 
   .h2-title {
@@ -176,10 +157,6 @@ export default {
     font-size: 30px;
   }
 
-  h1:first-child,
-  h2:first-child {
-    margin-top: 0;
-  }
   .swiper-slide {
     padding-left: 20px !important;
   }

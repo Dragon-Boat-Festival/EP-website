@@ -117,8 +117,8 @@ export default {
 
       .home-project-swiper {
         overflow: visible;
-        -webkit-clip-path: inset(-100vw -100vw -100vw 0);
-        clip-path: inset(-100vw -100vw -100vw 0);
+        -webkit-clip-path: inset(-100vw -100vw -100vw -7px);
+        clip-path: inset(-100vw -100vw -100vw -7px);
 
         .swiper-slide {
           width: auto !important;

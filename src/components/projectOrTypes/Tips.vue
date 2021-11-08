@@ -73,7 +73,7 @@ export default {
   width: 299px;
   height: 412px;
   padding: 15px;
-  color: #292f47;
+  color: var(--black);
   background-color: #fff;
   text-align: center;
   display: flex;

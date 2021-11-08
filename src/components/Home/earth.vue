@@ -219,7 +219,6 @@ export default {
       }
 
       const globe = document.getElementById('history-globe');
-      console.log(globe)
       if (!globe) return;
 
       const years = document.querySelectorAll(
@@ -231,7 +230,6 @@ export default {
       const longitudes = document.querySelectorAll(
         '.section-history .maxi-swiper .swiper-slide[data-longitude]'
       );
-      console.log(latitudes)
 
       if (
         years.length !== latitudes.length ||

@@ -2,7 +2,7 @@
   <!-- 新闻详情页 -->
   <div class="news_detail">
     <!-- 头部banner    -->
-    <CommonBanner :commonData="news_detail"/>
+    <CommonBanner :commonData="news_detail" />
     <!--  新闻文字部分 -->
     <div class="con-box news-box" style="padding-left: 10px">
       <!-- 新闻头部 时间，专栏   -->
@@ -10,8 +10,8 @@
         <div class="left-box">
           <span>专题报道</span>
           <span
-              class="types"
-              :style="{color: `${this.news_detail.ep_type?.color}`}"
+            class="types"
+            :style="{color: `${this.news_detail.ep_type?.color}`}"
           >{{ this.news_detail.ep_type?.name }}</span>
         </div>
         <span class="time">{{ this.news_detail.release_time?.substring(0, 10) }}</span>
@@ -23,19 +23,19 @@
         <span>作者：{{ this.news_detail?.author }}</span>
       </div>
       <div
-          :style="{'--preBackground': `${news_detail.ep_type?.color}`}"
-          class="newsDetail_content con-box"
-          v-html="news_detail?.news_content"
+        :style="{'--preBackground': `${news_detail.ep_type?.color}`}"
+        class="newsDetail_content con-box"
+        v-html="news_detail?.news_content"
       ></div>
     </div>
   </div>
   <!--  底部相关新闻  -->
   <!-- 相关新闻   -->
   <SectionRow
-      background-color="var(--grayBackground)"
-      v-if="about_news"
-      :lastYear_news="about_news"
-      h2-text="相关新闻"
+    background-color="var(--grayBackground)"
+    v-if="about_news"
+    :lastYear_news="about_news"
+    h2-text="相关新闻"
   >
     <template v-slot:column-title>
       <div class="last-more">
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import {getNewsDetail} from "@/tools/request";
+import { getNewsDetail } from "@/tools/request";
 import CommonBanner from "@/components/common/CommonBanner";
 import SectionRow from "@/components/common/SectionRow";
 
@@ -56,25 +56,25 @@ export default {
     CommonBanner,
     SectionRow
   },
-  data() {
+  data () {
     return {
       news_id: "", // 上一个页面需要传news_id
       news_detail: {}, // 新闻详情数据
       about_news: [], // 底部相关新闻
     }
   },
-  mounted() {
+  mounted () {
     new this.$wow.WOW({
       live: false
     }).init()
     this.news_id = this.$route.query.news_id
     this._initData(this.news_id)
   },
-  beforeUnmount() {
+  beforeUnmount () {
     this.about_news = null
   },
   methods: {
-    async _initData(news_id) {
+    async _initData (news_id) {
       const result = await getNewsDetail(news_id)
       if (!result.result?.news_detail) return this.$router.push('/404')
       // 新闻详情数据赋值
@@ -83,6 +83,7 @@ export default {
       window.scrollTo(0, 0)
     }
   },
+
   watch: {
     $route: {
       handler: function (val, oldVal) {
