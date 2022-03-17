@@ -2,8 +2,13 @@
   <div class="footer">
     <div class="con-box">
       <div class="footer-left">
-        <img src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png" alt="logo" />
-        <p>此环保网站属于广东省高新技术高级技工学校，2021年网页比赛-环保网站比赛作品。</p>
+        <img
+          src="https://img.weikill.club/imageBed/imgs/2021/11/75315bcdd0d6a2ea.png"
+          alt="logo"
+        />
+        <p>
+          此环保网站属于广东省高新技术高级技工学校，2021年网页比赛-环保网站比赛作品。
+        </p>
       </div>
       <div class="footer-right">
         <div class="class">
@@ -32,8 +37,7 @@
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style lang="less" scoped>
 .footer {

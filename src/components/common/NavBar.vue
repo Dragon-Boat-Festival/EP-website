@@ -3,11 +3,14 @@
   <div class="nav-Container box-sha1 animate__animated animate__fadeInDown">
     <div class="nav-bar AN con-box">
       <div class="nav-left ANM">
-        <span class="iconfont icon-search ANM mobile-show" @click="showSearch"></span>
+        <span
+          class="iconfont icon-search ANM mobile-show"
+          @click="showSearch"
+        ></span>
         <img
-            src="http://49.233.14.172:9999/imgs/2021/11/75315bcdd0d6a2ea.png"
-            @click="toHome"
-            alt="logo"
+          src="https://img.weikill.club/imageBed/imgs/2021/11/75315bcdd0d6a2ea.png"
+          @click="toHome"
+          alt="logo"
         />
       </div>
       <div class="nav-content pc-show">
@@ -21,17 +24,24 @@
         </router-link>
       </div>
       <div class="nav-right">
-        <span class="iconfont icon-search ANM pc-show" @click="showSearch"></span>
-        <sunny class="eleIcon" :style="{  opacity: `${$store.state.isDark ? '1':'0'}`}" />
+        <span
+          class="iconfont icon-search ANM pc-show"
+          @click="showSearch"
+        ></span>
+        <sunny
+          class="eleIcon"
+          :style="{ opacity: `${$store.state.isDark ? '1' : '0'}` }"
+        />
         <el-switch
-
           v-model="$store.state.isDark"
           active-color="#6c0"
           inactive-color="var(--twoBg)"
           :change="changeColor()"
         ></el-switch>
-        <moon class="eleIcon" :style="{  opacity: `${$store.state.isDark ? '0':'1'}`}" />
-
+        <moon
+          class="eleIcon"
+          :style="{ opacity: `${$store.state.isDark ? '0' : '1'}` }"
+        />
       </div>
     </div>
   </div>
@@ -51,55 +61,59 @@
   <!-- 占位盒子 -->
   <div class="nav-placeholder"></div>
   <!-- 弹出搜索框 -->
-  <el-drawer direction="ttb" size="auto" v-model="$store.state.isDrawer" title="搜索">
+  <el-drawer
+    direction="ttb"
+    size="auto"
+    v-model="$store.state.isDrawer"
+    title="搜索"
+  >
     <form @submit.prevent="goSearchView" class="wd9 con-box">
       <input
-          type="text"
-          placeholder="输入文章关键字搜索"
-          @input="search($event)"
-          v-model="inputData"
-          class="searchInput AN"
-          required
+        type="text"
+        placeholder="输入文章关键字搜索"
+        @input="search($event)"
+        v-model="inputData"
+        class="searchInput AN"
+        required
       />
       <span
-          class="iconfont icon-butongguodechacha ANM"
-          @click="emptyData"
-          @keyup.enter="goSearchView"
-          v-if="inputData !== ''"
+        class="iconfont icon-butongguodechacha ANM"
+        @click="emptyData"
+        @keyup.enter="goSearchView"
+        v-if="inputData !== ''"
       ></span>
-      <input type="submit" class="searchButton ANM" value="搜索"/>
+      <input type="submit" class="searchButton ANM" value="搜索" />
     </form>
     <div class="searchData con-box" v-if="searchData.rows">
       <p v-if="searchData.count == 0">没有要搜索文章有该相关的的内容哦</p>
       <p v-else>文章({{ searchData.count }})</p>
       <ArticleItem
-          v-for="(item, index) in searchData.rows"
-          :news="item"
-          :key="index"
-          :index="index"
+        v-for="(item, index) in searchData.rows"
+        :news="item"
+        :key="index"
+        :index="index"
       />
     </div>
-    <div :class="searchData.count > 0 ? 'paging con-box pb':'paging con-box'">
+    <div :class="searchData.count > 0 ? 'paging con-box pb' : 'paging con-box'">
       <el-pagination
-          @size-change="changePage"
-          @current-change="changePage"
-          v-model:currentPage="currentPage"
-          :hide-on-single-page="searchData.count > 6 ? false : true"
-          background
-          layout="prev, pager, next"
-          :total="searchData.count"
-          :page-size="6"
+        @size-change="changePage"
+        @current-change="changePage"
+        v-model:currentPage="currentPage"
+        :hide-on-single-page="searchData.count > 6 ? false : true"
+        background
+        layout="prev, pager, next"
+        :total="searchData.count"
+        :page-size="6"
       ></el-pagination>
     </div>
   </el-drawer>
 </template>
 
 <script>
+import ArticleItem from '@/components/selectedNews/ArticleItem';
 
-import ArticleItem from "@/components/selectedNews/ArticleItem"
-
-import {getSearchData} from '@/tools/request'
-import {mapMutations} from "vuex"
+import { getSearchData } from '@/tools/request';
+import { mapMutations } from 'vuex';
 
 export default {
   name: 'NavBar',
@@ -116,69 +130,68 @@ export default {
       lastTimeStamp: 0,
       // 当前展示第几页数据
       currentPage: 1,
-    }
+    };
   },
   methods: {
     ...mapMutations(['openDrawer', 'changeDrawer']),
     // 回到首页
     toHome() {
-      this.$router.push('/')
+      this.$router.push('/');
     },
     // 显示搜索框
     showSearch() {
-      this.openDrawer()
+      this.openDrawer();
     },
     // 清空输入框
     emptyData() {
-      this.inputData = ''
-      this.searchData = []
+      this.inputData = '';
+      this.searchData = [];
     },
     // 搜索内容
     search(event) {
       this.lastTimeStamp = event.timeStamp;
       setTimeout(() => {
         if (this.lastTimeStamp == event.timeStamp) {
-          this.searchCallBack(this.currentPage)
+          this.searchCallBack(this.currentPage);
         }
       }, 1000);
     },
     // 搜索回调
     async searchCallBack(pageNum) {
       if (this.inputData == '') {
-        this.searchData = []
+        this.searchData = [];
       } else {
         let result = await getSearchData({
           keyword: this.inputData,
           types_id: 0,
           column_id: 0,
           pageNum: pageNum,
-          pageSize: 6
-        })
-        this.searchData.count = result.result.count
-        this.searchData.rows = result.result.rows
+          pageSize: 6,
+        });
+        this.searchData.count = result.result.count;
+        this.searchData.rows = result.result.rows;
       }
-
     },
     // 去搜索页面
     goSearchView() {
-      this.searchCallBack()
+      this.searchCallBack();
     },
     // 点击页码回调
     changePage(num) {
-      this.currentPage = num
-      this.searchCallBack(this.currentPage)
+      this.currentPage = num;
+      this.searchCallBack(this.currentPage);
     },
     // 改变颜色
-    changeColor () {
+    changeColor() {
       const obj = document.querySelector('html');
       if (this.$store.state.isDark) {
         obj.setAttribute('theme', 'dark');
       } else {
         obj.removeAttribute('theme');
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="less">
