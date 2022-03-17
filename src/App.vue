@@ -1,23 +1,27 @@
 <template>
-  <nav-bar v-if="this.$store.state.isData" />
+  <nav-bar v-if="this.$store.state.isData"/>
 
   <router-view v-slot="{ Component }">
     <transition name="el-fade-in-linear">
       <div>
-        <component :is="Component" />
+        <component :is="Component"/>
       </div>
     </transition>
   </router-view>
 
-  <footer-view v-if="this.$store.state.isData" />
+  <footer-view v-if="this.$store.state.isData"/>
 </template>
 <script>
 import NavBar from '@/components/common/NavBar'
 import FooterView from '@/components/common/FooterView'
+
 export default {
   components: {
     NavBar,
     FooterView
+  },
+  mounted() {
+    document.dispatchEvent(new Event('render-event'))
   }
 }
 </script>

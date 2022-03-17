@@ -3,13 +3,15 @@
     <!-- 头部banner   -->
     <GlobalSwiper
       v-if="homeData.banner_news"
-      :img_url="`http://49.233.14.172:9999/imgs/2021/10/6c11ffef2aa3387a.webp`"
+      :img_url="
+        `https://img.weikill.club/imageBed/imgs/2021/10/6c11ffef2aa3387a.webp`
+      "
       swiperBg="swiper-pg"
       spanText="你知道吗？地球现在有多少个问题。土壤被破坏、气候变化带来温室效应、生物多样性减少、森林面积减少......"
     >
       <template v-slot:swiper-pagination>
         <!-- swiper翻页器 -->
-        <div :class="`swiper-pagination swiper-pg` "></div>
+        <div :class="`swiper-pagination swiper-pg`"></div>
       </template>
       <template v-slot:h2>
         <h2 class="h2" style="color: var(--green)">行动带来改变</h2>
@@ -23,19 +25,27 @@
           <div class="swiper-wrapper">
             <div
               class="swiper-slide"
-              v-for="(item,index) in homeData.banner_news"
+              v-for="(item, index) in homeData.banner_news"
               :key="index"
-              @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+              @click="
+                this.$router.push({
+                  path: '/newsDetail',
+                  query: { news_id: item.news_id },
+                })
+              "
             >
               <div class="slide-con box-sha1 AN">
-                <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
+                <div
+                  class="left-img"
+                  :style="{ backgroundImage: `url(${item.main_img})` }"
+                ></div>
                 <div class="right-content">
                   <div class="title">
-                    <p :style="{color:item.ep_type.color}">
+                    <p :style="{ color: item.ep_type.color }">
                       {{ item.ep_type.name }}
                       <span>专题报道</span>
                     </p>
-                    <span>{{ (item.release_time).substring(0, 10) }}</span>
+                    <span>{{ item.release_time.substring(0, 10) }}</span>
                   </div>
                   <p class="box-p">{{ item.title }}</p>
                   <span class="button ANM bor-rad box-sha1">立即浏览</span>
@@ -60,14 +70,17 @@
           class="h2 animate__animated animate__fadeIn wow"
           data-wow-duration="1s"
           data-wow-delay=".5s"
-        >重点环保项目</h2>
+        >
+          重点环保项目
+        </h2>
       </template>
       <template v-slot:span>
         <span
           class="p animate__animated animate__fadeIn wow"
           data-wow-duration="1s"
           data-wow-delay=".5s"
-        >我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span>
+          >我们持续关注本地及全球环保议题，以不同项目跟进和推动实际改变。</span
+        >
       </template>
     </home-project>
 
@@ -86,62 +99,82 @@
     >
       <BackgroundMotion
         eClassName="banners_background"
-        :style="{background: `url(http://49.233.14.172:9999/imgs/2021/11/252277c5299c53b7.jpg)`}"
+        :style="{
+          background: `url(https://img.weikill.club/imageBed/imgs/2021/11/252277c5299c53b7.jpg)`,
+        }"
       />
       <div class="concept-text con-box">
         <h2
           class="h2 animate__animated animate__fadeIn wow"
           data-wow-duration="1s"
           data-wow-delay=".5s"
-        >环保相关概念</h2>
+        >
+          环保相关概念
+        </h2>
         <div class="text-box">
           <div class="text-bottom">
             <h2
               class="h2 animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".3s"
-            >一词解释</h2>
+            >
+              一词解释
+            </h2>
             <p
               class="p animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".4s"
-            >是指人类为解决现实的或潜在的环境问题，协调人类与环境的关系，保障经济、社会的持续发展而采取的各种行动的总称。</p>
+            >
+              是指人类为解决现实的或潜在的环境问题，协调人类与环境的关系，保障经济、社会的持续发展而采取的各种行动的总称。
+            </p>
           </div>
           <div class="text-bottom">
             <h2
               class="h2 animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".5s"
-            >环保意义</h2>
+            >
+              环保意义
+            </h2>
             <p
               class="p animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".6s"
-            >人类的环保行动作用于地球生态，生态反哺于人类更好的生存环境。环保，在这个循环里，始于人类，途经地球生态，终于人类。</p>
+            >
+              人类的环保行动作用于地球生态，生态反哺于人类更好的生存环境。环保，在这个循环里，始于人类，途经地球生态，终于人类。
+            </p>
           </div>
           <div class="text-bottom">
             <h2
               class="h2 animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".7s"
-            >相关概念</h2>
+            >
+              相关概念
+            </h2>
             <p
               class="p animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".8s"
-            >环境成本又称环境降级成本，是指由于经济活动造成环境污染而使环境服务功能质量下降的代价。</p>
+            >
+              环境成本又称环境降级成本，是指由于经济活动造成环境污染而使环境服务功能质量下降的代价。
+            </p>
           </div>
           <div class="text-bottom">
             <h2
               class="h2 animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay=".9s"
-            >最终目标</h2>
+            >
+              最终目标
+            </h2>
             <p
               class="p animate__animated animate__fadeIn wow"
               data-wow-duration="1s"
               data-wow-delay="1s"
-            >环保的最终目标就是辅助人类追求更好更舒适的生活。</p>
+            >
+              环保的最终目标就是辅助人类追求更好更舒适的生活。
+            </p>
           </div>
         </div>
       </div>
@@ -149,68 +182,84 @@
   </div>
 </template>
 <script>
-import homeProject from "@/components/Home/homeProject"
-import homeIssue from "@/components/Home/homeIssue"
-import Earth from '@/components/Home/earth'
-import GlobalSwiper from "@/components/common/GlobalSwiper";
-import { getHomeData } from '@/tools/request'
-import BackgroundMotion from "@/components/common/BackgroundMotion";
+import homeProject from '@/components/Home/homeProject';
+import homeIssue from '@/components/Home/homeIssue';
+import Earth from '@/components/Home/earth';
+import GlobalSwiper from '@/components/common/GlobalSwiper';
+import { getHomeData } from '@/tools/request';
+import BackgroundMotion from '@/components/common/BackgroundMotion';
 
-import { mapMutations } from "vuex";
+import { mapMutations } from 'vuex';
 
-import Swiper from "swiper";
-import "swiper/css/swiper.css"
+import Swiper from 'swiper';
+import 'swiper/css/swiper.css';
 
 export default {
   name: 'Home',
-  data () {
+  metaInfo: {
+    title: '环保首页', // set a title
+    meta: [
+      {
+        // set meta
+        name: 'description',
+        content:
+          '此环保网站属于广东省高新技术高级技工学校，2021年网页比赛-环保网站比赛作品。',
+      },
+      { name: 'keywords', content: '环保网站 ｜ 环保网页比赛' },
+    ],
+    // link: [{                 // set link
+    //   rel: 'asstes',
+    //   href: 'https://assets-cdn.github.com/'
+    // }]
+  },
+  data() {
     return {
       homeData: {},
-      isTrue: true // 是否需要请求 是否第一次进入页面
-    }
+      isTrue: true, // 是否需要请求 是否第一次进入页面
+    };
   },
-  created () {
-    this.getData()
+  created() {
+    this.getData();
     new this.$wow.WOW({
-      live: false
-    }).init()
-    window.addEventListener('scroll', this.handleScroll, true)
+      live: false,
+    }).init();
+    window.addEventListener('scroll', this.handleScroll, true);
   },
-  beforeUnmount () {
-    window.removeEventListener('scroll', this.handleScroll, true)
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll, true);
   },
-  updated () {
+  updated() {
     this.$nextTick(() => {
       if (this.isTrue) {
-        this.initSwiper()
-        this.isTrue = false
+        this.initSwiper();
+        this.isTrue = false;
       }
-    })
+    });
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       setTimeout(() => {
-        document.body.scrollTop = this.$store.state.srcollNum
-        document.documentElement.scrollTop = this.$store.state.srcollNum
-        window.scrollTo(0, this.$store.state.srcollNum)
+        document.body.scrollTop = this.$store.state.srcollNum;
+        document.documentElement.scrollTop = this.$store.state.srcollNum;
+        window.scrollTo(0, this.$store.state.srcollNum);
       }, 800);
-    })
+    });
   },
   components: {
     GlobalSwiper,
     homeProject,
     Earth,
     homeIssue,
-    BackgroundMotion
+    BackgroundMotion,
   },
   methods: {
     ...mapMutations(['changeScroll']),
-    async getData () {
-      let res = await getHomeData()
-      this.homeData = res.result
+    async getData() {
+      let res = await getHomeData();
+      this.homeData = res.result;
     },
-    initSwiper () {
-      new Swiper(".home-swiper", {
+    initSwiper() {
+      new Swiper('.home-swiper', {
         // 循环模式选项
         loop: false,
         // 自动播放
@@ -221,24 +270,22 @@ export default {
         // slidesPerView: "auto",
 
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         // 如果需要分页器
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
         },
-      })
+      });
     },
     // 监听滚动方法
-    handleScroll () {
-      this.changeScroll(window.pageYOffset)
-    }
+    handleScroll() {
+      this.changeScroll(window.pageYOffset);
+    },
   },
-
-
-}
+};
 </script>
 <style lang="less" scoped>
 @import '~@/assets/css/homeSwiper.css';
@@ -336,4 +383,3 @@ export default {
   }
 }
 </style>
-

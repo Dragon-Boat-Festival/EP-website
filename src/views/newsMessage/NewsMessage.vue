@@ -2,13 +2,13 @@
   <!-- 最新消息页 -->
   <!-- 头部banner   -->
   <GlobalSwiper
-    v-if="related_news.length>0"
+    v-if="related_news.length > 0"
     swiperBg="swiper-pg"
     spanText="为你呈上近期环保热话及编辑推介文章，罗列国际和本地你不可不知道的重要资讯。"
   >
     <template v-slot:swiper-pagination>
       <!-- swiper翻页器 -->
-      <div :class="`swiper-pagination swiper-pg` "></div>
+      <div :class="`swiper-pagination swiper-pg`"></div>
     </template>
     <template v-slot:h2>
       <h2 class="h2" style="color: var(--black)">最新消息</h2>
@@ -22,19 +22,27 @@
         <div class="swiper-wrapper">
           <div
             class="swiper-slide"
-            v-for="(item,index) in related_news"
+            v-for="(item, index) in related_news"
             :key="index"
-            @click="this.$router.push({path:'/newsDetail', query: { news_id: item.news_id }})"
+            @click="
+              this.$router.push({
+                path: '/newsDetail',
+                query: { news_id: item.news_id },
+              })
+            "
           >
             <div class="slide-con box-sha1 AN">
-              <div class="left-img" :style="{ backgroundImage: `url(${item.main_img})` }"></div>
+              <div
+                class="left-img"
+                :style="{ backgroundImage: `url(${item.main_img})` }"
+              ></div>
               <div class="right-content">
                 <div class="title">
-                  <p :style="{color:item.ep_type.color}">
+                  <p :style="{ color: item.ep_type.color }">
                     {{ item.ep_type.name }}
                     <span>专题报道</span>
                   </p>
-                  <span>{{ (item.release_time).substring(0, 10) }}</span>
+                  <span>{{ item.release_time.substring(0, 10) }}</span>
                 </div>
                 <p class="box-p">{{ item.title }}</p>
                 <span class="button ANM bor-rad box-sha1">立即浏览</span>
@@ -48,10 +56,16 @@
     </template>
   </GlobalSwiper>
   <!-- 第二部分 -->
-  <!-- :swiperData="{img_arr: `["http://49.233.14.172:9999/imgs/2021/11/00d08af67985e41a.jpg"]`,text: "世界上无数人都在竭力追求更好的未来。在此你可以了解更多环保、生活相关的故事及消息。"}" -->
   <CommonBox theme="dark-theme">
     <template v-slot:content>
-      <CommonSwiper :type="1"></CommonSwiper>
+      <CommonSwiper
+        :type="1"
+        :swiperData="{
+          img_arr: `['https://img.weikill.club/imageBed/imgs/2021/11/00d08af67985e41a.jpg']`,
+          text:
+            '世界上无数人都在竭力追求更好的未来。在此你可以了解更多环保、生活相关的故事及消息。',
+        }"
+      ></CommonSwiper>
     </template>
   </CommonBox>
   <!-- 精选文章 -->
@@ -78,74 +92,74 @@
 </template>
 
 <script>
-import GlobalSwiper from "@/components/common/GlobalSwiper";
-import CommonBox from "@/components/projectOrTypes/commonBox";
-import CommonSwiper from "@/components/projectOrTypes/CommonSwiper";
-import SelectedNews from "@/components/selectedNews/SelectedNews";
-import SectionRow from "@/components/common/SectionRow";
-import { getNewsMessage } from "@/tools/request";
-import { mapMutations } from "vuex"
-import Swiper from "swiper";
+import GlobalSwiper from '@/components/common/GlobalSwiper';
+import CommonBox from '@/components/projectOrTypes/commonBox';
+import CommonSwiper from '@/components/projectOrTypes/CommonSwiper';
+import SelectedNews from '@/components/selectedNews/SelectedNews';
+import SectionRow from '@/components/common/SectionRow';
+import { getNewsMessage } from '@/tools/request';
+import { mapMutations } from 'vuex';
+import Swiper from 'swiper';
 
 export default {
-  name: "NewsMessage",
+  name: 'NewsMessage',
   components: {
     GlobalSwiper,
     CommonBox,
     CommonSwiper,
     SelectedNews,
-    SectionRow
+    SectionRow,
   },
-  data () {
+  data() {
     return {
       related_news: [], // 相关新闻
       selected_news: [], // 精选文章
       news_column: [], // 新闻专栏数据
-    }
+    };
   },
-  created () {
+  created() {
     new this.$wow.WOW({
-      live: false
-    }).init()
-    this._initData()
+      live: false,
+    }).init();
+    this._initData();
     if (this.$store.state.newsViewNum != 0) {
-      window.addEventListener('scroll', this.handleScroll, true)
+      window.addEventListener(' scroll', this.handleScroll, true);
     }
   },
-  beforeUnmount () {
-    window.removeEventListener('scroll', this.handleScroll, true)
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll, true);
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
-      this.scroll()
-    })
+      this.scroll();
+    });
   },
-  updated () {
+  updated() {
     new this.$wow.WOW({
-      live: false
-    }).init()
+      live: false,
+    }).init();
     this.$nextTick(() => {
-      this.initSwiper()
-      this.scroll()
-    })
+      this.initSwiper();
+      this.scroll();
+    });
   },
   methods: {
     ...mapMutations(['changeIsData', 'changeNewsScroll']),
-    async _initData () {
-      const result = await getNewsMessage()
+    async _initData() {
+      const result = await getNewsMessage();
       //显示 nav
-      result.result.related_news.length > 0 ? this.changeIsData() : null
+      result.result.related_news.length > 0 ? this.changeIsData() : null;
       // 相关新闻
-      this.related_news = result.result.related_news
+      this.related_news = result.result.related_news;
       // 精选文章
-      this.selected_news = result.result.selected_news
+      this.selected_news = result.result.selected_news;
       // 新闻专栏
-      this.news_column = result.result.news_column
-      window.scrollTo(0, 0)
+      this.news_column = result.result.news_column;
+      window.scrollTo(0, 0);
     },
 
-    initSwiper () {
-      new Swiper(".home-swiper", {
+    initSwiper() {
+      new Swiper('.home-swiper', {
         // 循环模式选项
         loop: false,
         // 自动播放
@@ -156,34 +170,34 @@ export default {
         // slidesPerView: "auto",
 
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         // 如果需要分页器
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
         },
-      })
+      });
     },
 
     // 监听滚动方法
-    handleScroll () {
-      this.changeNewsScroll(window.pageYOffset)
+    handleScroll() {
+      this.changeNewsScroll(window.pageYOffset);
       // console.log(window.pageYOffset);
     },
 
     // 滚动方法
-    scroll () {
+    scroll() {
       setTimeout(() => {
-        document.body.scrollTop = this.$store.state.newsViewNum
-        document.documentElement.scrollTop = this.$store.state.newsViewNum
-        window.scrollTo(0, this.$store.state.newsViewNum)
+        document.body.scrollTop = this.$store.state.newsViewNum;
+        document.documentElement.scrollTop = this.$store.state.newsViewNum;
+        window.scrollTo(0, this.$store.state.newsViewNum);
         // console.log(this.$store.state.newsViewNum);
       }, 500);
-    }
+    },
   },
-}
+};
 </script>
 
 <style scoped lang="less">
